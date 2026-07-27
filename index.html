@@ -272,7 +272,7 @@
                 <a href="#" class="hover:text-white transition">Master</a>
                 <a href="https://www.studyaustralia.gov.au/" target="_blank" rel="noopener" class="hover:text-white transition">Study Australia</a>
             </div>
-            <span class="text-gray-500 hidden sm:inline">무료 진단 가이드</span>
+            <a href="https://jaebong-choi.github.io/study-guide-hub/" class="text-gray-300 hover:text-white transition border border-gray-600 hover:border-gray-400 rounded-full px-3 py-1.5 inline-flex items-center gap-1.5 whitespace-nowrap"><i class="fa-solid fa-globe text-[#2997ff]"></i> 국가 선택</a>
         </div>
     </nav>
 
@@ -1167,7 +1167,7 @@
             const result = (document.getElementById('result-pathway-title')?.textContent || '').trim();
             const fields = { source: 'au', country: '호주', result: result, link: buildResultLink() };
             if (window.Tally) {
-                window.Tally.openPopup(TALLY_FORM_ID, { layout: 'modal', width: 420, hiddenFields: fields });
+                window.Tally.openPopup(TALLY_FORM_ID, { layout: 'modal', width: Math.min(640, window.innerWidth - 32), hiddenFields: fields });
             } else {
                 const q = Object.entries(fields).map(([k, v]) => k + '=' + encodeURIComponent(v)).join('&');
                 window.open('https://tally.so/r/' + TALLY_FORM_ID + '?' + q, '_blank', 'noopener');
