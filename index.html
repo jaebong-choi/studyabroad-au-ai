@@ -21,6 +21,22 @@
     <meta name="twitter:description" content="학부부터 석사까지, 내 상황에 맞는 호주 진학 루트를 3분 만에.">
     <meta name="twitter:image" content="https://jaebong-choi.github.io/studyabroad-au-ai/images/og-image.png?v=20260724">
 
+    <!-- 화면 모드(다크/라이트) — 렌더링 전에 적용해 깜빡임 방지.
+         키를 4개 사이트가 공유하므로(같은 도메인) 한 번 고르면 전체에 유지된다. -->
+    <script>
+        (function () {
+            try {
+                var t = localStorage.getItem('sgh-theme');
+                if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+            } catch (e) {}
+        })();
+        function toggleTheme() {
+            var next = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', next);
+            try { localStorage.setItem('sgh-theme', next); } catch (e) {}
+        }
+    </script>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -257,6 +273,71 @@
         .delay-200 { animation-delay: 0.2s; }
         .delay-300 { animation-delay: 0.3s; }
         .delay-400 { animation-delay: 0.4s; }
+
+        /* =========================================================
+         * 라이트 모드 — html[data-theme="light"]
+         * 기본값은 다크(현재 디자인 유지). 헤더의 토글로 전환하며
+         * 선택값은 localStorage("sgh-theme")에 저장된다.
+         * 밝은 섹션(bg-apple-light)은 원래 밝으므로 건드리지 않고,
+         * 어두운 영역(nav · bg-apple-black)만 밝게 뒤집는다.
+         * ========================================================= */
+        .theme-toggle {
+            width: 28px; height: 28px; border-radius: 50%;
+            border: 1px solid #4a4a50; background: transparent; color: inherit;
+            display: inline-flex; align-items: center; justify-content: center;
+            font-size: 12px; cursor: pointer; transition: all 0.2s ease; flex-shrink: 0;
+        }
+        .theme-toggle:hover { border-color: #8a8a92; color: #fff; }
+        .theme-toggle .fa-moon { display: none; }
+        html[data-theme="light"] .theme-toggle { border-color: #c7c7cc; }
+        html[data-theme="light"] .theme-toggle:hover { border-color: #86868b; color: #000; }
+        html[data-theme="light"] .theme-toggle .fa-moon { display: inline-block; }
+        html[data-theme="light"] .theme-toggle .fa-sun { display: none; }
+
+        html[data-theme="light"] body { background-color: #ffffff; color: #1d1d1f; }
+
+        html[data-theme="light"] .apple-nav-glass {
+            background-color: rgba(255, 255, 255, 0.82);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        html[data-theme="light"] .apple-nav-glass .text-gray-300,
+        html[data-theme="light"] .apple-nav-glass a { color: #3a3a3c; }
+        html[data-theme="light"] .apple-nav-glass .text-white,
+        html[data-theme="light"] .apple-nav-glass a:hover { color: #1d1d1f !important; }
+        html[data-theme="light"] .apple-nav-glass .border-gray-600 { border-color: #c7c7cc !important; }
+
+        html[data-theme="light"] .bg-apple-black { background-color: #ffffff !important; }
+        html[data-theme="light"] footer.bg-apple-black { background-color: #f5f5f7 !important; }
+
+        html[data-theme="light"] .bg-apple-black,
+        html[data-theme="light"] .bg-apple-black .text-gray-200,
+        html[data-theme="light"] .bg-apple-black .text-gray-300,
+        html[data-theme="light"] .bg-apple-black .text-gray-400 { color: #4a4a4f !important; }
+        html[data-theme="light"] .bg-apple-black .text-gray-500,
+        html[data-theme="light"] .bg-apple-black .text-gray-600 { color: #6e6e73 !important; }
+        html[data-theme="light"] .bg-apple-black.text-apple-white,
+        html[data-theme="light"] .bg-apple-black .text-apple-white,
+        html[data-theme="light"] .bg-apple-black .text-white { color: #1d1d1f !important; }
+        html[data-theme="light"] .bg-apple-black .hover\:text-white:hover { color: #000 !important; }
+        html[data-theme="light"] .bg-apple-black .border-\[\#26262a\] { border-color: #d2d2d7 !important; }
+        html[data-theme="light"] .bg-apple-black .border-\[\#3a3a3c\] { border-color: #d2d2d7 !important; }
+        html[data-theme="light"] .bg-apple-black .bg-\[\#1d1d1f\] { background-color: #f5f5f7 !important; }
+        html[data-theme="light"] .border-white\/10 { border-color: rgba(0, 0, 0, 0.1) !important; }
+
+        html[data-theme="light"] .degree-card {
+            background: #ffffff;
+            border-color: rgba(0, 0, 0, 0.12);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 8px 24px rgba(0, 0, 0, 0.06);
+        }
+        html[data-theme="light"] .degree-card:hover {
+            background: rgba(41, 151, 255, 0.05);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08), 0 16px 40px rgba(0, 0, 0, 0.1);
+        }
+        html[data-theme="light"] .degree-card .text-white { color: #1d1d1f !important; }
+        html[data-theme="light"] .degree-card .text-gray-400 { color: #4a4a4f !important; }
+
+        html[data-theme="light"] .hero-glow { background: #9ec9f5 !important; opacity: 0.34; }
+        html[data-theme="light"] .apple-link-pill { color: #0066cc; border-color: #0066cc; }
     </style>
 </head>
 <body>
@@ -272,7 +353,12 @@
                 <a href="#" class="hover:text-white transition">Master</a>
                 <a href="https://www.studyaustralia.gov.au/" target="_blank" rel="noopener" class="hover:text-white transition">Study Australia</a>
             </div>
-            <a href="https://jaebong-choi.github.io/study-guide-hub/" class="text-gray-300 hover:text-white transition border border-gray-600 hover:border-gray-400 rounded-full px-3 py-1.5 inline-flex items-center gap-1.5 whitespace-nowrap"><i class="fa-solid fa-globe text-[#2997ff]"></i> 국가 선택</a>
+            <div class="flex items-center gap-2">
+                <button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="화면 모드 전환" title="밝게 / 어둡게">
+                    <i class="fa-solid fa-sun"></i><i class="fa-solid fa-moon"></i>
+                </button>
+                <a href="https://jaebong-choi.github.io/study-guide-hub/" class="text-gray-300 hover:text-white transition border border-gray-600 hover:border-gray-400 rounded-full px-3 py-1.5 inline-flex items-center gap-1.5 whitespace-nowrap"><i class="fa-solid fa-globe text-[#2997ff]"></i> 국가 선택</a>
+            </div>
         </div>
     </nav>
 
