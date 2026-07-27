@@ -27,6 +27,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
+    <!-- Tally 팝업 위젯 (무료 상담 신청 폼) -->
+    <script async src="https://tally.so/widgets/embed.js"></script>
+
     <script>
         tailwind.config = {
             theme: {
@@ -358,14 +361,17 @@
                 Pathway Description
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <button id="share-btn" onclick="copyResultLink()" class="apple-btn-primary">
+                <button onclick="openConsultForm()" class="apple-btn-primary">
+                    <i class="fa-solid fa-comments text-xs mr-2"></i> 이 결과로 무료 상담 받기
+                </button>
+                <button id="share-btn" onclick="copyResultLink()" class="apple-link-pill">
                     <i class="fa-solid fa-link text-xs mr-2"></i> 결과 링크 복사
                 </button>
                 <button onclick="resetConsulting()" class="apple-link-pill">
                     다시 진단하기 <i class="fa-solid fa-rotate-right text-xs ml-2"></i>
                 </button>
             </div>
-            <p id="share-hint" class="sf-text-caption text-gray-500 mt-5">링크를 복사해 카카오톡·문자로 전달하면 같은 결과 페이지가 열립니다.</p>
+            <p id="share-hint" class="sf-text-caption text-gray-500 mt-5">무료 상담 신청 시 이 진단 결과가 자동으로 첨부됩니다. 링크를 복사해 카카오톡·문자로 전달하면 같은 결과 페이지가 열립니다.</p>
         </div>
     </div>
 
@@ -466,7 +472,10 @@
             <h2 class="sf-display-section mb-4">이 결과, 저장해 두세요.</h2>
             <p class="sf-text-body text-gray-500 mb-8 max-w-xl mx-auto">진단 결과는 링크 하나에 담겨 있습니다. 복사해서 나에게 보내 두거나, 함께 고민하는 친구·가족과 공유하세요.</p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <button onclick="copyResultLink(this)" class="apple-btn-primary">
+                <button onclick="openConsultForm()" class="apple-btn-primary">
+                    <i class="fa-solid fa-comments text-xs mr-2"></i> 이 결과로 무료 상담 받기
+                </button>
+                <button onclick="copyResultLink(this)" class="apple-link-pill light-bg">
                     <i class="fa-solid fa-link text-xs mr-2"></i> 결과 링크 복사
                 </button>
                 <button onclick="resetConsulting()" class="apple-link-pill light-bg">
@@ -1150,6 +1159,19 @@
             ta.select();
             try { document.execCommand('copy'); done(); } catch (e) { prompt('아래 링크를 복사하세요:', text); }
             document.body.removeChild(ta);
+        }
+
+        // ── 무료 상담 신청 (Tally 팝업) — 진단 결과를 히든 필드로 자동 전달 ──
+        const TALLY_FORM_ID = '0Qz7E6';
+        function openConsultForm() {
+            const result = (document.getElementById('result-pathway-title')?.textContent || '').trim();
+            const fields = { source: 'au', country: '호주', result: result, link: buildResultLink() };
+            if (window.Tally) {
+                window.Tally.openPopup(TALLY_FORM_ID, { layout: 'modal', width: 420, hiddenFields: fields });
+            } else {
+                const q = Object.entries(fields).map(([k, v]) => k + '=' + encodeURIComponent(v)).join('&');
+                window.open('https://tally.so/r/' + TALLY_FORM_ID + '?' + q, '_blank', 'noopener');
+            }
         }
 
         function resetConsulting() {
