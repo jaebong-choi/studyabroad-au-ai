@@ -30,11 +30,25 @@
                 if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
             } catch (e) {}
         })();
+        function applyTheme(t) {
+            document.documentElement.setAttribute('data-theme', t);
+            var isLight = t === 'light';
+            document.querySelectorAll('.theme-switch').forEach(function (b) {
+                b.setAttribute('aria-checked', isLight ? 'true' : 'false');
+            });
+            document.querySelectorAll('[data-theme-label]').forEach(function (e) {
+                e.textContent = isLight ? '라이트' : '다크';
+            });
+        }
         function toggleTheme() {
             var next = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-            document.documentElement.setAttribute('data-theme', next);
+            applyTheme(next);
             try { localStorage.setItem('sgh-theme', next); } catch (e) {}
         }
+        // <head> 인라인 적용값에 스위치 상태(라벨·aria)를 맞춘다
+        document.addEventListener('DOMContentLoaded', function () {
+            applyTheme(document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark');
+        });
     </script>
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -281,18 +295,47 @@
          * 밝은 섹션(bg-apple-light)은 원래 밝으므로 건드리지 않고,
          * 어두운 영역(nav · bg-apple-black)만 밝게 뒤집는다.
          * ========================================================= */
-        .theme-toggle {
-            width: 28px; height: 28px; border-radius: 50%;
-            border: 1px solid #4a4a50; background: transparent; color: inherit;
-            display: inline-flex; align-items: center; justify-content: center;
-            font-size: 12px; cursor: pointer; transition: all 0.2s ease; flex-shrink: 0;
+        /* 화면 모드 전환 스위치 (허브와 동일 규격)
+         * 노브가 왼쪽(달)이면 다크, 오른쪽(해)으로 밀리면 라이트.
+         * 노브에 덮인 쪽 아이콘은 배경색으로 반전시켜 현재 상태를 드러낸다. */
+        .theme-switch {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 0; border: 0; background: none; color: #f5f5f7;
+            cursor: pointer; flex-shrink: 0;
         }
-        .theme-toggle:hover { border-color: #8a8a92; color: #fff; }
-        .theme-toggle .fa-moon { display: none; }
-        html[data-theme="light"] .theme-toggle { border-color: #c7c7cc; }
-        html[data-theme="light"] .theme-toggle:hover { border-color: #86868b; color: #000; }
-        html[data-theme="light"] .theme-toggle .fa-moon { display: inline-block; }
-        html[data-theme="light"] .theme-toggle .fa-sun { display: none; }
+        .switch-track {
+            position: relative; display: block; width: 52px; height: 28px;
+            border-radius: 999px; border: 1px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.06);
+            transition: background 0.2s ease, border-color 0.2s ease;
+        }
+        .theme-switch:hover .switch-track { border-color: #f5f5f7; }
+        .theme-switch:focus-visible { outline: none; }
+        .theme-switch:focus-visible .switch-track { outline: 2px solid #2997ff; outline-offset: 3px; }
+        .switch-knob {
+            position: absolute; top: 3px; left: 3px; width: 20px; height: 20px;
+            border-radius: 50%; background: #f5f5f7; z-index: 1;
+            transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), background 0.2s ease;
+        }
+        .switch-icon {
+            position: absolute; top: 50%; margin-top: -7px; z-index: 2;
+            color: #86868b; transition: color 0.25s ease; pointer-events: none;
+        }
+        .switch-icon.icon-moon { left: 6px; color: #0b0b0f; }
+        .switch-icon.icon-sun { right: 6px; }
+        .switch-label {
+            font-size: 12px; font-weight: 600; color: #86868b;
+            letter-spacing: -0.01em; width: 30px; text-align: left;
+        }
+        @media (max-width: 520px) { .switch-label { display: none; } }
+
+        html[data-theme="light"] .theme-switch { color: #1d1d1f; }
+        html[data-theme="light"] .switch-track { border-color: rgba(0, 0, 0, 0.28); background: #ffffff; }
+        html[data-theme="light"] .theme-switch:hover .switch-track { border-color: #1d1d1f; }
+        html[data-theme="light"] .switch-knob { background: #1d1d1f; transform: translateX(24px); }
+        html[data-theme="light"] .switch-icon.icon-moon { color: #86868b; }
+        html[data-theme="light"] .switch-icon.icon-sun { color: #ffffff; }
+        html[data-theme="light"] .switch-label { color: #6e6e73; }
 
         html[data-theme="light"] body { background-color: #ffffff; color: #1d1d1f; }
 
@@ -354,8 +397,13 @@
                 <a href="https://www.studyaustralia.gov.au/" target="_blank" rel="noopener" class="hover:text-white transition">Study Australia</a>
             </div>
             <div class="flex items-center gap-2">
-                <button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="화면 모드 전환" title="밝게 / 어둡게">
-                    <i class="fa-solid fa-sun"></i><i class="fa-solid fa-moon"></i>
+                <button type="button" class="theme-switch" role="switch" aria-checked="false" onclick="toggleTheme()" aria-label="화면 모드 전환" title="밝게 / 어둡게">
+                    <span class="switch-track" aria-hidden="true">
+                        <span class="switch-knob"></span>
+                        <svg class="switch-icon icon-moon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg>
+                        <svg class="switch-icon icon-sun" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+                    </span>
+                    <span class="switch-label" data-theme-label>다크</span>
                 </button>
                 <a href="https://jaebong-choi.github.io/study-guide-hub/" class="text-gray-300 hover:text-white transition border border-gray-600 hover:border-gray-400 rounded-full px-3 py-1.5 inline-flex items-center gap-1.5 whitespace-nowrap"><i class="fa-solid fa-globe text-[#2997ff]"></i> 국가 선택</a>
             </div>
