@@ -325,7 +325,9 @@
         .switch-icon.icon-sun { right: 6px; }
         .switch-label {
             font-size: 12px; font-weight: 600; color: #86868b;
-            letter-spacing: -0.01em; width: 30px; text-align: left;
+            letter-spacing: -0.01em; text-align: left;
+            /* "라이트"(3글자) 줄바꿈 방지. "다크"와 폭을 맞춰 전환 시 흔들림 없게 */
+            min-width: 40px; white-space: nowrap;
         }
         @media (max-width: 520px) { .switch-label { display: none; } }
 
