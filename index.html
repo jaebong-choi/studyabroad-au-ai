@@ -30,14 +30,22 @@
                 if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
             } catch (e) {}
         })();
-        function applyTheme(t) {
-            document.documentElement.setAttribute('data-theme', t);
-            var isLight = t === 'light';
+        /* 매개변수 이름은 t()(번역 함수)와 겹치지 않게 theme으로 둔다. */
+        function applyTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            syncThemeLabel();
+        }
+        /* 스위치의 aria 상태와 라벨을 현재 테마·언어에 맞춘다.
+           언어를 바꿀 때도 라벨을 다시 써야 하므로 i18n.js의 applyLang이 호출한다. */
+        function syncThemeLabel() {
+            var isLight = document.documentElement.getAttribute('data-theme') === 'light';
             document.querySelectorAll('.theme-switch').forEach(function (b) {
                 b.setAttribute('aria-checked', isLight ? 'true' : 'false');
             });
             document.querySelectorAll('[data-theme-label]').forEach(function (e) {
-                e.textContent = isLight ? '라이트' : '다크';
+                e.textContent = (typeof t === 'function')
+                    ? t(isLight ? 'themeLight' : 'themeDark')
+                    : (isLight ? '라이트' : '다크');
             });
         }
         function toggleTheme() {
@@ -50,6 +58,8 @@
             applyTheme(document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark');
         });
     </script>
+
+    <script src="i18n.js?v=20260731"></script>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -295,6 +305,23 @@
          * 밝은 섹션(bg-apple-light)은 원래 밝으므로 건드리지 않고,
          * 어두운 영역(nav · bg-apple-black)만 밝게 뒤집는다.
          * ========================================================= */
+        /* 언어 전환 (한국어 / English) — 두 칸 세그먼트 컨트롤 */
+        .lang-switch {
+            display: inline-flex; border: 1px solid rgba(255, 255, 255, 0.28);
+            border-radius: 999px; overflow: hidden; flex-shrink: 0;
+        }
+        .lang-switch button {
+            border: 0; background: transparent; color: #a1a1a6;
+            font-size: 11.5px; font-weight: 700; letter-spacing: 0.02em;
+            padding: 5px 10px; cursor: pointer; transition: background 0.2s ease, color 0.2s ease;
+        }
+        .lang-switch button:hover { color: #f5f5f7; }
+        .lang-switch button.on { background: #f5f5f7; color: #0b0b0f; }
+        html[data-theme="light"] .lang-switch { border-color: rgba(0, 0, 0, 0.2); }
+        html[data-theme="light"] .lang-switch button { color: #6e6e73; }
+        html[data-theme="light"] .lang-switch button:hover { color: #1d1d1f; }
+        html[data-theme="light"] .lang-switch button.on { background: #1d1d1f; color: #ffffff; }
+
         /* 화면 모드 전환 스위치 (허브와 동일 규격)
          * 노브가 왼쪽(달)이면 다크, 오른쪽(해)으로 밀리면 라이트.
          * 노브에 덮인 쪽 아이콘은 배경색으로 반전시켜 현재 상태를 드러낸다. */
@@ -399,7 +426,11 @@
                 <a href="https://www.studyaustralia.gov.au/" target="_blank" rel="noopener" class="hover:text-white transition">Study Australia</a>
             </div>
             <div class="flex items-center gap-2">
-                <button type="button" class="theme-switch" role="switch" aria-checked="false" onclick="toggleTheme()" aria-label="화면 모드 전환" title="밝게 / 어둡게">
+                <div class="lang-switch" role="group" data-i18n-aria="langAria" aria-label="언어 선택">
+                    <button type="button" data-lang="ko" onclick="setLang('ko')" aria-pressed="true">KO</button>
+                    <button type="button" data-lang="en" onclick="setLang('en')" aria-pressed="false">EN</button>
+                </div>
+                <button type="button" class="theme-switch" role="switch" aria-checked="false" onclick="toggleTheme()" data-i18n-aria="themeAria" data-i18n-title="themeTitle" aria-label="화면 모드 전환" title="밝게 / 어둡게">
                     <span class="switch-track" aria-hidden="true">
                         <span class="switch-knob"></span>
                         <svg class="switch-icon icon-moon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg>
@@ -407,7 +438,7 @@
                     </span>
                     <span class="switch-label" data-theme-label>다크</span>
                 </button>
-                <a href="https://jaebong-choi.github.io/study-guide-hub/" class="text-gray-300 hover:text-white transition border border-gray-600 hover:border-gray-400 rounded-full px-3 py-1.5 inline-flex items-center gap-1.5 whitespace-nowrap"><i class="fa-solid fa-globe text-[#2997ff]"></i> 국가 선택</a>
+                <a href="https://jaebong-choi.github.io/study-guide-hub/" class="text-gray-300 hover:text-white transition border border-gray-600 hover:border-gray-400 rounded-full px-3 py-1.5 inline-flex items-center gap-1.5 whitespace-nowrap"><i class="fa-solid fa-globe text-[#2997ff]"></i> <span data-i18n="navHub">국가 선택</span></a>
             </div>
         </div>
     </nav>
@@ -419,12 +450,12 @@
         <div class="max-w-[1200px] mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center relative">
             <!-- Left: copy + track choice -->
             <div class="text-center lg:text-left order-2 lg:order-1">
-                <p class="sf-text-body text-gray-400 mb-5 fade-in-up tracking-widest uppercase text-xs">Australia University Pathway Guide</p>
+                <p class="sf-text-body text-gray-400 mb-5 fade-in-up tracking-widest uppercase text-xs" data-i18n="heroEyebrow">Australia University Pathway Guide</p>
 
-                <h1 class="sf-display-hero text-apple-white mb-5 fade-in-up delay-100" style="white-space:nowrap; font-size:clamp(21px, 6.4vw, 42px); line-height:1.2;">
+                <h1 class="sf-display-hero text-apple-white mb-5 fade-in-up delay-100" style="font-size:clamp(21px, 6.4vw, 42px); line-height:1.2;" data-i18n-html="heroTitle">
                     3분진단 호주,<br><span class="text-[#4da3ff]">내 조건으로 호주 진학 체크!</span>
                 </h1>
-                <p class="sf-text-body text-gray-300 max-w-xl mx-auto lg:mx-0 mb-10 fade-in-up delay-200">
+                <p class="sf-text-body text-gray-300 max-w-xl mx-auto lg:mx-0 mb-10 fade-in-up delay-200" data-i18n-html="heroSub">
                     내신은 숫자일 뿐, 경로가 전부다.<br>성적과 목표를 분석해 학부·석사 두 트랙의 진학 경로를 설계합니다.
                 </p>
 
@@ -433,29 +464,29 @@
                     <button onclick="startConsulting('학부 (Bachelor)')" class="degree-card w-full">
                         <div class="flex items-center justify-between mb-3">
                             <i class="fa-solid fa-graduation-cap text-2xl text-[#2997ff]"></i>
-                            <span class="go">진단 시작 <i class="fa-solid fa-arrow-right text-xs"></i></span>
+                            <span class="go"><span data-i18n="heroGo">진단 시작</span> <i class="fa-solid fa-arrow-right text-xs"></i></span>
                         </div>
-                        <h3 class="sf-display-card-bold text-white mb-1">학부 진학 (Bachelor)</h3>
-                        <p class="sf-text-caption text-gray-400">고교 졸업(예정) · 검정고시 · 대학 재학/휴학생. 디플로마·파운데이션으로 명문대 편입까지.</p>
+                        <h3 class="sf-display-card-bold text-white mb-1" data-i18n="heroBachelorTitle">학부 진학 (Bachelor)</h3>
+                        <p class="sf-text-caption text-gray-400" data-i18n="heroBachelorDesc">고교 졸업(예정) · 검정고시 · 대학 재학/휴학생. 디플로마·파운데이션으로 명문대 편입까지.</p>
                     </button>
                     <button onclick="startConsulting('석사 (Master)')" class="degree-card w-full">
                         <div class="flex items-center justify-between mb-3">
                             <i class="fa-solid fa-user-tie text-2xl text-[#4da3ff]"></i>
-                            <span class="go">진단 시작 <i class="fa-solid fa-arrow-right text-xs"></i></span>
+                            <span class="go"><span data-i18n="heroGo">진단 시작</span> <i class="fa-solid fa-arrow-right text-xs"></i></span>
                         </div>
-                        <h3 class="sf-display-card-bold text-white mb-1">석사 진학 (Master)</h3>
-                        <p class="sf-text-caption text-gray-400">대학 졸업(예정)자 · 직장인 커리어 전환. 비전공자 GE 과정으로 전문직 면허까지.</p>
+                        <h3 class="sf-display-card-bold text-white mb-1" data-i18n="heroMasterTitle">석사 진학 (Master)</h3>
+                        <p class="sf-text-caption text-gray-400" data-i18n="heroMasterDesc">대학 졸업(예정)자 · 직장인 커리어 전환. 비전공자 GE 과정으로 전문직 면허까지.</p>
                     </button>
                 </div>
 
-                <p class="sf-text-caption text-gray-500 fade-in-up delay-400">
+                <p class="sf-text-caption text-gray-500 fade-in-up delay-400" data-i18n-html="heroNote">
                     특정 유학원과 무관한 무료 정보 가이드입니다.<br>학비·입학요건은 2026년 각 대학 공식 발표 기준입니다.
                 </p>
             </div>
 
             <!-- Right: Sydney photo -->
             <div class="fade-in-up delay-200 order-1 lg:order-2">
-                <img src="images/hero-sydney.jpg" alt="시드니 하버와 오페라하우스 전경"
+                <img src="images/hero-sydney.jpg" alt="시드니 하버와 오페라하우스 전경" data-i18n-alt="heroPhotoAlt"
                      class="rounded-2xl w-full h-56 md:h-80 lg:h-[560px] object-cover object-[70%_center] border border-white/10">
             </div>
         </div>
@@ -471,7 +502,7 @@
 
             <div class="flex items-center justify-between gap-3 mb-6">
                 <button onclick="goBack()" class="apple-link-pill light-bg shrink-0" style="padding: 6px 16px; font-size: 15px;">
-                    <i class="fa-solid fa-chevron-left text-xs mr-1"></i> 이전
+                    <i class="fa-solid fa-chevron-left text-xs mr-1"></i> <span data-i18n="qBack">이전</span>
                 </button>
                 <span id="track-chip" class="track-chip"><i class="fa-solid fa-graduation-cap"></i> 학부 트랙</span>
                 <span class="shrink-0" style="width: 72px;" aria-hidden="true"></span>
@@ -491,23 +522,23 @@
     <!-- ===================== RESULT HERO ===================== -->
     <div id="result-hero" class="hidden bg-apple-black text-apple-white py-32 px-4 text-center">
         <div class="max-w-[980px] mx-auto fade-in-up">
-            <h2 class="sf-display-section mb-6">분석이 완료되었습니다.</h2>
+            <h2 class="sf-display-section mb-6" data-i18n="resultDone">분석이 완료되었습니다.</h2>
             <h3 id="result-pathway-title" class="sf-display-hero text-apple-blue mb-8">Pathway Name</h3>
             <p id="result-pathway-desc" class="sf-text-body text-gray-300 max-w-3xl mx-auto mb-10 leading-relaxed">
                 Pathway Description
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
                 <button onclick="openConsultForm()" class="apple-btn-primary">
-                    <i class="fa-solid fa-comments text-xs mr-2"></i> 이 결과로 무료 상담 받기
+                    <i class="fa-solid fa-comments text-xs mr-2"></i> <span data-i18n="resultCta">이 결과로 무료 상담 받기</span>
                 </button>
                 <button id="share-btn" onclick="copyResultLink()" class="apple-link-pill">
-                    <i class="fa-solid fa-link text-xs mr-2"></i> 결과 링크 복사
+                    <i class="fa-solid fa-link text-xs mr-2"></i> <span data-i18n="resultCopy">결과 링크 복사</span>
                 </button>
                 <button onclick="resetConsulting()" class="apple-link-pill">
-                    다시 진단하기 <i class="fa-solid fa-rotate-right text-xs ml-2"></i>
+                    <span data-i18n="resultRestart">다시 진단하기</span> <i class="fa-solid fa-rotate-right text-xs ml-2"></i>
                 </button>
             </div>
-            <p id="share-hint" class="sf-text-caption text-gray-500 mt-5">무료 상담 신청 시 이 진단 결과가 자동으로 첨부됩니다. 링크를 복사해 카카오톡·문자로 전달하면 같은 결과 페이지가 열립니다.</p>
+            <p id="share-hint" class="sf-text-caption text-gray-500 mt-5" data-i18n="shareHint">무료 상담 신청 시 이 진단 결과가 자동으로 첨부됩니다. 링크를 복사해 카카오톡·문자로 전달하면 같은 결과 페이지가 열립니다.</p>
         </div>
     </div>
 
@@ -538,12 +569,12 @@
 
             <!-- Pathway Guide (파운데이션/디플로마/다이렉트 · 석사 3경로) -->
             <div class="mb-24" id="pathway-guide-section">
-                <h3 class="sf-display-section text-center mb-3">호주 진학 경로 가이드</h3>
+                <h3 class="sf-display-section text-center mb-3" data-i18n="guideSectionTitle">호주 진학 경로 가이드</h3>
                 <p class="sf-text-body text-gray-500 text-center mb-12 max-w-2xl mx-auto" id="pathway-guide-sub">
                     같은 목표라도 성적과 상황에 따라 최적의 경로는 다릅니다. 세 가지 진학 경로를 비교해 보세요.
                 </p>
                 <div id="pathway-guide-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
-                <p class="sf-text-caption text-gray-400 text-center mt-6">
+                <p class="sf-text-caption text-gray-400 text-center mt-6" data-i18n="guideNote">
                     ※ 경로별 요구 성적·편입 인정 범위는 대학과 전공에 따라 다릅니다. 지원 전 각 대학 공식 입학처에서 최신 기준을 확인하세요.
                 </p>
             </div>
@@ -555,8 +586,8 @@
             <div id="university-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-4 mt-8">
                 <!-- University Cards Injected Here -->
             </div>
-            <p class="sf-text-caption text-gray-400 text-center mb-24">
-                ※ 표기된 금액은 <strong class="text-gray-500">2026년 국제 학생 홈페이지 기준 학비</strong>(각 대학 공식 사이트 발표 연간 학비)이며, 전공·과목 선택 및 연도별 인상에 따라 달라질 수 있습니다. 정확한 금액은 각 대학 공식 홈페이지에서 확인하세요.
+            <p class="sf-text-caption text-gray-400 text-center mb-24" data-i18n="univNote">
+                ※ 표기된 금액은 2026년 국제 학생 홈페이지 기준 학비(각 대학 공식 사이트 발표 연간 학비)이며, 전공·과목 선택 및 연도별 인상에 따라 달라질 수 있습니다. 정확한 금액은 각 대학 공식 홈페이지에서 확인하세요.
             </p>
 
             <!-- Official Course Links -->
@@ -564,14 +595,14 @@
                 <div class="text-center md:text-left mb-8">
                     <p class="sf-text-caption text-[#2997ff] font-semibold uppercase tracking-wider mb-2">Official Sources</p>
                     <h4 class="sf-display-card text-white mb-2" id="board-section-title">추천 프로그램 공식 페이지</h4>
-                    <p class="sf-text-body text-gray-400">진단 결과에 맞는 각 대학의 공식 코스 페이지입니다. 입학요건과 학비는 항상 공식 페이지 기준이 우선입니다.</p>
+                    <p class="sf-text-body text-gray-400" data-i18n="boardSub">진단 결과에 맞는 각 대학의 공식 코스 페이지입니다. 입학요건과 학비는 항상 공식 페이지 기준이 우선입니다.</p>
                 </div>
                 <div id="board-articles" class="space-y-3 mb-8">
                     <!-- Official course links injected via JS -->
                 </div>
                 <div class="text-center md:text-left">
                     <a href="https://www.studyaustralia.gov.au/" target="_blank" rel="noopener" class="apple-btn-primary bg-white text-[#1d1d1f] hover:bg-gray-200">
-                        호주 정부 공식 유학 정보 (Study Australia) <i class="fa-solid fa-arrow-right text-xs ml-2"></i>
+                        <span data-i18n="studyAuBtn">호주 정부 공식 유학 정보 (Study Australia)</span> <i class="fa-solid fa-arrow-right text-xs ml-2"></i>
                     </a>
                 </div>
             </div>
@@ -588,11 +619,11 @@
 
                 <!-- Visa & Official Info Card -->
                 <div class="apple-card-flat flex flex-col bg-[#272729] text-white">
-                    <h4 class="sf-display-card-bold mb-6 border-b border-gray-600 pb-4">비자 · 공식 정보</h4>
+                    <h4 class="sf-display-card-bold mb-6 border-b border-gray-600 pb-4" data-i18n="visaTitle">비자 · 공식 정보</h4>
                     <ul class="sf-text-body space-y-4 text-gray-300 flex-1">
-                        <li class="flex items-start"><i class="fa-solid fa-passport text-[#2997ff] mt-1 mr-4"></i> <span><strong class="text-white">학생비자 (Subclass 500):</strong> 신청 요건·수수료·처리 기간은 <a href="https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/student-500" target="_blank" rel="noopener" class="text-[#2997ff] hover:underline">호주 내무부 공식 안내</a>에서 확인하세요.</span></li>
-                        <li class="flex items-start"><i class="fa-solid fa-heart-pulse text-[#2997ff] mt-1 mr-4"></i> <span><strong class="text-white">유학생 건강보험 (OSHC):</strong> 학생비자 기간 전체를 커버하는 보험 가입이 필수입니다.</span></li>
-                        <li class="flex items-start"><i class="fa-solid fa-building-columns text-[#2997ff] mt-1 mr-4"></i> <span><strong class="text-white">공식 유학 포털:</strong> 호주 정부가 운영하는 <a href="https://www.studyaustralia.gov.au/" target="_blank" rel="noopener" class="text-[#2997ff] hover:underline">Study Australia</a>에서 장학금·생활비·도시 정보를 찾아보세요.</span></li>
+                        <li class="flex items-start"><i class="fa-solid fa-passport text-[#2997ff] mt-1 mr-4"></i> <span><strong class="text-white" data-i18n="visaItem1Head">학생비자 (Subclass 500):</strong> <span data-i18n="visaItem1Body">신청 요건·수수료·처리 기간은 호주 내무부 공식 안내에서 확인하세요.</span> <a href="https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/student-500" target="_blank" rel="noopener" class="text-[#2997ff] hover:underline" data-i18n="visaItem1Link">호주 내무부 공식 안내</a></span></li>
+                        <li class="flex items-start"><i class="fa-solid fa-heart-pulse text-[#2997ff] mt-1 mr-4"></i> <span><strong class="text-white" data-i18n="visaItem2Head">유학생 건강보험 (OSHC):</strong> <span data-i18n="visaItem2Body">학생비자 기간 전체를 커버하는 보험 가입이 필수입니다.</span></span></li>
+                        <li class="flex items-start"><i class="fa-solid fa-building-columns text-[#2997ff] mt-1 mr-4"></i> <span><strong class="text-white" data-i18n="visaItem3Head">공식 유학 포털:</strong> <span data-i18n="visaItem3Body">호주 정부가 운영하는 Study Australia에서 장학금·생활비·도시 정보를 찾아보세요.</span> <a href="https://www.studyaustralia.gov.au/" target="_blank" rel="noopener" class="text-[#2997ff] hover:underline">Study Australia</a></span></li>
                     </ul>
                 </div>
             </div>
@@ -600,22 +631,22 @@
 
         <!-- Panorama -->
         <div class="max-w-[980px] mx-auto mt-8">
-            <img src="images/sydney-panorama.jpg" alt="시드니 하버브리지와 오페라하우스 파노라마" class="rounded-xl w-full h-36 md:h-48 object-cover" loading="lazy">
+            <img src="images/sydney-panorama.jpg" alt="시드니 하버브리지와 오페라하우스 파노라마" data-i18n-alt="panoramaAlt" class="rounded-xl w-full h-36 md:h-48 object-cover" loading="lazy">
         </div>
 
         <!-- Call to Action Footer -->
         <div class="mt-20 text-center border-t border-gray-200 pt-16">
-            <h2 class="sf-display-section mb-4">이 결과, 저장해 두세요.</h2>
-            <p class="sf-text-body text-gray-500 mb-8 max-w-xl mx-auto">진단 결과는 링크 하나에 담겨 있습니다. 복사해서 나에게 보내 두거나, 함께 고민하는 친구·가족과 공유하세요.</p>
+            <h2 class="sf-display-section mb-4" data-i18n="saveTitle">이 결과, 저장해 두세요.</h2>
+            <p class="sf-text-body text-gray-500 mb-8 max-w-xl mx-auto" data-i18n="saveDesc">진단 결과는 링크 하나에 담겨 있습니다. 복사해서 나에게 보내 두거나, 함께 고민하는 친구·가족과 공유하세요.</p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
                 <button onclick="openConsultForm()" class="apple-btn-primary">
-                    <i class="fa-solid fa-comments text-xs mr-2"></i> 이 결과로 무료 상담 받기
+                    <i class="fa-solid fa-comments text-xs mr-2"></i> <span data-i18n="resultCta">이 결과로 무료 상담 받기</span>
                 </button>
                 <button onclick="copyResultLink(this)" class="apple-link-pill light-bg">
-                    <i class="fa-solid fa-link text-xs mr-2"></i> 결과 링크 복사
+                    <i class="fa-solid fa-link text-xs mr-2"></i> <span data-i18n="resultCopy">결과 링크 복사</span>
                 </button>
                 <button onclick="resetConsulting()" class="apple-link-pill light-bg">
-                    다시 진단하기 <i class="fa-solid fa-rotate-right text-xs ml-2"></i>
+                    <span data-i18n="resultRestart">다시 진단하기</span> <i class="fa-solid fa-rotate-right text-xs ml-2"></i>
                 </button>
             </div>
         </div>
@@ -627,20 +658,20 @@
             <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-10">
                 <div class="max-w-md">
                     <p class="text-white font-bold text-base mb-3"><i class="fa-solid fa-map-location-dot text-[#2997ff] mr-2"></i>AU Study Guide</p>
-                    <p class="sf-text-caption text-gray-500 mb-1">호주 대학 진학 정보 가이드 — 학부·석사 AI 진단</p>
-                    <p class="sf-text-caption text-gray-500">본 사이트는 특정 유학원·기관과 무관한 무료 정보 페이지입니다. 수록된 학비·입학요건은 2026년 각 대학 공식 발표 기준이며, 지원 전 반드시 각 대학 공식 입학처에서 최신 정보를 확인하세요.</p>
+                    <p class="sf-text-caption text-gray-500 mb-1" data-i18n="footerTagline">호주 대학 진학 정보 가이드 — 학부·석사 AI 진단</p>
+                    <p class="sf-text-caption text-gray-500" data-i18n="footerDisclaimer">본 사이트는 특정 유학원·기관과 무관한 무료 정보 페이지입니다. 수록된 학비·입학요건은 2026년 각 대학 공식 발표 기준이며, 지원 전 반드시 각 대학 공식 입학처에서 최신 정보를 확인하세요.</p>
                 </div>
                 <div>
-                    <p class="sf-text-caption font-bold text-gray-300 mb-3 uppercase tracking-wider">공식 정보 바로가기</p>
+                    <p class="sf-text-caption font-bold text-gray-300 mb-3 uppercase tracking-wider" data-i18n="footerLinksTitle">공식 정보 바로가기</p>
                     <ul class="sf-text-caption space-y-2">
-                        <li><a href="https://www.studyaustralia.gov.au/" target="_blank" rel="noopener" class="hover:text-white">Study Australia (호주 정부 유학 포털)</a></li>
-                        <li><a href="https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/student-500" target="_blank" rel="noopener" class="hover:text-white">학생비자 Subclass 500 안내</a></li>
-                        <li><a href="https://www.topuniversities.com/world-university-rankings" target="_blank" rel="noopener" class="hover:text-white">QS 세계 대학 순위</a></li>
-                        <li><a href="https://cricos.education.gov.au/" target="_blank" rel="noopener" class="hover:text-white">CRICOS 공식 코스 등록부</a></li>
+                        <li><a href="https://www.studyaustralia.gov.au/" target="_blank" rel="noopener" class="hover:text-white" data-i18n="footerLink1">Study Australia (호주 정부 유학 포털)</a></li>
+                        <li><a href="https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/student-500" target="_blank" rel="noopener" class="hover:text-white" data-i18n="footerLink2">학생비자 Subclass 500 안내</a></li>
+                        <li><a href="https://www.topuniversities.com/world-university-rankings" target="_blank" rel="noopener" class="hover:text-white" data-i18n="footerLink3">QS 세계 대학 순위</a></li>
+                        <li><a href="https://cricos.education.gov.au/" target="_blank" rel="noopener" class="hover:text-white" data-i18n="footerLink4">CRICOS 공식 코스 등록부</a></li>
                     </ul>
                 </div>
             </div>
-            <p class="sf-text-caption text-gray-600 mt-10 pt-6 border-t border-[#26262a]">© AU Study Guide. 정보 제공 목적으로 제작된 페이지입니다.</p>
+            <p class="sf-text-caption text-gray-600 mt-10 pt-6 border-t border-[#26262a]" data-i18n="footerCopy">© AU Study Guide. 정보 제공 목적으로 제작된 페이지입니다.</p>
         </div>
     </footer>
 
@@ -843,10 +874,7 @@
             stepHistory = [];
 
             const isMaster = degreeLabel.includes('석사');
-            const chip = document.getElementById('track-chip');
-            chip.innerHTML = isMaster
-                ? '<i class="fa-solid fa-user-tie"></i> 석사 (Master) 트랙'
-                : '<i class="fa-solid fa-graduation-cap"></i> 학부 (Bachelor) 트랙';
+            renderTrackChip(isMaster);
 
             document.getElementById('hero-section').classList.add('hidden');
             document.getElementById('consulting-section').classList.remove('hidden');
@@ -870,10 +898,18 @@
             renderQuestion();
         }
 
+        function renderTrackChip(isMaster) {
+            const chip = document.getElementById('track-chip');
+            if (!chip) return;
+            chip.innerHTML = isMaster
+                ? '<i class="fa-solid fa-user-tie"></i> ' + t('degreeMaster')
+                : '<i class="fa-solid fa-graduation-cap"></i> ' + t('degreeBachelor');
+        }
+
         function renderQuestion() {
             const q = questionFlow[currentStepId];
-            document.getElementById('step-indicator').innerText = `Step ${stepCount}`;
-            document.getElementById('question-text').innerText = q.question;
+            document.getElementById('step-indicator').innerText = `${t('qStep')} ${stepCount}`;
+            document.getElementById('question-text').innerText = tr(q.question);
 
             const progress = (stepCount / totalEstimatedSteps) * 100;
             document.getElementById('progress-bar').style.width = `${progress > 100 ? 100 : progress}%`;
@@ -886,7 +922,7 @@
                 const div = document.createElement('div');
                 div.className = `option-card fade-in-up`;
                 div.style.animationDelay = `${delay}ms`;
-                div.innerText = opt.label;
+                div.innerText = tr(opt.label);
                 div.onclick = () => handleAnswer(opt, q.key);
                 grid.appendChild(div);
             });
@@ -996,25 +1032,25 @@
         function renderPathwayGuide(isMaster, pathwayName) {
             const guides = isMaster ? pathwayGuides.master : pathwayGuides.bachelor;
             document.getElementById('pathway-guide-sub').innerText = isMaster
-                ? "같은 석사 진학이라도 학점과 전공 배경에 따라 최적의 경로는 다릅니다. 세 가지 경로를 비교해 보세요."
-                : "같은 목표라도 성적과 상황에 따라 최적의 경로는 다릅니다. 세 가지 진학 경로를 비교해 보세요.";
+                ? t('guideSubMaster')
+                : t('guideSubBachelor');
             const grid = document.getElementById('pathway-guide-grid');
             grid.innerHTML = guides.map(g => {
                 const isMine = pathwayName.includes(g.key);
                 return `
                 <div class="apple-card-flat flex flex-col h-full ${isMine ? 'ring-2 ring-[#0071e3]' : 'border border-gray-200'}" style="border-radius:12px;">
-                    ${isMine ? '<span class="region-badge mb-4 self-start"><i class="fa-solid fa-location-dot"></i> 내 추천 경로</span>' : '<span class="mb-4" style="height:24px;"></span>'}
+                    ${isMine ? `<span class="region-badge mb-4 self-start"><i class="fa-solid fa-location-dot"></i> ${t('guideMine')}</span>` : '<span class="mb-4" style="height:24px;"></span>'}
                     <div class="flex items-center gap-3 mb-1">
                         <i class="fa-solid ${g.icon} text-apple-blue text-xl"></i>
-                        <h4 class="sf-display-card-bold text-[#1d1d1f]">${g.title}</h4>
+                        <h4 class="sf-display-card-bold text-[#1d1d1f]">${tr(g.title)}</h4>
                     </div>
-                    <p class="text-xs text-apple-blue font-semibold uppercase tracking-wider mb-5">${g.en}</p>
-                    <p class="sf-text-caption text-gray-600 mb-5"><strong class="text-[#1d1d1f]">이런 분께:</strong> ${g.target}</p>
+                    <p class="text-xs text-apple-blue font-semibold uppercase tracking-wider mb-5">${tr(g.en)}</p>
+                    <p class="sf-text-caption text-gray-600 mb-5"><strong class="text-[#1d1d1f]">${t('guideFor')}</strong> ${tr(g.target)}</p>
                     <ol class="sf-text-caption text-gray-600 space-y-2 mb-5">
-                        ${g.steps.map((s, i) => `<li class="flex items-start"><span class="shrink-0 w-5 h-5 rounded-full bg-[#0071e3] text-white text-[11px] font-bold flex items-center justify-center mr-2 mt-0.5">${i + 1}</span><span>${s}</span></li>`).join('')}
+                        ${g.steps.map((s, i) => `<li class="flex items-start"><span class="shrink-0 w-5 h-5 rounded-full bg-[#0071e3] text-white text-[11px] font-bold flex items-center justify-center mr-2 mt-0.5">${i + 1}</span><span>${tr(s)}</span></li>`).join('')}
                     </ol>
-                    <p class="sf-text-caption text-gray-600 mb-3"><i class="fa-solid fa-circle-check text-green-600 mr-1"></i> ${g.pros}</p>
-                    <p class="sf-text-caption text-gray-500 mt-auto"><i class="fa-solid fa-circle-exclamation text-orange-500 mr-1"></i> ${g.caution}</p>
+                    <p class="sf-text-caption text-gray-600 mb-3"><i class="fa-solid fa-circle-check text-green-600 mr-1"></i> ${tr(g.pros)}</p>
+                    <p class="sf-text-caption text-gray-500 mt-auto"><i class="fa-solid fa-circle-exclamation text-orange-500 mr-1"></i> ${tr(g.caution)}</p>
                 </div>`;
             }).join('');
         }
@@ -1093,19 +1129,21 @@
             const majorInfo = majorData[userProfile.major] || majorData["간호학과 (Nursing)"];
 
             // Populate Hero
-            document.getElementById('result-pathway-title').innerText = pathwayData.name;
-            document.getElementById('result-pathway-desc').innerText = pathwayData.reason;
+            document.getElementById('result-pathway-title').innerText = tr(pathwayData.name);
+            document.getElementById('result-pathway-desc').innerText = tr(pathwayData.reason);
 
             // Populate Summary
-            document.getElementById('sum-degree').innerText = isMaster ? "석사 (Master)" : "학부 (Bachelor)";
-            document.getElementById('sum-region').innerText = (userProfile.region || "상관없음").split('(')[0].trim();
-            document.getElementById('sum-eng').innerText = userProfile.english.split(' ')[0] || "준비 중";
-            document.getElementById('sum-gpa').innerText = userProfile.grades.split('/')[0].trim() || "-";
-            document.getElementById('sum-major').innerText = userProfile.major.split('(')[0].trim() || "-";
+            // 한글은 "(...)"·"/" 앞부분만 잘라 쓰지만, 영어 문구는 그대로 두어야 뜻이 유지된다.
+            const shortEn = (s, sep) => (LANG === 'en' ? s : s.split(sep)[0].trim());
+            document.getElementById('sum-degree').innerText = isMaster ? t('degreeMaster') : t('degreeBachelor');
+            document.getElementById('sum-region').innerText = shortEn(tr(userProfile.region || "상관없음"), '(');
+            document.getElementById('sum-eng').innerText = (userProfile.english ? tr(userProfile.english) : t('engNotYet'));
+            document.getElementById('sum-gpa').innerText = shortEn(tr(userProfile.grades), '/') || "-";
+            document.getElementById('sum-major').innerText = shortEn(tr(userProfile.major), '(') || "-";
 
             // Populate Recommended Major
-            document.getElementById('rec-major-title').innerText = userProfile.major + (isMaster ? " · 석사 과정" : " · 학부 과정");
-            document.getElementById('rec-major-desc').innerText = (isMaster && majorInfo.masterDesc) ? majorInfo.masterDesc : majorInfo.desc;
+            document.getElementById('rec-major-title').innerText = tr(userProfile.major) + (isMaster ? t('suffixMaster') : t('suffixBachelor'));
+            document.getElementById('rec-major-desc').innerText = tr((isMaster && majorInfo.masterDesc) ? majorInfo.masterDesc : majorInfo.desc);
 
             // Pathway Guide (파운데이션/디플로마/다이렉트 · 석사 3경로)
             renderPathwayGuide(isMaster, pathwayData.name);
@@ -1122,10 +1160,10 @@
             // Region note
             const noteEl = document.getElementById('region-note');
             if (regionCode === "OTHER") {
-                noteEl.innerText = "※ 퍼스·애들레이드·캔버라 지역의 " + userProfile.major.split('(')[0].trim() + " 프로그램은 이 가이드에 수록되어 있지 않습니다. 아래는 대표 추천 프로그램입니다.";
+                noteEl.innerText = t('noteOther')(shortEn(tr(userProfile.major), '('));
                 noteEl.classList.remove('hidden');
             } else if (regionCode !== "ANY" && matchedCount === 0) {
-                noteEl.innerText = "※ 선호하신 지역(" + regionLabels[regionCode] + ") 내 프로그램은 이 가이드에 수록되어 있지 않습니다. 아래는 전공 기준 최상위 추천입니다.";
+                noteEl.innerText = t('noteNoMatch')(tr(regionLabels[regionCode]));
                 noteEl.classList.remove('hidden');
             } else {
                 noteEl.classList.add('hidden');
@@ -1143,27 +1181,27 @@
                                 <h4 class="sf-display-card-bold text-[#1d1d1f]">${school.name}</h4>
                                 <span class="text-[11px] font-bold text-gray-400 bg-gray-100 rounded-full px-2.5 py-1 whitespace-nowrap mt-1">${school.state}</span>
                             </div>
-                            ${isMatch ? '<span class="region-badge mb-3"><i class="fa-solid fa-location-dot"></i> 선호 지역 일치</span>' : ''}
-                            <p class="text-xs text-apple-blue font-semibold mb-4 mt-2 uppercase tracking-wider">${school.degree}</p>
-                            <p class="sf-text-caption text-gray-500 mb-6 font-semibold uppercase tracking-wide">${school.rank}</p>
+                            ${isMatch ? `<span class="region-badge mb-3"><i class="fa-solid fa-location-dot"></i> ${t('regionMatch')}</span>` : ''}
+                            <p class="text-xs text-apple-blue font-semibold mb-4 mt-2 uppercase tracking-wider">${tr(school.degree)}</p>
+                            <p class="sf-text-caption text-gray-500 mb-6 font-semibold uppercase tracking-wide">${tr(school.rank)}</p>
 
                             <div class="bg-[#fafafc] rounded-[8px] p-4 mb-8 space-y-3">
                                 <div class="flex justify-between sf-text-caption border-b border-gray-100 pb-2">
-                                    <span class="text-gray-500">입학 요건</span>
-                                    <strong class="text-[#1d1d1f] text-right w-1/2">${school.req}</strong>
+                                    <span class="text-gray-500">${t('reqAdmission')}</span>
+                                    <strong class="text-[#1d1d1f] text-right w-1/2">${tr(school.req)}</strong>
                                 </div>
                                 <div class="flex justify-between sf-text-caption border-b border-gray-100 pb-2">
-                                    <span class="text-gray-500">영어 요건</span>
+                                    <span class="text-gray-500">${t('reqEnglish')}</span>
                                     <strong class="text-[#1d1d1f]">IELTS ${school.ielts}</strong>
                                 </div>
                                 <div class="flex justify-between sf-text-caption pt-1">
-                                    <span class="text-gray-500">연간 학비 <span class="text-gray-400">(2026 국제학생)</span></span>
+                                    <span class="text-gray-500">${t('reqTuition')} <span class="text-gray-400">${t('tuitionNote')}</span></span>
                                     <strong class="text-[#1d1d1f] text-orange-600">${school.tuition}</strong>
                                 </div>
                             </div>
                         </div>
                         <a href="${school.url}" target="_blank" class="apple-link-pill light-bg w-full text-center mt-auto">
-                            공식 홈페이지 방문 <i class="fa-solid fa-arrow-up-right-from-square text-xs ml-2"></i>
+                            ${t('visitSite')} <i class="fa-solid fa-arrow-up-right-from-square text-xs ml-2"></i>
                         </a>
                     </div>
                 `;
@@ -1172,29 +1210,19 @@
 
             // Next Steps (학부/석사별)
             const stepsList = document.getElementById('next-steps-list');
-            if (isMaster) {
-                stepsList.innerHTML = `
-                    <li class="flex items-start"><i class="fa-solid fa-check text-apple-blue mt-1 mr-4"></i> <span><strong>서류 준비:</strong> 영문 학사 졸업·성적 증명서, 이력서(CV), 여권 사본을 준비하십시오. 전공에 따라 학업계획서(SOP)가 요구됩니다.</span></li>
-                    <li class="flex items-start"><i class="fa-solid fa-check text-apple-blue mt-1 mr-4"></i> <span><strong>영어 성적:</strong> 조건부 입학(Conditional Offer)을 먼저 받고 영어 성적을 나중에 제출하는 전략도 가능합니다.</span></li>
-                    <li class="flex items-start"><i class="fa-solid fa-check text-apple-blue mt-1 mr-4"></i> <span><strong>비자 및 정착:</strong> 입학허가서(CoE) 수령 후 학생 비자(Subclass 500)를 신청하고, 졸업 후 졸업생 비자(485) 플랜까지 세워 보세요.</span></li>
-                `;
-            } else {
-                stepsList.innerHTML = `
-                    <li class="flex items-start"><i class="fa-solid fa-check text-apple-blue mt-1 mr-4"></i> <span><strong>어학 준비:</strong> 지원 전, 또는 조건부 입학(Conditional Offer) 수령 후 필요한 영어 성적을 확보하십시오.</span></li>
-                    <li class="flex items-start"><i class="fa-solid fa-check text-apple-blue mt-1 mr-4"></i> <span><strong>서류 준비:</strong> 영문 고등학교/대학교 졸업 및 성적 증명서, 여권 사본을 준비하십시오.</span></li>
-                    <li class="flex items-start"><i class="fa-solid fa-check text-apple-blue mt-1 mr-4"></i> <span><strong>비자 및 숙소:</strong> 입학허가서(CoE) 수령 후 학생 비자(Subclass 500)를 신청하고 숙소를 준비하세요.</span></li>
-                `;
-            }
+            stepsList.innerHTML = t(isMaster ? 'stepsMaster' : 'stepsBachelor').map(([head, body]) => `
+                    <li class="flex items-start"><i class="fa-solid fa-check text-apple-blue mt-1 mr-4"></i> <span><strong>${head}</strong> ${body}</span></li>`
+            ).join('');
 
             // Official course page links (추천 프로그램 순서 그대로)
             const boardWrap = document.getElementById('board-articles');
             document.getElementById('board-section-title').innerText =
-                userProfile.major.split('(')[0].trim() + (isMaster ? " 석사" : " 학부") + " 공식 코스 페이지";
+                shortEn(tr(userProfile.major), '(') + (isMaster ? t('boardSuffixMaster') : t('boardSuffixBachelor'));
             boardWrap.innerHTML = schools.map(s => `
                 <a href="${s.url}" target="_blank" rel="noopener"
                    class="flex items-center justify-between gap-4 bg-[#1d1d1f] hover:bg-[#333336] border border-[#3a3a3c] rounded-xl px-6 py-4 transition group">
                     <span class="sf-text-body text-gray-200 group-hover:text-white text-left">
-                        <i class="fa-solid fa-building-columns text-[#2997ff] mr-3"></i>${s.name} — ${s.degree}
+                        <i class="fa-solid fa-building-columns text-[#2997ff] mr-3"></i>${s.name} — ${tr(s.degree)}
                     </span>
                     <i class="fa-solid fa-arrow-up-right-from-square text-[#2997ff] text-sm shrink-0 group-hover:translate-x-1 transition-transform"></i>
                 </a>
@@ -1307,6 +1335,19 @@
             } else {
                 const q = Object.entries(fields).map(([k, v]) => k + '=' + encodeURIComponent(v)).join('&');
                 window.open('https://tally.so/r/' + TALLY_FORM_ID + '?' + q, '_blank', 'noopener');
+            }
+        }
+
+        /* 언어를 바꿨을 때, JS로 그려진 화면(질문·결과)을 현재 언어로 다시 그린다.
+           i18n.js의 applyLang()이 마지막에 호출한다. 정적 HTML은 data-i18n이 이미 처리한다. */
+        function refreshDynamicView() {
+            const resultOpen = !document.getElementById('result-hero').classList.contains('hidden');
+            const askingOpen = !document.getElementById('consulting-section').classList.contains('hidden');
+            if (resultOpen) {
+                generateReport();
+            } else if (askingOpen) {
+                renderTrackChip(userProfile.degree.includes('석사'));
+                renderQuestion();
             }
         }
 
