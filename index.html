@@ -305,6 +305,14 @@
          * 밝은 섹션(bg-apple-light)은 원래 밝으므로 건드리지 않고,
          * 어두운 영역(nav · bg-apple-black)만 밝게 뒤집는다.
          * ========================================================= */
+        /* 여러 줄 문단의 줄 길이를 고르게 맞춘다.
+           영어는 한국어보다 단어가 길어 줄 끝이 들쭉날쭉해지기 쉽다.
+           balance = 제목처럼 짧은 블록, pretty = 본문(마지막 줄 한 단어 방지). */
+        .sf-display-hero, .sf-display-section, .sf-display-card,
+        #question-text, #result-pathway-title { text-wrap: balance; }
+        .sf-text-body, .sf-text-caption, #result-pathway-desc,
+        #rec-major-desc, #pathway-guide-sub, #region-note { text-wrap: pretty; }
+
         /* 언어 전환 (한국어 / English) — 두 칸 세그먼트 컨트롤 */
         .lang-switch {
             display: inline-flex; border: 1px solid rgba(255, 255, 255, 0.28);
