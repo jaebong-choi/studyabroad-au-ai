@@ -490,12 +490,15 @@ const DATA_EN = {
 };
 
 /* ───────── 3. 언어 상태 · 조회 ───────── */
+/* 기본값은 한국어(브라우저 언어와 무관하게 항상 동일).
+ * 저장된 선택이 없으면 "ko"를 저장까지 해서 다른 사이트에도 그대로 이어지게 한다. */
 let LANG = (function () {
     try {
         var saved = localStorage.getItem("sgh-lang");
         if (saved === "ko" || saved === "en") return saved;
+        localStorage.setItem("sgh-lang", "ko");
     } catch (e) {}
-    return (navigator.language || "").toLowerCase().startsWith("ko") ? "ko" : "en";
+    return "ko";
 })();
 
 /* UI 문구 */
