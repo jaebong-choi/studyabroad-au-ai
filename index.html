@@ -310,8 +310,11 @@
            balance = 제목처럼 짧은 블록, pretty = 본문(마지막 줄 한 단어 방지). */
         .sf-display-hero, .sf-display-section, .sf-display-card,
         #question-text, #result-pathway-title { text-wrap: balance; }
-        .sf-text-body, .sf-text-caption, #result-pathway-desc,
-        #rec-major-desc, #pathway-guide-sub, #region-note { text-wrap: pretty; }
+        /* 가운데 정렬 문단은 균등 분배(balance)가 보기 좋다. */
+        #result-pathway-desc, #rec-major-desc, #pathway-guide-sub,
+        #region-note, #share-hint { text-wrap: balance; }
+        /* 좌측 정렬 본문은 마지막 줄 정리(pretty)만 한다. */
+        .sf-text-body, .sf-text-caption { text-wrap: pretty; }
 
         /* 언어 전환 (한국어 / English) — 두 칸 세그먼트 컨트롤 */
         .lang-switch {
