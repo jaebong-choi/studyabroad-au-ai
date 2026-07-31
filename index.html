@@ -64,7 +64,7 @@
         });
     </script>
 
-    <script src="i18n.js?v=20260814"></script>
+    <script src="i18n.js?v=20260815"></script>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -216,6 +216,22 @@
         .apple-link-pill:hover { background-color: rgba(41, 151, 255, 0.1); text-decoration: underline; }
         .apple-link-pill.light-bg { color: #0066cc; border-color: #0066cc; }
         .apple-link-pill.light-bg:hover { background-color: rgba(0, 102, 204, 0.1); }
+        /* 카드 폭이 좁아 라벨이 두 줄로 접히던 문제 — 한 줄 고정 + 폰트 소폭 축소 */
+        .apple-link-pill { white-space: nowrap; font-size: 15px; padding: 9px 16px; gap: 6px; }
+        /* 허브 상세 페이지 링크는 채움형으로 강조 (공식 홈페이지는 외곽선형 유지) */
+        .apple-link-pill.is-primary,
+        .apple-link-pill.is-primary.light-bg {
+            background-color: #0066cc;
+            border-color: #0066cc;
+            color: #fff;
+            font-weight: 600;
+        }
+        .apple-link-pill.is-primary:hover,
+        .apple-link-pill.is-primary.light-bg:hover {
+            background-color: #0052a3;
+            border-color: #0052a3;
+            text-decoration: none;
+        }
 
         /* Questionnaire Options */
         .option-card {
@@ -589,6 +605,19 @@
                 </div>
             </div>
 
+            <!-- Recommended Universities (전공 추천 바로 다음에 배치) -->
+            <div class="mb-24" id="universities-section">
+                <h3 class="sf-display-section text-center mb-4">Recommended Universities</h3>
+                <p id="region-note" class="sf-text-caption text-gray-500 text-center mb-12 hidden"></p>
+
+                <div id="university-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-4 mt-8">
+                    <!-- University Cards Injected Here -->
+                </div>
+                <p class="sf-text-caption text-gray-400 text-center" data-i18n="univNote">
+                    ※ 표기된 금액은 2026년 국제 학생 홈페이지 기준 학비(각 대학 공식 사이트 발표 연간 학비)이며, 전공·과목 선택 및 연도별 인상에 따라 달라질 수 있습니다. 정확한 금액은 각 대학 공식 홈페이지에서 확인하세요.
+                </p>
+            </div>
+
             <!-- Pathway Guide (파운데이션/디플로마/다이렉트 · 석사 3경로) -->
             <div class="mb-24" id="pathway-guide-section">
                 <h3 class="sf-display-section text-center mb-3" data-i18n="guideSectionTitle">호주 진학 경로 가이드</h3>
@@ -600,17 +629,6 @@
                     ※ 경로별 요구 성적·편입 인정 범위는 대학과 전공에 따라 다릅니다. 지원 전 각 대학 공식 입학처에서 최신 기준을 확인하세요.
                 </p>
             </div>
-
-            <h3 class="sf-display-section text-center mb-4">Recommended Universities</h3>
-            <p id="region-note" class="sf-text-caption text-gray-500 text-center mb-12 hidden"></p>
-
-            <!-- Universities Grid -->
-            <div id="university-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-4 mt-8">
-                <!-- University Cards Injected Here -->
-            </div>
-            <p class="sf-text-caption text-gray-400 text-center mb-24" data-i18n="univNote">
-                ※ 표기된 금액은 2026년 국제 학생 홈페이지 기준 학비(각 대학 공식 사이트 발표 연간 학비)이며, 전공·과목 선택 및 연도별 인상에 따라 달라질 수 있습니다. 정확한 금액은 각 대학 공식 홈페이지에서 확인하세요.
-            </p>
 
             <!-- Official Course Links -->
             <div class="info-banner p-10 mb-24">
@@ -1245,8 +1263,8 @@
                             <a href="${school.url}" target="_blank" class="apple-link-pill light-bg w-full text-center">
                                 ${t('visitSite')} <i class="fa-solid fa-arrow-up-right-from-square text-xs ml-2"></i>
                             </a>
-                            ${hubUniUrl(school.name) ? `<a href="${hubUniUrl(school.name)}" target="_blank" rel="noopener" class="apple-link-pill light-bg w-full text-center">
-                                ${t('hubDetail')} <i class="fa-solid fa-table-list text-xs ml-2"></i>
+                            ${hubUniUrl(school.name) ? `<a href="${hubUniUrl(school.name)}" target="_blank" rel="noopener" class="apple-link-pill light-bg is-primary w-full text-center">
+                                ${t('hubDetail')} <i class="fa-solid fa-table-list text-xs"></i>
                             </a>` : ''}
                         </div>
                     </div>
