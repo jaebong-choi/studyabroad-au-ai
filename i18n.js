@@ -84,6 +84,7 @@ const I18N = {
         reqAdmission: "입학 요건", reqEnglish: "영어 요건", reqTuition: "연간 학비",
         tuitionNote: "(2026 국제학생)",
         visitSite: "공식 홈페이지 방문",
+        hubDetail: "학비 · 입학 요건 상세 보기",
 
         nextTitle: "다음 단계",
         stepsMaster: [
@@ -181,6 +182,7 @@ const I18N = {
         reqAdmission: "Entry requirement", reqEnglish: "English requirement", reqTuition: "Annual tuition",
         tuitionNote: "(2026, international)",
         visitSite: "Visit the official page",
+        hubDetail: "Tuition and entry requirements",
 
         nextTitle: "What to do next",
         stepsMaster: [

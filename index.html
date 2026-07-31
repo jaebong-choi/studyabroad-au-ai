@@ -64,7 +64,7 @@
         });
     </script>
 
-    <script src="i18n.js?v=20260807"></script>
+    <script src="i18n.js?v=20260814"></script>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -702,6 +702,25 @@
         // DATA: 학부(schools) / 석사(masterSchools) 프로그램 정보
         // state: NSW / VIC / QLD / WA / SA / ACT
         // ============================================================
+        // 대학명 → Study Guide Hub 학교 상세 페이지 (학비·요건·진학 경로 DB)
+        const HUB_UNI = {
+            "University of Sydney": "au-sydney",
+            "University of Melbourne": "au-melbourne",
+            "UNSW": "au-unsw",
+            "Monash University": "au-monash",
+            "University of Queensland": "au-uq",
+            "UTS": "au-uts",
+            "QUT": "au-qut",
+            "Griffith University": "au-griffith",
+            "WSU": "au-wsu",
+            "The Hotel School": "au-hotel-school",
+            "Blue Mountains (BMIHMS)": "au-bmihms"
+        };
+        function hubUniUrl(name) {
+            const id = HUB_UNI[name];
+            return id ? `https://jaebong-choi.github.io/study-guide-hub/uni/${id}.html` : null;
+        }
+
         const majorData = {
             "간호학과 (Nursing)": {
                 desc: "호주 영주권 발급 1위 직업군. 수능 6등급이나 검정고시로도 디플로마를 통해 명문대 진학이 가능하며, 높은 임금과 쾌적한 근무환경을 자랑합니다.",
@@ -1222,9 +1241,14 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="${school.url}" target="_blank" class="apple-link-pill light-bg w-full text-center mt-auto">
-                            ${t('visitSite')} <i class="fa-solid fa-arrow-up-right-from-square text-xs ml-2"></i>
-                        </a>
+                        <div class="flex flex-col gap-2 mt-auto">
+                            <a href="${school.url}" target="_blank" class="apple-link-pill light-bg w-full text-center">
+                                ${t('visitSite')} <i class="fa-solid fa-arrow-up-right-from-square text-xs ml-2"></i>
+                            </a>
+                            ${hubUniUrl(school.name) ? `<a href="${hubUniUrl(school.name)}" target="_blank" rel="noopener" class="apple-link-pill light-bg w-full text-center">
+                                ${t('hubDetail')} <i class="fa-solid fa-table-list text-xs ml-2"></i>
+                            </a>` : ''}
+                        </div>
                     </div>
                 `;
             });
