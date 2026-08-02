@@ -108,7 +108,10 @@
             margin: 0;
             padding: 0;
             overflow-x: hidden;
-        }
+         word-break: keep-all; }
+        /* 한국어 줄바꿈: 단어 중간 꺾임 방지 + widow 방지 */
+        p, li, dd, summary, td { text-wrap: pretty; }
+        h1, h2, h3, h4 { text-wrap: balance; }
 
         /* Typography Rules (Noto Sans KR) */
         .sf-display-hero { font-family: "Noto Sans KR", -apple-system, BlinkMacSystemFont, sans-serif; font-size: 56px; font-weight: 700; line-height: 1.15; letter-spacing: -0.28px; }
