@@ -616,6 +616,7 @@
                 <div id="university-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-4 mt-8">
                     <!-- University Cards Injected Here -->
                 </div>
+                <p class="fx-date sf-text-caption text-gray-400 text-center mb-2"></p>
                 <p class="sf-text-caption text-gray-400 text-center" data-i18n="univNote">
                     ※ 표기된 금액은 2026년 국제 학생 홈페이지 기준 학비(각 대학 공식 사이트 발표 연간 학비)이며, 전공·과목 선택 및 연도별 인상에 따라 달라질 수 있습니다. 정확한 금액은 각 대학 공식 홈페이지에서 확인하세요.
                 </p>
@@ -1258,7 +1259,7 @@
                                 </div>
                                 <div class="flex justify-between sf-text-caption pt-1">
                                     <span class="text-gray-500">${t('reqTuition')} <span class="text-gray-400">${t('tuitionNote')}</span></span>
-                                    <strong class="text-[#1d1d1f] text-orange-600">${school.tuition}</strong>
+                                    <strong class="text-[#1d1d1f] text-orange-600 text-right">${school.tuition}${krwSpan(school.tuition)}</strong>
                                 </div>
                             </div>
                         </div>
@@ -1297,7 +1298,54 @@
 
             // 결과 공유용 해시 갱신 (주소창 URL 자체가 공유 링크가 된다)
             history.replaceState(null, '', '#r=' + encodeProfile(userProfile));
+            renderKrw();   // 학교 카드가 방금 그려졌으니 환율이 이미 도착해 있으면 바로 채운다
         }
+
+        /* 원화 환산 — 학비 문자열("AUD $41,500")에서 숫자만 뽑아 조회 시점 환율로 환산한다.
+           학교별 학비가 자유 문자열이라 데이터를 고치지 않고 렌더할 때 파싱한다.
+           결과가 JS로 그려지므로 generateReport() 끝과 환율 도착 시점 양쪽에서 호출한다.
+           환율을 못 받으면 조용히 생략하고 호주달러 금액만 남는다. (허브 uni 페이지와 같은 방식) */
+        function krwSpan(tuitionText) {
+            if (!tuitionText) return '';
+            var nums = String(tuitionText).replace(/,/g, '').match(/\d{4,}/g);
+            if (!nums || !nums.length) return '';
+            var vals = nums.map(Number);
+            return '<span class="krw block text-[11px] text-gray-400 font-medium mt-0.5"'
+                + ' data-min="' + Math.min.apply(null, vals) + '" data-max="' + Math.max.apply(null, vals) + '"></span>';
+        }
+        var FX_RATE = null;
+        function renderKrw() {
+            if (!FX_RATE) return;
+            var en = LANG === 'en';
+            function fmt(v) {
+                var man = Math.round(v * FX_RATE / 10000);
+                if (en) return '₩' + (man * 10000).toLocaleString('en-US');
+                if (man >= 10000) {
+                    var eok = Math.floor(man / 10000), rest = man % 10000;
+                    return eok + '억' + (rest ? ' ' + rest.toLocaleString('ko-KR') + '만' : '') + ' 원';
+                }
+                return man.toLocaleString('ko-KR') + '만 원';
+            }
+            document.querySelectorAll('.krw').forEach(function (el) {
+                var min = parseFloat(el.getAttribute('data-min'));
+                var max = parseFloat(el.getAttribute('data-max'));
+                if (isNaN(min) && isNaN(max)) return;
+                if (isNaN(min)) min = max;
+                if (isNaN(max)) max = min;
+                var range = min === max ? fmt(min) : (en ? fmt(min) + ' ~ ' + fmt(max) : fmt(min).replace(' 원', '') + '~' + fmt(max));
+                el.textContent = (en ? 'approx. ' : '약 ') + range;
+            });
+            var today = new Date();
+            document.querySelectorAll('.fx-date').forEach(function (el) {
+                el.textContent = en
+                    ? 'KRW amounts converted at the rate as of ' + today.toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric' })
+                    : '원화는 ' + today.getFullYear() + '. ' + (today.getMonth() + 1) + '. ' + today.getDate() + '. 환율로 환산한 참고 값입니다.';
+            });
+        }
+        fetch('https://open.er-api.com/v6/latest/AUD')
+            .then(function (r) { return r.json(); })
+            .then(function (d) { FX_RATE = d && d.rates && d.rates.KRW; renderKrw(); })
+            .catch(function () {});
 
         // ============================================================
         // 결과 링크 공유 / 복원
