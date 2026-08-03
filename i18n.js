@@ -498,6 +498,20 @@ const DATA_EN = {
     "회계·금융 (Accounting & Finance)": "Accounting and Finance",
     "스포츠경영 (Sport Management)": "Sport Management",
     "요리예술 (Culinary Arts)": "Culinary Arts",
+    "전공 무관으로 열려 있는 1.5년 과정입니다. 경영 계열 석사 중에서는 짧고 학비도 낮은 편입니다. 스포츠 특화로 유명한 디킨(멜버른)도 석사(연 $48,000)를 운영합니다 — 관련 학사 또는 전공 무관 + 실무 2년.":
+        "An 18-month course open to any bachelor's — short and reasonably priced for the business field. Deakin in Melbourne, well known for sport, also runs a master's ($48,000 a year): related degree, or any degree plus two years' relevant work.",
+    "Bachelor of Business (Sport Management) (스포츠경영 학사 3년)": "Bachelor of Business (Sport Management), 3 years",
+    "스포츠 분야 특화로 유명 · 멜버른": "Well known for sport · Melbourne",
+    "고교 졸업 또는 디플로마 편입": "High school, or diploma transfer",
+    "Diploma of Early Childhood Education and Care (보육 디플로마 1년)": "Diploma of Early Childhood Education and Care, 1 year",
+    "표기 학비는 1년 과정 총액 · 학사 없이 educator 취업 자격": "Fee shown is the one-year total · qualifies you as an educator without a degree",
+    "5.5 (전 영역 5.0) · 일부 과정 상이": "5.5 (no band below 5.0) · varies for some courses",
+    "환자를 직접 대하지 않는 실험실 기반 전공이라 영어 기준이 보건 계열 중 가장 낮습니다(6.5). 단독 학사는 폐지되어, 고교 졸업자는 생의학 학사를 거쳐 석사로 이어지는 4년 통합 경로로 갑니다.":
+        "A lab-based field with no patient contact, so the English bar is the lowest in health (6.5). The standalone bachelor has been retired — school leavers now take the four-year combined biomedicine-to-master's route.",
+    "이공계 학사 이수자가 2년에 임상병리 자격 과정을 마칩니다. AIMS 인증 과정이고, 보건 계열 석사 중 영어 문턱이 가장 낮은 축입니다.":
+        "Science graduates qualify in two years. The course is AIMS-accredited, at the lowest English bar among health master's degrees.",
+    "AIMS 인증 · 지방지역 가산점": "AIMS-accredited · regional points area",
+    "이공계 학사 (화학·생물 배경)": "Science degree (chemistry or biology background)",
     "학위보다 자격이 기본인 계열입니다. IELTS 5.5부터 시작할 수 있어 진단 전공 중 영어 문턱이 가장 낮고, 디플로마 안에 유급 실습이 들어 있는 과정이 많습니다.":
         "In this field the qualification, not the degree, is the default. Entry starts from IELTS 5.5 — the lowest bar in this quiz — and many diplomas build paid placements in.",
     "요리는 석사 자격 과정이 없는 계열입니다. 디플로마(1년~15개월)나 요리경영 학사(3년)가 경로이고, 경영 쪽으로 넓히려면 호텔경영 석사를 봅니다.":
