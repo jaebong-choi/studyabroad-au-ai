@@ -43,7 +43,7 @@ const I18N = {
         resultDone: "분석이 완료되었습니다.",
         guideSectionTitle: "호주 진학 경로 가이드",
         guideNote: "※ 경로별 요구 성적·편입 인정 범위는 대학과 전공에 따라 다릅니다. 지원 전 각 대학 공식 입학처에서 최신 기준을 확인하세요.",
-        infoArticlesTitle: "유학 정보",
+        infoArticlesTitle: "함께 보면 좋은 정보",
         infoArticlesSub: "진단 결과와 관련된 주제를 공식 자료 기준으로 정리한 글입니다.",
         infoArticleRead: "약 {0}분 · 정보 확인 {1}",
         boardColTitle: "제목",
@@ -87,7 +87,7 @@ const I18N = {
         guideTitle: "진학 경로 비교",
         guideSubMaster: "같은 석사 진학이라도 학점과 전공 배경에 따라 최적의 경로는 다릅니다. 세 가지 경로를 비교해 보세요.",
         guideSubBachelor: "같은 목표라도 성적과 상황에 따라 최적의 경로는 다릅니다. 세 가지 진학 경로를 비교해 보세요.",
-        guideMine: "내 추천 경로",
+        guideMine: "추천 경로",
         guideFor: "이런 분께:",
 
         univTitle: "추천 대학 · 프로그램",
@@ -151,7 +151,7 @@ const I18N = {
 
         resultDone: "Here is your result.",
         guideSectionTitle: "Entry routes to an Australian university",
-        infoArticlesTitle: "Study-abroad info",
+        infoArticlesTitle: "Worth reading alongside",
         infoArticlesSub: "Articles on topics related to your result, written from official sources.",
         infoArticleRead: "About {0} min · verified {1}",
         boardColTitle: "Title",
@@ -196,7 +196,7 @@ const I18N = {
         guideTitle: "Compare the routes",
         guideSubMaster: "Even for the same master's degree, the best route depends on your GPA and academic background. Compare the three below.",
         guideSubBachelor: "Even with the same goal, the best route depends on your grades and circumstances. Compare the three below.",
-        guideMine: "Your recommended route",
+        guideMine: "Recommended route",
         guideFor: "Suits you if:",
 
         univTitle: "Recommended universities and programmes",
