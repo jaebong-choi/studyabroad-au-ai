@@ -452,6 +452,32 @@ const DATA_EN = {
     "ATAR 80 · 적성검사 · CASA 1종 신체검사": "ATAR 80, aptitude test and a CASA class 1 medical",
     "고교 성적 또는 파운데이션": "School results or a foundation year",
 
+    /* --- 의대 계열 세부 전공 --- */
+    "치대 (Dentistry)": "Dentistry",
+    "수의대 (Veterinary Science)": "Veterinary Science",
+
+    "영어보다 시험이 먼저 갈립니다. UCAT ANZ를 봐야 하고 IELTS는 전 영역 7.0입니다. 5년 학비만 4억 원을 넘습니다.":
+        "The admissions test decides more than the English does. You sit UCAT ANZ, and IELTS must be 7.0 in every band. Five years of fees alone run past 400,000 dollars.",
+    "학사 소지자가 들어가는 치대(시드니 DMD·멜버른 DDS)가 있지만, 입학 가이드가 영어 기준을 대학 일반 페이지로 넘겨 원문 확인을 못 했습니다. 확인된 학부 과정만 아래에 둡니다.":
+        "Graduate-entry dentistry exists at Sydney and Melbourne, but their admission guides point the English requirement back to a general page, so it could not be confirmed. Only the verified undergraduate course is listed below.",
+    "학부는 Casper 상황판단검사로 40%가 갈립니다. 성적만으로 뽑지 않는다는 뜻이고, IELTS는 전 영역 7.0입니다.":
+        "Forty per cent of the undergraduate selection comes from the Casper situational judgement test, so grades alone do not decide it. IELTS must be 7.0 in every band.",
+    "학사 소지자는 시드니대 4년 과정으로 들어갑니다. 성적과 영어 외에 동물 실습 30일이 지원 자격에 들어 있어 미리 채워 둬야 합니다.":
+        "Graduates enter through Sydney's four-year course. Beyond grades and English, the entry requirement includes 30 days of animal handling experience, which has to be done in advance.",
+
+    /* --- 의대 계열 세부 전공 과정명 --- */
+    "Bachelor of Dental Science (Honours) (치의학 우수학사 5년)": "Bachelor of Dental Science (Honours) (5 years)",
+    "Bachelor of Veterinary Science (Honours) (수의학 우수학사 5년)": "Bachelor of Veterinary Science (Honours) (5 years)",
+    "Doctor of Veterinary Medicine (수의학 박사 4년)": "Doctor of Veterinary Medicine (4 years)",
+
+    /* --- 의대 계열 카드 문구 --- */
+    "UCAT ANZ 필수": "UCAT ANZ required",
+    "Casper 검사 40% 반영": "Casper test counts for 40 per cent",
+    "학사 후 진입 경로": "Graduate entry route",
+    "ATAR 99 수준 · UCAT ANZ · 화학 이수": "Around ATAR 99, UCAT ANZ, chemistry studied",
+    "ATAR 98 수준 · Casper 검사 · 화학·수학 이수": "Around ATAR 98, Casper test, chemistry and maths studied",
+    "학사 + 평점 65% · 동물 실습 30일": "Bachelor's at 65 per cent average, plus 30 days animal handling",
+
     /* --- 보건 세부 전공 카드 문구 --- */
     "학비 최저 수준": "Lowest fees in this list",
     "학·석사 통합 과정": "Combined bachelor's and master's",

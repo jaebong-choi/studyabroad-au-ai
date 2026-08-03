@@ -1145,6 +1145,27 @@
                     { name: "UNSW", state: "NSW", degree: "Bachelor of Aviation (Flying) (조종 학사 3년)", rank: "학비 외 비행훈련비 별도", req: "ATAR 80 · 적성검사 · CASA 1종 신체검사", ielts: "6.5 (전 영역 6.0)", tuition: "AUD $109,500", url: "https://www.unsw.edu.au/study/undergraduate/bachelor-of-aviation-flying" },
                     { name: "UNSW", state: "NSW", degree: "Bachelor of Aviation (Management) (항공경영 학사 3년)", rank: "비행훈련 없는 경로", req: "고교 성적 또는 파운데이션", ielts: "6.5 (전 영역 6.0)", tuition: "AUD $59,800", url: "https://www.unsw.edu.au/study/undergraduate/bachelor-of-aviation-management" }
                 ],
+            },
+
+            /* ─── 의대 계열 세부 전공 (2026-08 추가) ───────────────────────────
+               근거는 허브 저장소 data/au-medicine-verified.md.
+               ⚠ 학교 일반 영어 기준이 통하지 않는 계열이다. UQ 일반은 6.5인데 여기는 7.0 전 영역 7.0. */
+            "치대 (Dentistry)": {
+                desc: "영어보다 시험이 먼저 갈립니다. UCAT ANZ를 봐야 하고 IELTS는 전 영역 7.0입니다. 5년 학비만 4억 원을 넘습니다.",
+                masterDesc: "학사 소지자가 들어가는 치대(시드니 DMD·멜버른 DDS)가 있지만, 입학 가이드가 영어 기준을 대학 일반 페이지로 넘겨 원문 확인을 못 했습니다. 확인된 학부 과정만 아래에 둡니다.",
+                schools: [
+                    { name: "University of Queensland", state: "QLD", degree: "Bachelor of Dental Science (Honours) (치의학 우수학사 5년)", rank: "UCAT ANZ 필수", req: "ATAR 99 수준 · UCAT ANZ · 화학 이수", ielts: "7.0 (전 영역 7.0)", tuition: "AUD $85,200", url: "https://study.uq.edu.au/study-options/programs/bachelor-dental-science-honours-2367" }
+                ],
+            },
+            "수의대 (Veterinary Science)": {
+                desc: "학부는 Casper 상황판단검사로 40%가 갈립니다. 성적만으로 뽑지 않는다는 뜻이고, IELTS는 전 영역 7.0입니다.",
+                masterDesc: "학사 소지자는 시드니대 4년 과정으로 들어갑니다. 성적과 영어 외에 동물 실습 30일이 지원 자격에 들어 있어 미리 채워 둬야 합니다.",
+                schools: [
+                    { name: "University of Queensland", state: "QLD", degree: "Bachelor of Veterinary Science (Honours) (수의학 우수학사 5년)", rank: "Casper 검사 40% 반영", req: "ATAR 98 수준 · Casper 검사 · 화학·수학 이수", ielts: "7.0 (전 영역 7.0)", tuition: "AUD $76,700", url: "https://study.uq.edu.au/study-options/programs/bachelor-veterinary-science-honours-2378" }
+                ],
+                masterSchools: [
+                    { name: "University of Sydney", state: "NSW", degree: "Doctor of Veterinary Medicine (수의학 박사 4년)", rank: "학사 후 진입 경로", req: "학사 + 평점 65% · 동물 실습 30일", ielts: "7.0 (전 영역 7.0)", tuition: "AUD $84,200", url: "https://www.sydney.edu.au/courses/courses/pc/doctor-of-veterinary-medicine.html" }
+                ],
             }
         };
 
@@ -1170,7 +1191,9 @@
                 "공학/엔지니어링 (Engineering)", "토목·건설 (Civil & Construction)", "건축 (Architecture)",
                 "기계·전기 (Mechanical & Electrical)", "항공 (Aviation)"
             ],
-            "의대 계열 (Medicine & Dentistry)": ["의대/의전원 (Medicine)"],
+            "의대 계열 (Medicine & Dentistry)": [
+                "의대/의전원 (Medicine)", "치대 (Dentistry)", "수의대 (Veterinary Science)"
+            ],
             "경영 (Business)": ["호텔경영학 (Hospitality)"]
         };
 
@@ -1754,7 +1777,9 @@
             "토목·건설 (Civil & Construction)": "Cc",
             "건축 (Architecture)": "Ar",
             "기계·전기 (Mechanical & Electrical)": "Me",
-            "항공 (Aviation)": "Av"
+            "항공 (Aviation)": "Av",
+            "치대 (Dentistry)": "Dt",
+            "수의대 (Veterinary Science)": "Vt"
         };
         const REGION_CODES = { "NSW": "N", "VIC": "V", "QLD": "Q", "OTHER": "O", "ANY": "A" };
         const ENG_STEPS = { "I": "eng_score_ielts", "P": "eng_score_pte", "T": "eng_score_toefl" };
