@@ -263,8 +263,18 @@ const DATA_EN = {
     "임상병리학 (Laboratory Medicine)": "Laboratory Medicine",
     "족부의학 (Podiatry)": "Podiatry",
 
-    "환자를 직접 대하는 규제 직군이라 입학 영어부터 IELTS 7.0입니다. 학비는 학교에 따라 연 3만 7천~5만 5천 달러로 폭이 큽니다.":
-        "A regulated, patient-facing profession, so the entry English bar starts at IELTS 7.0. Fees range widely, from about 37,800 to 55,000 dollars a year.",
+    "학사는 연 3만 2천 5백~4만 5백 달러로 폭이 크지 않습니다. 벌어지는 건 석사 쪽이고, UTS 5만 7천 1백·UQ 6만 9백 달러로 학사보다 한 단계 위입니다.":
+        "Bachelor's fees stay in a narrow band, 32,500 to 40,500 dollars a year. The spread opens at master's level: UTS charges 57,100 and UQ 60,952, a clear step above the undergraduate degrees.",
+    "2년 석사는 전공을 봅니다. 두 학교 모두 사회·행동과학 1년치 이수를 요구합니다. 다만 인정 범위가 넓어 심리·사회·정치·범죄학 계열이면 대개 해당됩니다.":
+        "The two-year master's does check your field. Both universities want a year of study in the social and behavioural sciences. The list they accept is broad, though — psychology, sociology, political science and criminology usually qualify.",
+    "학사 학위가 있으면 2년에 유아교사 자격까지 갑니다. 학부 3년보다 총액이 3만 달러 낮습니다. 다만 이 석사는 Birth to 5라 초등 저학년은 범위 밖입니다.":
+        "With a bachelor's degree already in hand, two years takes you to early childhood registration — about 30,000 dollars less in total than the three-year bachelor's. Note the scope: this master's is Birth to 5, so the early primary years sit outside it.",
+    "관련 학사 + 사회·행동과학 1년 · GPA 4.0/7":
+        "A related bachelor's plus one year of social and behavioural science, GPA 4.0/7",
+    "3년 총액 $348,000 · 비행훈련비 $154,500 별도":
+        "$348,000 over three years, with $154,500 of flight training charged separately",
+    "환자를 직접 대하는 규제 직군이라 입학 영어부터 IELTS 7.0입니다. 학비는 학교에 따라 연 3만 7천 7백~7만 9천 4백 달러로 폭이 큽니다.":
+        "A regulated, patient-facing profession, so the entry English bar starts at IELTS 7.0. Fees range widely, from 37,758 to 79,370 dollars a year.",
     "관련 학사(생명과학·운동과학 등) 이수자가 2년 만에 물리치료사 자격 과정을 마치는 경로입니다. 간호 GE와 달리 전공 무관이 아니라 선수과목을 봅니다.":
         "With a related bachelor's such as biomedical or exercise science, you finish the qualifying course in two years. Unlike nursing's graduate entry, this one checks your prerequisite subjects rather than taking any degree.",
     "물리치료가 몸의 기능을 다룬다면 작업치료는 일상 활동으로 돌아가는 과정을 다룹니다. 규제 직군이라 영어 기준은 물리치료와 같습니다.":
@@ -300,6 +310,8 @@ const DATA_EN = {
     "Bachelor of Dental Hygiene (치위생학 학사 3년)": "Bachelor of Dental Hygiene (3 years)",
     "Bachelor of Oral Health Therapy (구강보건치료 학사 3년)": "Bachelor of Oral Health Therapy (3 years)",
     "Bachelor of Social Work (사회복지학 학사 4년)": "Bachelor of Social Work (4 years)",
+    "Master of Social Work (Graduate Entry) (사회복지 석사 2년)": "Master of Social Work, Graduate Entry (2 years)",
+    "Bachelor of Health Sciences (Therapy Studies) (보건과학 학사 3년 · 석사 연계)": "Bachelor of Health Sciences, Therapy Studies (3 years, feeds into the master's)",
     "Master of Social Work (Qualifying) (사회복지 석사 2년)": "Master of Social Work (Qualifying) (2 years)",
     "Master of Social Work (사회복지 석사 2년)": "Master of Social Work (2 years)",
     "Bachelor of Laboratory Medicine (임상병리학 학사 4년)": "Bachelor of Laboratory Medicine (4 years)",
@@ -425,8 +437,8 @@ const DATA_EN = {
         "Three years of undergraduate study is not the end of it. Registration as an architect takes a further two-year master's, so budget for five years.",
     "건축 학사가 있어야 지원할 수 있는 인증 과정입니다. UQ는 GPA 4.5, 또는 4.0에 실무 6개월을 요구합니다.":
         "An accredited course open only to architecture graduates. UQ asks for a GPA of 4.5, or 4.0 with six months of practice.",
-    "기술이민에서 수요가 꾸준한 전통 공학입니다. 학비는 학교에 따라 연 4만 1천에서 6만 2천 달러까지 벌어집니다.":
-        "The traditional engineering fields, with steady demand in skilled migration. Fees range from about 41,700 to 62,400 dollars a year depending on the university.",
+    "기술이민에서 수요가 꾸준한 전통 공학입니다. 학비는 학교에 따라 연 4만 7천에서 6만 2천 달러까지 벌어집니다.":
+        "The traditional engineering fields, with steady demand in skilled migration. Fees range from 47,300 to 61,500 dollars a year depending on the university.",
     "공학 계열 학사가 전제입니다. 비전공자를 받는 과정이 아니라, 이미 공학을 한 사람이 자격을 강화하는 자리입니다.":
         "An engineering bachelor's is assumed. This is not a course for changing fields; it is where engineers strengthen their standing.",
     "조종 과정은 학비와 비행훈련비가 따로 붙습니다. 학비 3년치 위에 상업용 조종사 면허까지 훈련비 약 15만 4천 달러가 추가되고, 입학에는 적성검사와 CASA 1종 신체검사가 필요합니다.":
@@ -525,12 +537,12 @@ const DATA_EN = {
     "5.5 (General, 전 영역 5.0)": "5.5 (General, no band below 5.0)",
     "고교 졸업": "Finished high school",
 
-    "가장 넓은 선택지를 주는 전공입니다. 마케팅·인사·국제경영까지 안에서 고를 수 있고, 학비는 학교에 따라 연 3만 5천에서 4만 9천 달러 사이입니다.":
-        "The broadest of the choices here. Marketing, human resources and international business all sit inside it, and fees run from about 35,200 to 48,800 dollars a year.",
+    "가장 넓은 선택지를 주는 전공입니다. 마케팅·인사·국제경영까지 안에서 고를 수 있고, 학비는 학교에 따라 연 3만 9천에서 5만 6천 8백 달러 사이입니다.":
+        "The broadest of the choices here. Marketing, human resources and international business all sit inside it, and fees run from 39,000 to 56,800 dollars a year.",
     "상경 석사와 MBA는 지원 자격이 다릅니다. UQ 상경은 전공을 보지 않고, UTS MBA는 성적이 낮으면 실무 4년이나 GMAT을 요구합니다.":
         "A commerce master's and an MBA ask for different things. UQ's commerce degree does not check your field; UTS's MBA wants four years of work or a GMAT score if your grades fall short.",
-    "경영 계열에서 학비가 가장 낮은 축입니다. 세 곳 모두 연 3만 5천~3만 7천 달러대로, 같은 계열 다른 전공보다 1만 달러 넘게 쌉니다.":
-        "The cheapest corner of business study. All three sit between 35,200 and 37,000 dollars a year, more than 10,000 below the other majors in this field.",
+    "경영 계열에서 학비가 가장 낮은 축입니다. 세 곳이 연 3만 5천 9백~3만 9천 달러로, 같은 계열의 일반 경영 학위(UTS 4만 8천 8백)보다 한참 아래입니다.":
+        "The cheapest corner of business study. The three sit between 35,868 and 39,000 dollars a year, well below the general business degrees in the same field (UTS charges 48,800).",
     "두 과정 모두 CPA Australia와 CA ANZ 인증이라 회계사 경로가 열립니다. 다만 지원 자격이 정반대이니 학사 전공을 먼저 확인해야 합니다.":
         "Both are accredited by CPA Australia and CA ANZ, which opens the path to qualifying as an accountant. Their entry rules are opposites, though, so check your own degree first.",
     "구단 운영과 시설·이벤트 관리로 이어지는 전공입니다. 운동생리학 쪽 학위와는 다르니 과정 이름에 Management가 들어가는지 확인해야 합니다.":
@@ -585,6 +597,8 @@ const DATA_EN = {
     /* --- 교육 세부 전공 과정명 --- */
     "Bachelor of Early Childhood Education - Birth to 5 (유아교육 학사 3년)": "Bachelor of Early Childhood Education, Birth to 5 (3 years)",
     "Bachelor of Early Childhood Education - Birth to 8 (유아·초등 연계 학사 4년)": "Bachelor of Early Childhood Education, Birth to 8 (4 years)",
+    "Bachelor of Early Childhood Education - Birth to 8 (유아·초등 저학년 학사 4년)": "Bachelor of Early Childhood Education, Birth to 8 (4 years)",
+    "Master of Teaching (Birth to 5) (유아교육 석사 2년)": "Master of Teaching, Birth to 5 (2 years)",
     "Master of Teaching (Early Childhood) (유아교육 석사 2년)": "Master of Teaching (Early Childhood) (2 years)",
     "Bachelor of Education Futures / Master of Teaching in Primary Education (학·석사 통합 4년)":
         "Bachelor of Education Futures / Master of Teaching in Primary Education (4 years)",
@@ -635,6 +649,17 @@ const DATA_EN = {
     "보건 계열 강세": "Strong in health",
     "석사 중 학비 최저": "Lowest master's fee here",
     "지방지역 가산점 대상": "Regional area, PR points",
+    "석사 선수과목을 채우는 경로": "Fills the master's prerequisites",
+    "치위생·치과치료 이중 자격": "Dual registration, hygiene and therapy",
+    "전공 배경 없이 갈 수 있는 경로": "Open without a related background",
+    "총액 최저 · 지방지역 가산점": "Lowest total cost, regional PR points",
+    "학사 + 사회·행동과학 1년 이수": "A bachelor's plus a year of social and behavioural science",
+    "Go8 · 인정 전공 목록 공개": "Go8, and it publishes the list of fields it accepts",
+    "IT 계열 영어 요건 최저": "Lowest English bar in IT",
+    "영어 요건 최저": "Lowest English bar here",
+    "EA 인증 · 멜버른 도심 캠퍼스": "EA accredited, Melbourne city campus",
+    "초등 저학년까지 자격 확장": "Extends registration into the early primary years",
+    "학사 학위 또는 관련 대학원 수료증": "A bachelor's degree, or a related graduate certificate",
     "3년 만에 자격 취득": "Qualified in three years",
     "학비 3만 2천 달러대": "Around 32,000 dollars a year",
     "Go8 · 보건 석사 중 최저 학비": "Go8, and the cheapest health master's here",
