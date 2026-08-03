@@ -978,6 +978,25 @@
         ].forEach(([article, majors]) => {
             majors.forEach(m => { (INFO_ARTICLES[m] = INFO_ARTICLES[m] || []).push(article); });
         });
+        // 보건 세부 전공 글 — 게시판에서 편수가 가장 많던 주제를 계열당 한 편으로 묶었다
+        [
+            [{ ko: "물리치료와 작업치료, 학비가 두 배 가까이 벌어집니다",
+               en: "Physiotherapy and occupational therapy, with fees that nearly double",
+               dko: "같은 물리치료 석사가 어디는 4만 6천 5백, 어디는 6만 2천 달러입니다. 학사 4년 말고 5년 통합 과정이라는 제3의 경로도 있습니다.",
+               den: "The same physiotherapy master's costs 46,500 dollars at one university and 62,000 at another — and there is a third route, a five-year combined degree.",
+               cat: "major", url: HUB_ARTICLE + "physio-ot.html", min: 5, ver: "2026-08", tracks: null },
+             ["물리치료학 (Physiotherapy)", "작업치료학 (Occupational Therapy)"]],
+
+            [{ ko: "사회복지 석사는 학사 전공을 묻지 않습니다",
+               en: "A social work master's does not ask what your degree was in",
+               dko: "Qualifying이 붙은 2년 과정은 전공을 보지 않습니다. UQ는 학부보다 싸고, 대신 영어는 네 영역 모두 7.0입니다.",
+               den: "The two-year course marked Qualifying takes any bachelor's. UQ's costs less than the undergraduate route, and asks 7.0 in every band.",
+               cat: "pathway", url: HUB_ARTICLE + "social-work.html", min: 4, ver: "2026-08", tracks: null },
+             ["사회복지학 (Social Work)"]]
+        ].forEach(([article, majors]) => {
+            majors.forEach(m => { (INFO_ARTICLES[m] = INFO_ARTICLES[m] || []).push(article); });
+        });
+
         // EA 인증 글은 토목·기계·전기에도 그대로 맞는다(같은 인증 체계). 건축은 AACA라 붙이지 않는다.
         ["토목·건설 (Civil & Construction)", "기계·전기 (Mechanical & Electrical)"]
             .forEach(m => { (INFO_ARTICLES[m] = INFO_ARTICLES[m] || []).push(INFO_ARTICLES["공학/엔지니어링 (Engineering)"][0]); });
