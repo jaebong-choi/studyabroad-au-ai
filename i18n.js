@@ -291,6 +291,50 @@ const DATA_EN = {
     "Master of Laboratory Medicine (임상병리 석사 2년)": "Master of Laboratory Medicine (2 years)",
     "Bachelor of Podiatric Medicine (족부의학 학사 4년)": "Bachelor of Podiatric Medicine (4 years)",
 
+    /* --- 약학·생명 계열 세부 전공 --- */
+    "생명공학 (Biotechnology)": "Biotechnology",
+    "의료공학 (Biomedical Engineering)": "Biomedical Engineering",
+
+    "규제 직군이 아니라 영어 문턱이 보건 계열보다 낮습니다. 다만 학교마다 영역별 기준이 달라서, 총점이 같아도 한 영역이 낮으면 여기서 갈립니다.":
+        "It is not a regulated profession, so the English bar sits below the health degrees. Universities differ in how they treat individual bands, though, so the same overall score can pass at one school and fail at another.",
+    "과학 계열 학사가 기본입니다. UQ는 경영·금융·법 전공자도 과학 배경이 있으면 받고, UTS에는 1.5년짜리 단축 과정이 있습니다.":
+        "A science bachelor's is the usual starting point. UQ also takes business, finance and law graduates who have a science background, and UTS runs a shorter 1.5-year version.",
+    "의료기기를 다루는 공학 학위입니다. 개설 대학이 적고, UNSW는 학사만 따로 뽑지 않고 석사까지 묶인 5년 과정입니다.":
+        "An engineering degree built around medical devices. Few universities run it, and UNSW does not admit to the bachelor's alone — its course runs five years with the master's attached.",
+    "석사는 커리어 전환용이 아닙니다. 두 학교 모두 공학 계열 학사를 요구합니다. 비전공자라면 학부 4년이나 통합 과정을 봐야 합니다.":
+        "The master's is not a career-change route. Both universities require an engineering bachelor's. Without one, the four-year undergraduate degree or the combined course is the way in.",
+
+    /* --- 약학·생명 세부 전공 과정명 --- */
+    "Bachelor of Biotechnology (생명공학 학사 3년)": "Bachelor of Biotechnology (3 years)",
+    "Bachelor of Molecular Biotechnology (분자생명공학 학사 3년)": "Bachelor of Molecular Biotechnology (3 years)",
+    "Bachelor of Science (Biotechnology) (생명공학 이학사 3년)": "Bachelor of Science (Biotechnology) (3 years)",
+    "Master of Biotechnology (생명공학 석사 2년)": "Master of Biotechnology (2 years)",
+    "Master of Medical Biotechnology (의생명공학 석사 1.5년)": "Master of Medical Biotechnology (1.5 years)",
+    "Bachelor of Engineering (Honours) / Master of Biomedical Engineering (학·석사 통합 5년)":
+        "Bachelor of Engineering (Honours) / Master of Biomedical Engineering (5 years)",
+    "Bachelor of Engineering (Biomedical) (Honours) (의료공학 우수학사 4년)": "Bachelor of Engineering (Biomedical) (Honours) (4 years)",
+    "Master of Bioengineering (Professional) (생체공학 석사 2년)": "Master of Bioengineering (Professional) (2 years)",
+    "Master of Engineering (Biomedical) (의료공학 석사 2년)": "Master of Engineering (Biomedical) (2 years)",
+
+    /* --- 약학·생명 세부 전공 카드 문구 --- */
+    "Go8 · 상용화 과목 포함": "Go8, with commercialisation subjects",
+    "Go8 · 상용화 중심": "Go8, commercialisation focused",
+    "영역 기준은 쓰기 하나": "Only writing has a band minimum",
+    "학비·영어 모두 최저": "Lowest fees and lowest English bar",
+    "1.5년 단축 과정": "Shorter, 1.5-year course",
+    "학·석사 통합 5년": "Combined five-year degree",
+    "Engineers Australia 잠정 인증": "Provisionally accredited by Engineers Australia",
+    "고교 졸업 또는 디플로마": "High school completion or a diploma",
+    "과학 배경 학사 (경영·법 전공도 가능)": "Any bachelor's with a science background, including business and law",
+    "생화학·미생물·유전학 등 관련 학사": "Bachelor's in biochemistry, microbiology, genetics or similar",
+    "생물·농학·의과학 학사": "Bachelor's in biological, agricultural or medical science",
+    "고교 성적 상위권 (ATAR 95 수준)": "Strong school results, around ATAR 95",
+    "공학 4년제 학사 必": "Four-year engineering bachelor's required",
+    "전기·전자·의료공학 학사": "Bachelor's in electrical, electronic or biomedical engineering",
+    "6.5 (쓰기 6.0)": "6.5 (6.0 writing)",
+    "6.5 (전 영역 6.0)": "6.5 (6.0 in every band)",
+    "6.0 (쓰기·말하기 6.0)": "6.0 (6.0 writing and speaking)",
+
     /* --- 보건 세부 전공 카드 문구 --- */
     "학비 최저 수준": "Lowest fees in this list",
     "학·석사 통합 과정": "Combined bachelor's and master's",
