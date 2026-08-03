@@ -656,6 +656,15 @@
                 </p>
             </div>
 
+            <!-- 유학 정보 글 — 전공·트랙에 맞는 허브 아티클 (허브 guide/au-info-*.html) -->
+            <div class="mb-24 hidden" id="info-articles-section">
+                <h3 class="sf-display-section text-center mb-3" data-i18n="infoArticlesTitle">유학 정보</h3>
+                <p class="sf-text-body text-gray-500 text-center mb-12 max-w-2xl mx-auto" data-i18n="infoArticlesSub">
+                    진단 결과와 관련된 주제를 공식 자료 기준으로 정리한 글입니다.
+                </p>
+                <div id="info-articles" class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto"></div>
+            </div>
+
             <!-- Official Course Links -->
             <div class="info-banner p-10 mb-24">
                 <div class="text-center md:text-left mb-8">
@@ -764,6 +773,22 @@
             const id = HUB_UNI[name];
             return id ? `https://jaebong-choi.github.io/study-guide-hub/uni/${id}.html` : null;
         }
+
+        // ── 유학 정보 글 ────────────────────────────────────
+        // 전공별 허브 아티클(guide/au-info-*.html). tracks가 null이면 학부·석사 공통.
+        // 글은 허브 저장소 data/articles-au.json에서 관리하고 여기는 링크만 둔다.
+        const INFO_ARTICLES = {
+            "간호학과 (Nursing)": [
+                {
+                    ko: "호주 간호유학 — 3년 학사와 2년 GE 석사, 내 경로는 어느 쪽일까",
+                    en: "Nursing in Australia — the 3-year bachelor or the 2-year graduate entry master's?",
+                    dko: "갈림길은 성적이 아니라 학위가 있느냐입니다. 두 경로의 실제 학비와, 입학 영어와 등록 영어가 다르다는 함정까지.",
+                    den: "The fork is not your grades but whether you already hold a degree — both routes with real fees, and the admission-vs-registration English trap.",
+                    url: "https://jaebong-choi.github.io/study-guide-hub/guide/au-info-nursing.html",
+                    min: 4, ver: "2026-08", tracks: null
+                }
+            ]
+        };
 
         const majorData = {
             "간호학과 (Nursing)": {
@@ -1315,6 +1340,22 @@
                         <i class="fa-solid fa-building-columns text-[#2997ff] mr-3"></i>${s.name} — ${tr(s.degree)}
                     </span>
                     <i class="fa-solid fa-arrow-up-right-from-square text-[#2997ff] text-sm shrink-0 group-hover:translate-x-1 transition-transform"></i>
+                </a>
+            `).join('');
+
+            // 유학 정보 글 — 전공·트랙에 맞는 글이 있을 때만 섹션을 보인다
+            const infoSec = document.getElementById('info-articles-section');
+            const infoWrap = document.getElementById('info-articles');
+            const infoArts = (INFO_ARTICLES[userProfile.major] || []).filter(a =>
+                !a.tracks || a.tracks.indexOf(isMaster ? 'master' : 'bachelor') > -1);
+            infoSec.classList.toggle('hidden', infoArts.length === 0);
+            infoWrap.innerHTML = infoArts.map(a => `
+                <a href="${a.url}" target="_blank" rel="noopener" class="apple-card block h-full group">
+                    <p class="sf-text-caption text-apple-blue font-semibold uppercase tracking-wider mb-3">Article</p>
+                    <h4 class="sf-display-card-bold text-[#1d1d1f] mb-3 group-hover:text-apple-blue transition">${LANG === 'en' ? a.en : a.ko}</h4>
+                    <p class="sf-text-body text-gray-600 leading-relaxed mb-4">${LANG === 'en' ? a.den : a.dko}</p>
+                    <p class="sf-text-caption text-gray-400">${t('infoArticleRead').replace('{0}', a.min).replace('{1}', a.ver)}
+                        <i class="fa-solid fa-arrow-up-right-from-square text-apple-blue ml-2"></i></p>
                 </a>
             `).join('');
 
