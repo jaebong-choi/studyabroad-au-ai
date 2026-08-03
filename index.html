@@ -728,7 +728,9 @@
             <!-- Question Area -->
             <div id="question-area" class="min-h-[400px] flex flex-col justify-center">
                 <p class="text-center sf-text-caption text-apple-blue font-semibold mb-2" id="step-indicator">Step 1</p>
-                <h2 id="question-text" class="sf-display-section text-center mb-12 text-[#1d1d1f]">질문을 불러오는 중...</h2>
+                <h2 id="question-text" class="sf-display-section text-center mb-4 text-[#1d1d1f]">질문을 불러오는 중...</h2>
+                <!-- 질문별 보조 설명. 없는 질문에서는 hidden 처리해 간격이 벌어지지 않게 한다. -->
+                <p id="question-note" class="sf-text-caption text-gray-500 text-center max-w-xl mx-auto mb-8 hidden"></p>
                 <div id="options-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-3xl mx-auto w-full">
                     <!-- Options injected via JS -->
                 </div>
@@ -1607,11 +1609,11 @@
 
         const regionLabels = { "NSW": "뉴사우스웨일즈 (시드니)", "VIC": "빅토리아 (멜버른)", "QLD": "퀸즐랜드 (브리즈번·골드코스트)", "OTHER": "기타 지역 (퍼스·애들레이드·캔버라)", "ANY": "상관없음" };
 
-        let userProfile = { degree: "", region: "", regionCode: "ANY", english: "", eduStatus: "", grades: "", major: "", target: "" };
+        let userProfile = { degree: "", region: "", regionCode: "ANY", english: "", eduStatus: "", grades: "", csat: "", major: "", target: "" };
         let currentStepId = "region";
         let stepCount = 1;
         let stepHistory = []; // 뒤로가기용 스냅샷 스택 {stepId, stepCount, profile}
-        const totalEstimatedSteps = 6; // 지역 → 영어 → 학력 상태 → 성적 → 전공 → 목표
+        const totalEstimatedSteps = 7; // 지역 → 영어 → 학력 상태 → 내신 → 수능 → 전공 → 목표
 
         const questionFlow = {
             "region": {
@@ -1679,18 +1681,33 @@
                 ],
                 key: "eduStatus"
             },
+            // 내신 질문. ⚠ 결과 로직이 "1~3등급"·"4~5등급"·"6등급"·"대학교 재학" 부분 문자열로
+            //    분기하므로 라벨을 바꿔도 이 토큰은 반드시 남긴다.
             "grades": {
-                question: "고교 내신 또는 수능 성적은 어느 정도이신가요?",
+                question: "고교 내신 성적은 어느 정도이신가요?",
                 // ⚠ options 배열은 공유 링크(#r=) 인코딩의 인덱스 기준이라 4개를 유지한다.
                 //    화면에는 optionsFn으로 앞의 3개만 보여준다(4번째는 edu_status가 대신 정한다).
                 optionsFn: () => questionFlow.grades.options.slice(0, 3),
                 options: [
-                    { label: "고교 1~3등급 / 수능 330점 이상", next: "major" },
-                    { label: "고교 4~5등급 / 수능 보통 수준", next: "major" },
-                    { label: "고교 6등급 이하 / 검정고시 졸업", next: "major" },
+                    { label: "고교 1~3등급 (상위권)", next: "csat" },
+                    { label: "고교 4~5등급 (중위권)", next: "csat" },
+                    { label: "고교 6등급 이하 / 검정고시", next: "csat" },
                     { label: "대학교 재학/휴학/졸업자", next: "major" }
                 ],
                 key: "grades"
+            },
+            // 수능은 내신과 별개로 묻는다 — 호주는 수능을 정식 입학 자격으로 인정하는 학교가 많아
+            // 내신이 아쉬워도 수능으로 뒤집히는 경우가 있다. 공유 코드에는 7번째 칸으로 덧붙인다.
+            "csat": {
+                question: "수능 성적은 어느 정도이신가요?",
+                note: "호주 대학 상당수가 수능 성적을 정식 입학 자격으로 인정하고, 전공별 요구 점수를 공개하는 학교도 많습니다. 내신이 아쉬워도 수능으로 지원 가능한 경우가 있습니다.",
+                options: [
+                    { label: "수능 330점 이상 (상위권)", next: "major" },
+                    { label: "수능 300~330점", next: "major" },
+                    { label: "수능 300점 미만", next: "major" },
+                    { label: "수능 미응시 / 성적 미반영", next: "major", wide: true }
+                ],
+                key: "csat"
             },
             "grades_master": {
                 question: "학부(학사) 성적은 어느 정도이신가요?",
@@ -1731,7 +1748,7 @@
         // ============================================================
         function startConsulting(degreeLabel) {
             // 새 진단 시작: 프로필과 히스토리 초기화
-            userProfile = { degree: degreeLabel, region: "", regionCode: "ANY", english: "", eduStatus: "", grades: "", major: "", target: "" };
+            userProfile = { degree: degreeLabel, region: "", regionCode: "ANY", english: "", eduStatus: "", grades: "", csat: "", major: "", target: "" };
             currentStepId = "region";
             stepCount = 1;
             stepHistory = [];
@@ -1773,6 +1790,15 @@
             const q = questionFlow[currentStepId];
             document.getElementById('step-indicator').innerText = `${t('qStep')} ${stepCount}`;
             document.getElementById('question-text').innerText = tr(q.question);
+
+            const noteEl = document.getElementById('question-note');
+            if (q.note) {
+                noteEl.innerText = tr(q.note);
+                noteEl.classList.remove('hidden');
+            } else {
+                noteEl.innerText = '';
+                noteEl.classList.add('hidden');
+            }
 
             const progress = (stepCount / totalEstimatedSteps) * 100;
             document.getElementById('progress-bar').style.width = `${progress > 100 ? 100 : progress}%`;
@@ -1822,6 +1848,10 @@
                     } else if (currentStepId !== "edu_status") {
                         next = "edu_status";
                     }
+                }
+                // 수능은 학부 트랙 전용 — 석사에서는 물을 일이 없다
+                if (next === "csat" && userProfile.degree.includes("석사")) {
+                    next = "major";
                 }
                 // 세부 전공이 하나뿐인 계열은 묻지 않고 바로 정한다 (보기가 하나인 질문을 없앤다)
                 if (next === "submajor") {
@@ -2016,7 +2046,10 @@
             document.getElementById('sum-degree').innerText = isMaster ? t('degreeMaster') : t('degreeBachelor');
             document.getElementById('sum-region').innerText = shortEn(tr(userProfile.region || "상관없음"), '(');
             document.getElementById('sum-eng').innerText = (userProfile.english ? tr(userProfile.english) : t('engNotYet'));
-            document.getElementById('sum-gpa').innerText = shortEn(tr(userProfile.grades), '/') || "-";
+            // 내신 + 수능을 함께 보여준다. 수능을 안 골랐거나 석사면 내신만 나온다.
+            const gpaTxt = shortEn(tr(userProfile.grades), '/') || "-";
+            const csatTxt = userProfile.csat ? shortEn(tr(userProfile.csat), '(') : "";
+            document.getElementById('sum-gpa').innerText = csatTxt ? `${gpaTxt} · ${csatTxt}` : gpaTxt;
             document.getElementById('sum-major').innerText = shortEn(tr(userProfile.major), '(') || "-";
 
             // Populate Recommended Major
@@ -2244,13 +2277,17 @@
             const maj = MAJOR_CODES[p.major] || "";
             const tg = questionFlow.target.options.findIndex(o => o.label === p.target);
 
-            return [deg, reg, eng, gr < 0 ? 0 : gr, maj, tg < 0 ? 0 : tg].join("-");
+            // 수능은 7번째 칸으로 덧붙인다. 없으면 아예 붙이지 않아 기존 6칸 링크와 형태가 같다.
+            const cs = questionFlow.csat.options.findIndex(o => o.label === p.csat);
+            const base = [deg, reg, eng, gr < 0 ? 0 : gr, maj, tg < 0 ? 0 : tg];
+            if (cs >= 0) base.push(cs);
+            return base.join("-");
         }
 
         function decodeProfile(code) {
             const parts = code.split("-");
             const isMaster = parts[0] === "M";
-            const p = { degree: isMaster ? "석사 (Master)" : "학부 (Bachelor)", region: "", regionCode: "ANY", english: "", grades: "", major: "", target: "" };
+            const p = { degree: isMaster ? "석사 (Master)" : "학부 (Bachelor)", region: "", regionCode: "ANY", english: "", grades: "", csat: "", major: "", target: "" };
 
             p.regionCode = Object.keys(REGION_CODES).find(k => REGION_CODES[k] === parts[1]) || "ANY";
             const regOpt = questionFlow.region.options.find(o => o.val === p.regionCode);
@@ -2273,6 +2310,12 @@
 
             const tOpt = questionFlow.target.options[parseInt(parts[5], 10)];
             if (tOpt) p.target = tOpt.label;
+
+            // 7번째 칸(수능)은 나중에 생겼다 — 없는 옛 링크는 그냥 빈 값으로 둔다
+            if (parts[6] !== undefined) {
+                const cOpt = questionFlow.csat.options[parseInt(parts[6], 10)];
+                if (cOpt) p.csat = cOpt.label;
+            }
 
             return p;
         }
