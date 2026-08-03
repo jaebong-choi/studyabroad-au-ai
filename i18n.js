@@ -631,6 +631,8 @@ const DATA_EN = {
     "Bachelor of Engineering (Honours) - Software (소프트웨어공학 우수학사 4년)": "Bachelor of Engineering (Honours), Software major (4 years)",
     "멜버른권 · 실무 경력 인정": "Melbourne area, work experience counted",
     "멜버른권 · 공학 호주 상위권": "Melbourne area, top-tier for engineering",
+    "멜버른권 · 학비는 2027년 기준": "Melbourne area — the fee shown is RMIT's 2027 rate",
+    "Go8 명문대 · 학비는 CRICOS 등록부 기준": "Group of Eight — the fee shown comes from the CRICOS register, not the university's own schedule",
     "EA 인증 · 계열 학비 최저": "EA accredited, cheapest in this field",
     "지방 캠퍼스 · IELTS만 인정": "Regional campus, IELTS only",
     "관련 학사 또는 전공 무관 학사 + 실무 2년": "Related bachelor's, or any bachelor's plus two years' relevant work",
