@@ -777,6 +777,7 @@
         // ── 유학 정보 글 ────────────────────────────────────
         // 전공별 허브 아티클(guide/au-info-*.html). tracks가 null이면 학부·석사 공통.
         // 글은 허브 저장소 data/articles-au.json에서 관리하고 여기는 링크만 둔다.
+        const HUB_ARTICLE = 'https://jaebong-choi.github.io/study-guide-hub/guide/au-info-';
         const INFO_ARTICLES = {
             "간호학과 (Nursing)": [
                 {
@@ -784,11 +785,56 @@
                     en: "Nursing in Australia — the 3-year bachelor or the 2-year graduate entry master's?",
                     dko: "갈림길은 성적이 아니라 학위가 있느냐입니다. 두 경로의 실제 학비와, 입학 영어와 등록 영어가 다르다는 함정까지.",
                     den: "The fork is not your grades but whether you already hold a degree — both routes with real fees, and the admission-vs-registration English trap.",
-                    url: "https://jaebong-choi.github.io/study-guide-hub/guide/au-info-nursing.html",
-                    min: 4, ver: "2026-08", tracks: null
+                    url: HUB_ARTICLE + "nursing.html", min: 4, ver: "2026-08", tracks: null
+                }
+            ],
+            "약학/약대 (Pharmacy)": [
+                {
+                    ko: "호주 약대 — 세 학교가 세운 벽이 서로 다릅니다",
+                    en: "Pharmacy in Australia — three schools, three different walls",
+                    dko: "시드니는 수능 점수, 모나쉬는 선수과목, 그리피스는 영어에서 갈립니다. 그리고 학위는 시작일 뿐입니다.",
+                    den: "Sydney gates on test scores, Monash on prerequisite subjects, Griffith on English. And the degree is only the start.",
+                    url: HUB_ARTICLE + "pharmacy.html", min: 4, ver: "2026-08", tracks: null
+                }
+            ],
+            "의대/의전원 (Medicine)": [
+                {
+                    ko: "호주 의대 — 준비할 시험이 갈립니다: 학부 통합과 대학원 MD",
+                    en: "Medicine in Australia — the entrance exam depends on which route you take",
+                    dko: "통합 과정이냐 대학원 MD냐가 정해져야 볼 시험이 정해집니다. 그리고 진짜 문턱은 총비용입니다.",
+                    den: "The integrated route or the graduate MD decides which admissions test you sit. The real barrier is the total cost.",
+                    url: HUB_ARTICLE + "medicine.html", min: 5, ver: "2026-08", tracks: null
+                }
+            ],
+            "호텔경영학 (Hospitality)": [
+                {
+                    ko: "호주 호텔경영 — 대학이냐 호텔스쿨이냐",
+                    en: "Hospitality in Australia — university degree or hotel school?",
+                    dko: "둘 다 학사를 줍니다. 실질적인 차이는 유급 인턴십이 학위 안에 들어 있느냐입니다.",
+                    den: "Both hand you a bachelor's degree. The real difference is whether a paid internship sits inside it.",
+                    url: HUB_ARTICLE + "hospitality.html", min: 4, ver: "2026-08", tracks: null
+                }
+            ],
+            "공학/엔지니어링 (Engineering)": [
+                {
+                    ko: "호주 공대 — 순위보다 Engineers Australia 인증을 먼저 보세요",
+                    en: "Engineering in Australia — check the Engineers Australia accreditation first",
+                    dko: "학위가 곧 자격으로 이어지는 전공입니다. 학교 선택에서 통제할 수 있는 변수는 사실상 인증 하나입니다.",
+                    den: "The degree itself carries professional recognition, which makes accreditation the one variable worth controlling.",
+                    url: HUB_ARTICLE + "engineering.html", min: 4, ver: "2026-08", tracks: null
                 }
             ]
         };
+        // 전공과 무관하게 학부 결과에 항상 붙는 글
+        const INFO_COMMON = [
+            {
+                ko: "파운데이션과 디플로마, 같은 1년이 아닙니다",
+                en: "A foundation year and a diploma are not the same year",
+                dko: "이름만 들으면 둘 다 1년을 더 쓰는 것 같은데, 끝나는 지점이 다릅니다. 디플로마는 2학년으로 들어갑니다.",
+                den: "They sound like the same extra year, but they finish in different places. A diploma puts you into second year.",
+                url: HUB_ARTICLE + "pathway.html", min: 4, ver: "2026-08", tracks: ["bachelor"]
+            }
+        ];
 
         const majorData = {
             "간호학과 (Nursing)": {
@@ -1346,7 +1392,7 @@
             // 유학 정보 글 — 전공·트랙에 맞는 글이 있을 때만 섹션을 보인다
             const infoSec = document.getElementById('info-articles-section');
             const infoWrap = document.getElementById('info-articles');
-            const infoArts = (INFO_ARTICLES[userProfile.major] || []).filter(a =>
+            const infoArts = (INFO_ARTICLES[userProfile.major] || []).concat(INFO_COMMON).filter(a =>
                 !a.tracks || a.tracks.indexOf(isMaster ? 'master' : 'bachelor') > -1);
             infoSec.classList.toggle('hidden', infoArts.length === 0);
             infoWrap.innerHTML = infoArts.map(a => `
