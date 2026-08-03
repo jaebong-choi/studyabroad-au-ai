@@ -1027,6 +1027,41 @@
                cat: "pathway", url: HUB_ARTICLE + "early-childhood.html", min: 4, ver: "2026-08", tracks: null },
              ["유아교육 (Early Childhood Education)"]],
 
+            [{ ko: "족부의학, 선택지는 두 곳이고 영어 규정이 다릅니다",
+               en: "Podiatry: two verified schools, two different English rules",
+               dko: "개설 대학이 손에 꼽는 전공입니다. 두 곳의 학비가 9천 달러 차이 나고, 같은 7.0인데 영역 규정이 다릅니다.",
+               den: "Few universities teach it. The two we verified sit 9,000 dollars apart, with different band rules under the same 7.0.",
+               cat: "major", url: HUB_ARTICLE + "podiatry.html", min: 3, ver: "2026-08", tracks: null },
+             ["족부의학 (Podiatry)"]],
+
+            [{ ko: "임상병리, 단독 학사가 사라지고 경로가 바뀌었습니다",
+               en: "Laboratory medicine: the standalone bachelor is gone",
+               dko: "UTas 4년 학사가 폐지됐습니다. 고교 졸업자는 통합 4년, 이공계 학사는 2년 석사이고, 영어는 보건 최저인 6.5입니다.",
+               den: "UTas retired the four-year bachelor. School leavers take the combined route; science graduates take the master's, at health's lowest English bar.",
+               cat: "pathway", url: HUB_ARTICLE + "lab-medicine.html", min: 4, ver: "2026-08", tracks: null },
+             ["임상병리학 (Laboratory Medicine)"]],
+
+            [{ ko: "수의사 되는 두 길, 5년과 3+4년입니다",
+               en: "Two roads to veterinary practice: five years, or three plus four",
+               dko: "고교 졸업자는 UQ 5년, 학사 소지자는 시드니 DVM 4년입니다. 총액 비교의 함정과 동물 실습 30일 조건까지.",
+               den: "From school it is five years at UQ; with a degree, Sydney's four-year DVM — plus the 30-day animal experience rule.",
+               cat: "pathway", url: HUB_ARTICLE + "vet-routes.html", min: 4, ver: "2026-08", tracks: null },
+             ["수의대 (Veterinary Science)"]],
+
+            [{ ko: "스포츠경영 석사는 전공을 안 봅니다, 1.5년이면 됩니다",
+               en: "The sport management master's takes any degree, in eighteen months",
+               dko: "UTS 석사는 전공 무관 학사(75% 이상)로 지원합니다. 2032 브리즈번 올림픽까지 산업이 커지는 구간입니다.",
+               den: "UTS admits any bachelor's at 75 per cent or above, over eighteen months — with Brisbane 2032 ahead of the industry.",
+               cat: "pathway", url: HUB_ARTICLE + "sport-management.html", min: 3, ver: "2026-08", tracks: null },
+             ["스포츠경영 (Sport Management)"]],
+
+            [{ ko: "건축은 학사로 끝나지 않습니다, 3+2가 기본 설계입니다",
+               en: "Architecture does not end at the bachelor: three plus two is the design",
+               dko: "건축사 등록은 석사(M.Arch)까지가 한 세트입니다. 학교는 5년 총액으로 비교해야 하고, 인증은 EA가 아니라 AACA 체계입니다.",
+               den: "Registration runs through the M.Arch. Compare schools on the five-year total — and the accreditation is AACA, not EA.",
+               cat: "pathway", url: HUB_ARTICLE + "architecture.html", min: 4, ver: "2026-08", tracks: null },
+             ["건축 (Architecture)"]],
+
             // 치위생(보건)과 치대(의대 계열)를 가로지르는 글 — 두 계열 모두에 붙인다
             [{ ko: "치위생은 치대로 가는 길이 아닙니다",
                en: "Dental hygiene is not a stepping stone to dentistry",
@@ -1044,6 +1079,13 @@
 
         // 전공과 무관하게 학부 결과에 항상 붙는 글
         const INFO_COMMON = [
+            {
+                ko: "수능·내신으로 바로 1학년, 다이렉트 입학이 되는 경우",
+                en: "Straight into first year on your Korean grades: when direct entry works",
+                dko: "파운데이션 없이 수능이나 내신으로 바로 지원하는 경로입니다. 조건부 오퍼의 뜻과 검정고시의 자리까지.",
+                den: "Applying on CSAT or school grades with no foundation year — what a conditional offer means, and where a GED fits.",
+                cat: "pathway", url: HUB_ARTICLE + "direct-entry.html", min: 4, ver: "2026-08", tracks: ["bachelor"]
+            },
             {
                 ko: "파운데이션과 디플로마, 같은 1년이 아닙니다",
                 en: "A foundation year and a diploma are not the same year",
@@ -1197,13 +1239,12 @@
                 ],
             },
             "임상병리학 (Laboratory Medicine)": {
-                desc: "환자를 직접 대하지 않는 실험실 기반 전공이라 영어 기준이 보건 계열 중 가장 낮습니다. 같은 대학에서도 물리치료 7.0, 임상병리 6.5로 갈립니다.",
-                masterDesc: "이공계 학사 이수자가 2년에 임상병리 자격 과정을 마칩니다. 보건 계열 석사 중 영어 문턱이 가장 낮은 축입니다.",
-                schools: [
-                    { name: "University of Tasmania", state: "TAS", degree: "Bachelor of Laboratory Medicine (임상병리학 학사 4년)", rank: "지방지역 가산점 대상", req: "수능 또는 고교 성적", ielts: "6.5 (전 영역 6.5)", tuition: "AUD $34,700", url: "https://www.utas.edu.au/courses/chm/courses/53g-bachelor-of-laboratory-medicine" }
-                ],
+                // UTas 단독 학사(Bachelor of Laboratory Medicine)는 2026-08 확인 시 폐지됨(404).
+                // 고졸 지원자는 Bachelor of Biomedicine → 석사 연계(통합 4년)로 안내하고, 카드는 검증된 석사만 둔다.
+                desc: "환자를 직접 대하지 않는 실험실 기반 전공이라 영어 기준이 보건 계열 중 가장 낮습니다(6.5). 단독 학사는 폐지되어, 고교 졸업자는 생의학 학사를 거쳐 석사로 이어지는 4년 통합 경로로 갑니다.",
+                masterDesc: "이공계 학사 이수자가 2년에 임상병리 자격 과정을 마칩니다. AIMS 인증 과정이고, 보건 계열 석사 중 영어 문턱이 가장 낮은 축입니다.",
                 masterSchools: [
-                    { name: "University of Tasmania", state: "TAS", degree: "Master of Laboratory Medicine (임상병리 석사 2년)", rank: "지방지역 가산점 대상", req: "이공계 학사", ielts: "6.5 (전 영역 6.5)", tuition: "AUD $44,000", url: "https://www.utas.edu.au/courses/health/courses/h7l-master-of-laboratory-medicine" }
+                    { name: "University of Tasmania", state: "TAS", degree: "Master of Laboratory Medicine (임상병리 석사 2년)", rank: "AIMS 인증 · 지방지역 가산점", req: "이공계 학사 (화학·생물 배경)", ielts: "6.5 (전 영역 6.5)", tuition: "AUD $49,613", url: "https://www.utas.edu.au/courses/health/courses/h7l-master-of-laboratory-medicine" }
                 ],
             },
             "족부의학 (Podiatry)": {
@@ -1211,7 +1252,7 @@
                 masterDesc: "족부의학은 학부 4년 과정이 자격 경로이고, 학사 소지자를 위한 별도 석사 자격 과정은 개설이 매우 제한적입니다. 학부 진학을 기본으로 봅니다.",
                 schools: [
                     { name: "WSU", state: "NSW", degree: "Bachelor of Podiatric Medicine (족부의학 학사 4년)", rank: "학비 최저 수준", req: "수능 또는 고교 성적", ielts: "7.0 (읽기·쓰기 6.5)", tuition: "AUD $37,758", url: "https://www.westernsydney.edu.au/future/study/courses/undergraduate/bachelor-of-podiatric-medicine" },
-                    { name: "University of Newcastle", state: "NSW", degree: "Bachelor of Podiatric Medicine (족부의학 학사 4년)", rank: "지방지역 가산점 대상", req: "수능 또는 고교 성적", ielts: "7.0", tuition: "AUD $50,300", url: "https://www.newcastle.edu.au/degrees/bachelor-of-podiatry" }
+                    { name: "University of Newcastle", state: "NSW", degree: "Bachelor of Podiatric Medicine (족부의학 학사 4년)", rank: "지방지역 가산점 대상", req: "수능 또는 고교 성적", ielts: "7.0 (전 영역 7.0)", tuition: "AUD $46,685", url: "https://www.newcastle.edu.au/degrees/bachelor-of-podiatric-medicine" }
                 ],
             },
 
@@ -1492,11 +1533,11 @@
 
         const regionLabels = { "NSW": "뉴사우스웨일즈 (시드니)", "VIC": "빅토리아 (멜버른)", "QLD": "퀸즐랜드 (브리즈번·골드코스트)", "OTHER": "기타 지역 (퍼스·애들레이드·캔버라)", "ANY": "상관없음" };
 
-        let userProfile = { degree: "", region: "", regionCode: "ANY", english: "", grades: "", major: "", target: "" };
+        let userProfile = { degree: "", region: "", regionCode: "ANY", english: "", eduStatus: "", grades: "", major: "", target: "" };
         let currentStepId = "region";
         let stepCount = 1;
         let stepHistory = []; // 뒤로가기용 스냅샷 스택 {stepId, stepCount, profile}
-        const totalEstimatedSteps = 5; // 지역 → 영어 → 성적 → 전공 → 목표
+        const totalEstimatedSteps = 6; // 지역 → 영어 → 학력 상태 → 성적 → 전공 → 목표
 
         const questionFlow = {
             "region": {
@@ -1550,8 +1591,22 @@
                 ],
                 key: "english"
             },
+            // 학부 전용: 성적을 묻기 전에 학력 상태부터 가른다.
+            // 대학 재학/졸업자에게 고교 등급을 물으면 답이 어긋난다 — 그 경우 성적 질문을 건너뛴다.
+            "edu_status": {
+                question: "현재 학력 상태를 알려주세요.",
+                options: [
+                    { label: "고등학교 재학 중 (졸업 예정)", next: "grades" },
+                    { label: "고등학교 졸업", next: "grades" },
+                    { label: "대학교 재학/휴학/졸업", next: "major", saveGrades: "대학교 재학/휴학/졸업자" }
+                ],
+                key: "eduStatus"
+            },
             "grades": {
-                question: "최종 학력 및 성적(고교 내신 또는 수능)은 어느 정도이신가요?",
+                question: "고교 내신 또는 수능 성적은 어느 정도이신가요?",
+                // ⚠ options 배열은 공유 링크(#r=) 인코딩의 인덱스 기준이라 4개를 유지한다.
+                //    화면에는 optionsFn으로 앞의 3개만 보여준다(4번째는 edu_status가 대신 정한다).
+                optionsFn: () => questionFlow.grades.options.slice(0, 3),
                 options: [
                     { label: "고교 1~3등급 / 수능 330점 이상", next: "major" },
                     { label: "고교 4~5등급 / 수능 보통 수준", next: "major" },
@@ -1599,7 +1654,7 @@
         // ============================================================
         function startConsulting(degreeLabel) {
             // 새 진단 시작: 프로필과 히스토리 초기화
-            userProfile = { degree: degreeLabel, region: "", regionCode: "ANY", english: "", grades: "", major: "", target: "" };
+            userProfile = { degree: degreeLabel, region: "", regionCode: "ANY", english: "", eduStatus: "", grades: "", major: "", target: "" };
             currentStepId = "region";
             stepCount = 1;
             stepHistory = [];
@@ -1672,15 +1727,24 @@
             } else if (currentStepId === "eng_type" && selectedOption.saveVal) {
                 userProfile.english = selectedOption.saveVal;
             }
+            // edu_status에서 대학 재학/졸업을 고르면 성적 질문 없이 grades를 직접 정한다
+            if (selectedOption.saveGrades) {
+                userProfile.grades = selectedOption.saveGrades;
+            }
 
             if (selectedOption.next === "END") {
                 document.getElementById('progress-bar').style.width = `100%`;
                 setTimeout(generateReport, 300);
             } else {
                 let next = selectedOption.next;
-                // 석사 트랙은 학부 성적 대신 학사 학점을 묻는다
-                if (next === "grades" && userProfile.degree.includes("석사")) {
-                    next = "grades_master";
+                // 석사 트랙은 학부 성적 대신 학사 학점을 묻는다.
+                // 학부 트랙은 성적 전에 학력 상태(edu_status)를 먼저 거친다.
+                if (next === "grades") {
+                    if (userProfile.degree.includes("석사")) {
+                        next = "grades_master";
+                    } else if (currentStepId !== "edu_status") {
+                        next = "edu_status";
+                    }
                 }
                 // 세부 전공이 하나뿐인 계열은 묻지 않고 바로 정한다 (보기가 하나인 질문을 없앤다)
                 if (next === "submajor") {
