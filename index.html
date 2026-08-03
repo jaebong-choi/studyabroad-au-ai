@@ -919,7 +919,92 @@
                     { name: "Blue Mountains (BMIHMS)", state: "NSW", degree: "Master of International Hotel Management (국제호텔경영 석사)", rank: "호주 호텔스쿨 명성 1위", req: "학사 또는 관련 경력", ielts: "6.5", tuition: "AUD $45,600", url: "https://www.torrens.edu.au/courses/hospitality/master-of-international-hotel-management" },
                     { name: "The Hotel School", state: "NSW", degree: "Master of Business in Global Hotel Leadership (글로벌호텔리더십 석사)", rank: "유급 인턴십 최강", req: "학사 학위 (전공 무관)", ielts: "6.5", tuition: "AUD $37,000", url: "https://hotelschool.scu.edu.au/" }
                 ],
+            },
+
+            /* ─── 보건 계열 세부 전공 (2026-08 추가) ───────────────────────────
+               학비는 호주 정부 CRICOS 등록부(과정 총액 ÷ 기간 → 연간 환산),
+               IELTS는 각 대학 공식 문서로 확인한 값이다. 검증 못 한 학교는 넣지 않는다.
+               근거는 허브 저장소 data/au-health-verified.md 참고. */
+            "물리치료학 (Physiotherapy)": {
+                desc: "환자를 직접 대하는 규제 직군이라 입학 영어부터 IELTS 7.0입니다. 학비는 학교에 따라 연 3만 7천~5만 5천 달러로 폭이 큽니다.",
+                masterDesc: "관련 학사(생명과학·운동과학 등) 이수자가 2년 만에 물리치료사 자격 과정을 마치는 경로입니다. 간호 GE와 달리 전공 무관이 아니라 선수과목을 봅니다.",
+                schools: [
+                    { name: "WSU", state: "NSW", degree: "Bachelor of Physiotherapy (물리치료학 학사 4년)", rank: "학비 최저 수준", req: "수능 또는 고교 성적", ielts: "7.0 (읽기·쓰기 6.5)", tuition: "AUD $37,800", url: "https://www.westernsydney.edu.au/future/study/courses/undergraduate/bachelor-of-physiotherapy" },
+                    { name: "Flinders University", state: "SA", degree: "Bachelor of Health Sciences / Master of Physiotherapy (학·석사 통합 5년)", rank: "학·석사 통합 과정", req: "수능 또는 고교 성적", ielts: "7.0 (전 영역 6.5)", tuition: "AUD $42,800", url: "https://www.flinders.edu.au/study/courses/postgraduate-physiotherapy" },
+                    { name: "Griffith University", state: "QLD", degree: "Bachelor of Physiotherapy (Honours) (물리치료학 우수학사 4년)", rank: "보건 계열 강세", req: "수능 또는 디플로마", ielts: "7.0 (전 영역 7.0)", tuition: "AUD $55,000", url: "https://www.griffith.edu.au/study/degrees/bachelor-of-physiotherapy-honours-1590" }
+                ],
+                masterSchools: [
+                    { name: "Flinders University", state: "SA", degree: "Master of Physiotherapy (물리치료 석사 2년)", rank: "석사 중 학비 최저", req: "관련 학사 (선수과목 必)", ielts: "7.0 (전 영역 6.5)", tuition: "AUD $46,500", url: "https://www.flinders.edu.au/study/courses/postgraduate-physiotherapy" },
+                    { name: "University of Tasmania", state: "TAS", degree: "Master of Physiotherapy (물리치료 석사 2년)", rank: "지방지역 가산점 대상", req: "관련 학사 (선수과목 必)", ielts: "7.0 (전 영역 7.0)", tuition: "AUD $50,700", url: "https://www.utas.edu.au/courses/health/courses/m7c-master-of-physiotherapy" },
+                    { name: "University of Queensland", state: "QLD", degree: "Master of Physiotherapy Studies (물리치료 석사 2년)", rank: "Go8 명문대", req: "관련 학사 (선수과목 必)", ielts: "7.0 (전 영역 7.0)", tuition: "AUD $62,000", url: "https://study.uq.edu.au/study-options/programs/master-physiotherapy-studies-5267" }
+                ],
+            },
+            "작업치료학 (Occupational Therapy)": {
+                desc: "물리치료가 몸의 기능을 다룬다면 작업치료는 일상 활동으로 돌아가는 과정을 다룹니다. 규제 직군이라 영어 기준은 물리치료와 같습니다.",
+                masterDesc: "관련 학사 이수자가 2년 만에 작업치료사 자격 과정을 마칩니다. 물리치료보다 학비가 낮은 편이고 선수과목 요건도 덜 빡빡합니다.",
+                schools: [
+                    { name: "WSU", state: "NSW", degree: "Bachelor of Occupational Therapy (작업치료학 학사 4년)", rank: "학비 최저 수준", req: "수능 또는 고교 성적", ielts: "7.0 (읽기·쓰기 6.5)", tuition: "AUD $37,800", url: "https://www.westernsydney.edu.au/future/study/courses/undergraduate/bachelor-of-occupational-therapy" },
+                    { name: "Flinders University", state: "SA", degree: "Bachelor of Health Sciences / Master of Occupational Therapy (학·석사 통합 5년)", rank: "학·석사 통합 과정", req: "수능 또는 고교 성적", ielts: "7.0 (전 영역 6.5)", tuition: "AUD $40,900", url: "https://www.flinders.edu.au/study/courses/postgraduate-occupational-therapy" }
+                ],
+                masterSchools: [
+                    { name: "Flinders University", state: "SA", degree: "Master of Occupational Therapy (작업치료 석사 2년)", rank: "석사 중 학비 최저", req: "관련 학사", ielts: "7.0 (전 영역 6.5)", tuition: "AUD $41,900", url: "https://www.flinders.edu.au/study/courses/postgraduate-occupational-therapy" },
+                    { name: "University of Tasmania", state: "TAS", degree: "Master of Occupational Therapy (작업치료 석사 2년)", rank: "지방지역 가산점 대상", req: "관련 학사", ielts: "7.0 (전 영역 7.0)", tuition: "AUD $50,700", url: "https://www.utas.edu.au/courses/health/courses/m7d-master-of-occupational-therapy" }
+                ],
+            },
+            "치위생학 (Oral Health)": {
+                desc: "치과위생사는 3년제 학사로 자격까지 갑니다. 치대(5년, 학비 두 배 이상)와는 다른 경로이니 목표를 먼저 정해야 합니다.",
+                masterDesc: "치위생은 학부 3년 과정이 자격 경로입니다. 학사 소지자가 바로 들어가는 석사 자격 과정은 운영되지 않아, 치과 계열 대학원은 치대(DClinDent) 쪽을 봅니다.",
+                schools: [
+                    { name: "Griffith University", state: "QLD", degree: "Bachelor of Dental Hygiene (치위생학 학사 3년)", rank: "3년 만에 자격 취득", req: "수능 또는 디플로마", ielts: "7.0 (전 영역 7.0)", tuition: "AUD $45,000", url: "https://www.griffith.edu.au/study/degrees/bachelor-of-dental-hygiene-1613" },
+                    { name: "University of Newcastle", state: "NSW", degree: "Bachelor of Oral Health Therapy (구강보건치료 학사 3년)", rank: "지방지역 가산점 대상", req: "수능 또는 고교 성적", ielts: "7.0", tuition: "AUD $51,000", url: "https://www.newcastle.edu.au/degrees/bachelor-of-oral-health-therapy" }
+                ],
+            },
+            "사회복지학 (Social Work)": {
+                desc: "AASW 인증 과정을 나와야 사회복지사로 일합니다. 규제 직군이라 영어는 IELTS 7.0이고, 대부분의 학교가 전 영역 7.0을 요구합니다.",
+                masterDesc: "Qualifying이 붙은 석사는 전공 무관 학사 소지자가 2년에 자격까지 가는 과정입니다. 보건 계열에서 간호 GE와 함께 커리어 전환이 가장 열려 있는 경로입니다.",
+                schools: [
+                    { name: "Flinders University", state: "SA", degree: "Bachelor of Social Work (사회복지학 학사 4년)", rank: "학비 3만 2천 달러대", req: "수능 또는 고교 성적", ielts: "7.0 (전 영역 7.0)", tuition: "AUD $32,100", url: "https://www.flinders.edu.au/study/courses/undergraduate-social-work" }
+                ],
+                masterSchools: [
+                    { name: "University of Queensland", state: "QLD", degree: "Master of Social Work (Qualifying) (사회복지 석사 2년)", rank: "Go8 · 보건 석사 중 최저 학비", req: "학사 학위 (전공 무관)", ielts: "7.0 (전 영역 7.0)", tuition: "AUD $29,200", url: "https://study.uq.edu.au/study-options/programs/master-social-work-qualifying-5675" },
+                    { name: "Flinders University", state: "SA", degree: "Master of Social Work (사회복지 석사 2년)", rank: "지방지역 가산점 대상", req: "학사 학위 (전공 무관)", ielts: "7.0 (전 영역 7.0)", tuition: "AUD $35,200", url: "https://www.flinders.edu.au/study/courses/postgraduate-social-work" }
+                ],
+            },
+            "임상병리학 (Laboratory Medicine)": {
+                desc: "환자를 직접 대하지 않는 실험실 기반 전공이라 영어 기준이 보건 계열 중 가장 낮습니다. 같은 대학에서도 물리치료 7.0, 임상병리 6.5로 갈립니다.",
+                masterDesc: "이공계 학사 이수자가 2년에 임상병리 자격 과정을 마칩니다. 보건 계열 석사 중 영어 문턱이 가장 낮은 축입니다.",
+                schools: [
+                    { name: "University of Tasmania", state: "TAS", degree: "Bachelor of Laboratory Medicine (임상병리학 학사 4년)", rank: "지방지역 가산점 대상", req: "수능 또는 고교 성적", ielts: "6.5 (전 영역 6.5)", tuition: "AUD $34,700", url: "https://www.utas.edu.au/courses/chm/courses/53g-bachelor-of-laboratory-medicine" }
+                ],
+                masterSchools: [
+                    { name: "University of Tasmania", state: "TAS", degree: "Master of Laboratory Medicine (임상병리 석사 2년)", rank: "지방지역 가산점 대상", req: "이공계 학사", ielts: "6.5 (전 영역 6.5)", tuition: "AUD $44,000", url: "https://www.utas.edu.au/courses/health/courses/h7l-master-of-laboratory-medicine" }
+                ],
+            },
+            "족부의학 (Podiatry)": {
+                desc: "발과 하지를 다루는 전문 의료 직군입니다. 개설 대학이 손에 꼽을 만큼 적어 선택지가 좁지만, 그만큼 인력 수요가 꾸준한 분야입니다.",
+                masterDesc: "족부의학은 학부 4년 과정이 자격 경로이고, 학사 소지자를 위한 별도 석사 자격 과정은 개설이 매우 제한적입니다. 학부 진학을 기본으로 봅니다.",
+                schools: [
+                    { name: "WSU", state: "NSW", degree: "Bachelor of Podiatric Medicine (족부의학 학사 4년)", rank: "학비 최저 수준", req: "수능 또는 고교 성적", ielts: "7.0 (읽기·쓰기 6.5)", tuition: "AUD $37,800", url: "https://www.westernsydney.edu.au/future/study/courses/undergraduate/bachelor-of-podiatric-medicine" },
+                    { name: "University of Newcastle", state: "NSW", degree: "Bachelor of Podiatric Medicine (족부의학 학사 4년)", rank: "지방지역 가산점 대상", req: "수능 또는 고교 성적", ielts: "7.0", tuition: "AUD $50,300", url: "https://www.newcastle.edu.au/degrees/bachelor-of-podiatry" }
+                ],
             }
+        };
+
+        /* 전공 계열 → 세부 전공 트리.
+           userProfile.major에는 항상 **세부 전공(majorData 키)** 이 들어간다.
+           결과 렌더·HUB_UNI·INFO_ARTICLES가 전부 이 키로 조회하므로 기존 코드는 그대로 동작한다.
+           계열은 질문 화면에만 존재하는 그룹이고, 세부 전공이 하나면 질문을 건너뛴다. */
+        const MAJOR_TREE = {
+            "보건 (Health)": [
+                "간호학과 (Nursing)", "물리치료학 (Physiotherapy)", "작업치료학 (Occupational Therapy)",
+                "치위생학 (Oral Health)", "사회복지학 (Social Work)", "임상병리학 (Laboratory Medicine)",
+                "족부의학 (Podiatry)"
+            ],
+            "약학·생명 (Pharmacy & Life Sciences)": ["약학/약대 (Pharmacy)"],
+            "IT·사이버보안 (IT & Cyber Security)": ["IT 및 사이버보안 (IT/Cyber Security)"],
+            "공학 (Engineering)": ["공학/엔지니어링 (Engineering)"],
+            "의대 계열 (Medicine & Dentistry)": ["의대/의전원 (Medicine)"],
+            "경영 (Business)": ["호텔경영학 (Hospitality)"]
         };
 
         const regionLabels = { "NSW": "뉴사우스웨일즈 (시드니)", "VIC": "빅토리아 (멜버른)", "QLD": "퀸즐랜드 (브리즈번·골드코스트)", "OTHER": "기타 지역 (퍼스·애들레이드·캔버라)", "ANY": "상관없음" };
@@ -1003,8 +1088,15 @@
                 key: "grades"
             },
             "major": {
-                question: "호주 유학 시 가장 희망하는 전공 분야를 선택해 주십시오.",
-                options: Object.keys(majorData).map(m => ({ label: m, next: "target" })),
+                question: "호주 유학 시 가장 희망하는 전공 계열을 선택해 주십시오.",
+                options: Object.keys(MAJOR_TREE).map(g => ({ label: g, next: "submajor" })),
+                key: "majorGroup"
+            },
+            // 세부 전공 — 선택한 계열에 따라 보기가 달라지므로 렌더 시점에 만든다.
+            // 계열에 세부 전공이 하나뿐이면 handleAnswer가 이 단계를 건너뛴다.
+            "submajor": {
+                question: "세부 전공을 선택해 주십시오.",
+                optionsFn: () => (MAJOR_TREE[userProfile.majorGroup] || []).map(m => ({ label: m, next: "target" })),
                 key: "major"
             },
             "target": {
@@ -1073,7 +1165,7 @@
             const grid = document.getElementById('options-grid');
             grid.innerHTML = '';
 
-            q.options.forEach((opt, index) => {
+            (q.optionsFn ? q.optionsFn() : q.options).forEach((opt, index) => {
                 const delay = index * 100;
                 const div = document.createElement('div');
                 div.className = `option-card fade-in-up`;
@@ -1106,6 +1198,14 @@
                 // 석사 트랙은 학부 성적 대신 학사 학점을 묻는다
                 if (next === "grades" && userProfile.degree.includes("석사")) {
                     next = "grades_master";
+                }
+                // 세부 전공이 하나뿐인 계열은 묻지 않고 바로 정한다 (보기가 하나인 질문을 없앤다)
+                if (next === "submajor") {
+                    const kids = MAJOR_TREE[userProfile.majorGroup] || [];
+                    if (kids.length === 1) {
+                        userProfile.major = kids[0];
+                        next = "target";
+                    }
                 }
                 currentStepId = next;
                 if (currentStepId !== "eng_score_ielts" && currentStepId !== "eng_score_pte" && currentStepId !== "eng_score_toefl") {
@@ -1298,7 +1398,8 @@
             document.getElementById('sum-major').innerText = shortEn(tr(userProfile.major), '(') || "-";
 
             // Populate Recommended Major
-            document.getElementById('rec-major-title').innerText = tr(userProfile.major) + (isMaster ? t('suffixMaster') : t('suffixBachelor'));
+            const showsMaster = isMaster && !!majorInfo.masterSchools;   // 학교 목록이 석사인지
+            document.getElementById('rec-major-title').innerText = tr(userProfile.major) + (showsMaster ? t('suffixMaster') : t('suffixBachelor'));
             document.getElementById('rec-major-desc').innerText = tr((isMaster && majorInfo.masterDesc) ? majorInfo.masterDesc : majorInfo.desc);
 
             // Pathway Guide (파운데이션/디플로마/다이렉트 · 석사 3경로)
@@ -1306,6 +1407,8 @@
 
             // Region-aware university sorting
             const regionCode = userProfile.regionCode || "ANY";
+            // 치위생·족부의학처럼 학사 소지자용 석사 자격 과정이 없는 전공은 학부 목록을 보여준다.
+            // 이때 아래 제목도 '학부'로 맞춘다 — 학부 과정을 늘어놓고 '석사'라고 적으면 안 된다.
             let schools = (isMaster && majorInfo.masterSchools) ? [...majorInfo.masterSchools] : [...majorInfo.schools];
             let matchedCount = 0;
             if (regionCode !== "ANY" && regionCode !== "OTHER") {
@@ -1378,7 +1481,7 @@
             // Official course page links (추천 프로그램 순서 그대로)
             const boardWrap = document.getElementById('board-articles');
             document.getElementById('board-section-title').innerText =
-                shortEn(tr(userProfile.major), '(') + (isMaster ? t('boardSuffixMaster') : t('boardSuffixBachelor'));
+                shortEn(tr(userProfile.major), '(') + (showsMaster ? t('boardSuffixMaster') : t('boardSuffixBachelor'));
             boardWrap.innerHTML = schools.map(s => `
                 <a href="${s.url}" target="_blank" rel="noopener"
                    class="flex items-center justify-between gap-4 bg-[#1d1d1f] hover:bg-[#333336] border border-[#3a3a3c] rounded-xl px-6 py-4 transition group">
@@ -1460,13 +1563,21 @@
         // 결과 링크 공유 / 복원
         // 프로필을 짧은 ASCII 코드로 압축한다 (예: #r=B-Q-I1-2-N-1)
         // ============================================================
+        // 공유 링크용 전공 코드. **기존 6개의 한 글자 코드는 절대 바꾸지 않는다** —
+        // 이미 나간 공유 링크(#r=)가 그대로 열려야 한다. 세부 전공은 두 글자로 덧붙인다.
         const MAJOR_CODES = {
             "간호학과 (Nursing)": "N",
             "약학/약대 (Pharmacy)": "P",
             "IT 및 사이버보안 (IT/Cyber Security)": "I",
             "공학/엔지니어링 (Engineering)": "E",
             "의대/의전원 (Medicine)": "M",
-            "호텔경영학 (Hospitality)": "H"
+            "호텔경영학 (Hospitality)": "H",
+            "물리치료학 (Physiotherapy)": "Pt",
+            "작업치료학 (Occupational Therapy)": "Ot",
+            "치위생학 (Oral Health)": "Oh",
+            "사회복지학 (Social Work)": "Sw",
+            "임상병리학 (Laboratory Medicine)": "Lm",
+            "족부의학 (Podiatry)": "Pd"
         };
         const REGION_CODES = { "NSW": "N", "VIC": "V", "QLD": "Q", "OTHER": "O", "ANY": "A" };
         const ENG_STEPS = { "I": "eng_score_ielts", "P": "eng_score_pte", "T": "eng_score_toefl" };

@@ -46,6 +46,7 @@ const I18N = {
         infoArticlesTitle: "유학 정보",
         infoArticlesSub: "진단 결과와 관련된 주제를 공식 자료 기준으로 정리한 글입니다.",
         infoArticleRead: "약 {0}분 · 정보 확인 {1}",
+        qSubmajor: "세부 전공을 선택해 주십시오.",
         univNote: "※ 표기된 금액은 2026년 국제 학생 홈페이지 기준 학비(각 대학 공식 사이트 발표 연간 학비)이며, 전공·과목 선택 및 연도별 인상에 따라 달라질 수 있습니다. 정확한 금액은 각 대학 공식 홈페이지에서 확인하세요.",
         boardSub: "진단 결과에 맞는 각 대학의 공식 코스 페이지입니다. 입학요건과 학비는 항상 공식 페이지 기준이 우선입니다.",
         studyAuBtn: "호주 정부 공식 유학 정보 (Study Australia)",
@@ -146,6 +147,7 @@ const I18N = {
         infoArticlesTitle: "Study-abroad info",
         infoArticlesSub: "Articles on topics related to your result, written from official sources.",
         infoArticleRead: "About {0} min · verified {1}",
+        qSubmajor: "Which area within that field?",
         guideNote: "Required grades and the amount of credit recognised differ by university and field. Check the current requirements with each university's admissions office before you apply.",
         univNote: "Figures shown are the annual international tuition published by each university for 2026. The amount can change with your choice of subjects and with annual increases, so confirm it on the university's own site.",
         boardSub: "Official course pages at each university, matched to your result. Entry requirements and tuition on the official page always take precedence.",
@@ -229,6 +231,83 @@ const DATA_EN = {
     "공학/엔지니어링 (Engineering)": "Engineering",
     "의대/의전원 (Medicine)": "Medicine",
     "호텔경영학 (Hospitality)": "Hospitality Management",
+
+    /* --- 전공 계열 (질문 화면의 대분류) --- */
+    "보건 (Health)": "Health",
+    "약학·생명 (Pharmacy & Life Sciences)": "Pharmacy and Life Sciences",
+    "IT·사이버보안 (IT & Cyber Security)": "IT and Cyber Security",
+    "공학 (Engineering)": "Engineering",
+    "의대 계열 (Medicine & Dentistry)": "Medicine and Dentistry",
+    "경영 (Business)": "Business",
+
+    /* --- 보건 계열 세부 전공 --- */
+    "물리치료학 (Physiotherapy)": "Physiotherapy",
+    "작업치료학 (Occupational Therapy)": "Occupational Therapy",
+    "치위생학 (Oral Health)": "Oral Health",
+    "사회복지학 (Social Work)": "Social Work",
+    "임상병리학 (Laboratory Medicine)": "Laboratory Medicine",
+    "족부의학 (Podiatry)": "Podiatry",
+
+    "환자를 직접 대하는 규제 직군이라 입학 영어부터 IELTS 7.0입니다. 학비는 학교에 따라 연 3만 7천~5만 5천 달러로 폭이 큽니다.":
+        "A regulated, patient-facing profession, so the entry English bar starts at IELTS 7.0. Fees range widely, from about 37,800 to 55,000 dollars a year.",
+    "관련 학사(생명과학·운동과학 등) 이수자가 2년 만에 물리치료사 자격 과정을 마치는 경로입니다. 간호 GE와 달리 전공 무관이 아니라 선수과목을 봅니다.":
+        "With a related bachelor's such as biomedical or exercise science, you finish the qualifying course in two years. Unlike nursing's graduate entry, this one checks your prerequisite subjects rather than taking any degree.",
+    "물리치료가 몸의 기능을 다룬다면 작업치료는 일상 활동으로 돌아가는 과정을 다룹니다. 규제 직군이라 영어 기준은 물리치료와 같습니다.":
+        "Where physiotherapy works on physical function, occupational therapy works on getting people back to daily activity. It is regulated the same way, so the English bar matches.",
+    "관련 학사 이수자가 2년 만에 작업치료사 자격 과정을 마칩니다. 물리치료보다 학비가 낮은 편이고 선수과목 요건도 덜 빡빡합니다.":
+        "A related bachelor's gets you through the qualifying course in two years. Fees run lower than physiotherapy and the prerequisites are less rigid.",
+    "치과위생사는 3년제 학사로 자격까지 갑니다. 치대(5년, 학비 두 배 이상)와는 다른 경로이니 목표를 먼저 정해야 합니다.":
+        "Dental hygiene qualifies you through a three-year bachelor's. It is a different road from dentistry, which runs five years at more than double the fee, so decide which one you are aiming at first.",
+    "치위생은 학부 3년 과정이 자격 경로입니다. 학사 소지자가 바로 들어가는 석사 자격 과정은 운영되지 않아, 치과 계열 대학원은 치대(DClinDent) 쪽을 봅니다.":
+        "Oral health qualifies through the three-year bachelor's. There is no graduate-entry master's that qualifies you directly, so postgraduate dental study means the DClinDent route instead.",
+    "AASW 인증 과정을 나와야 사회복지사로 일합니다. 규제 직군이라 영어는 IELTS 7.0이고, 대부분의 학교가 전 영역 7.0을 요구합니다.":
+        "You need an AASW-accredited course to practise. It is a regulated profession, so English sits at IELTS 7.0, and most universities want 7.0 in every band.",
+    "Qualifying이 붙은 석사는 전공 무관 학사 소지자가 2년에 자격까지 가는 과정입니다. 보건 계열에서 간호 GE와 함께 커리어 전환이 가장 열려 있는 경로입니다.":
+        "A master's marked Qualifying takes any bachelor's degree and gets you to registration in two years. Alongside nursing's graduate entry, it is the most open career-change route in health.",
+    "환자를 직접 대하지 않는 실험실 기반 전공이라 영어 기준이 보건 계열 중 가장 낮습니다. 같은 대학에서도 물리치료 7.0, 임상병리 6.5로 갈립니다.":
+        "A laboratory-based field rather than a patient-facing one, so the English bar is the lowest in health. Within a single university you will see physiotherapy at 7.0 and laboratory medicine at 6.5.",
+    "이공계 학사 이수자가 2년에 임상병리 자격 과정을 마칩니다. 보건 계열 석사 중 영어 문턱이 가장 낮은 축입니다.":
+        "A science bachelor's gets you through in two years. The English requirement is among the lowest of any health master's.",
+    "발과 하지를 다루는 전문 의료 직군입니다. 개설 대학이 손에 꼽을 만큼 적어 선택지가 좁지만, 그만큼 인력 수요가 꾸준한 분야입니다.":
+        "A specialist field covering the foot and lower limb. Only a handful of universities run it, which narrows the choice, and keeps demand for graduates steady.",
+    "족부의학은 학부 4년 과정이 자격 경로이고, 학사 소지자를 위한 별도 석사 자격 과정은 개설이 매우 제한적입니다. 학부 진학을 기본으로 봅니다.":
+        "Podiatry qualifies through the four-year bachelor's, and graduate-entry qualifying master's places are very limited. Treat the undergraduate route as the default.",
+
+    /* --- 보건 세부 전공 과정명 --- */
+    "Bachelor of Physiotherapy (물리치료학 학사 4년)": "Bachelor of Physiotherapy (4 years)",
+    "Bachelor of Health Sciences / Master of Physiotherapy (학·석사 통합 5년)": "Bachelor of Health Sciences / Master of Physiotherapy (5 years)",
+    "Bachelor of Physiotherapy (Honours) (물리치료학 우수학사 4년)": "Bachelor of Physiotherapy (Honours) (4 years)",
+    "Master of Physiotherapy (물리치료 석사 2년)": "Master of Physiotherapy (2 years)",
+    "Master of Physiotherapy Studies (물리치료 석사 2년)": "Master of Physiotherapy Studies (2 years)",
+    "Bachelor of Occupational Therapy (작업치료학 학사 4년)": "Bachelor of Occupational Therapy (4 years)",
+    "Bachelor of Health Sciences / Master of Occupational Therapy (학·석사 통합 5년)": "Bachelor of Health Sciences / Master of Occupational Therapy (5 years)",
+    "Master of Occupational Therapy (작업치료 석사 2년)": "Master of Occupational Therapy (2 years)",
+    "Bachelor of Dental Hygiene (치위생학 학사 3년)": "Bachelor of Dental Hygiene (3 years)",
+    "Bachelor of Oral Health Therapy (구강보건치료 학사 3년)": "Bachelor of Oral Health Therapy (3 years)",
+    "Bachelor of Social Work (사회복지학 학사 4년)": "Bachelor of Social Work (4 years)",
+    "Master of Social Work (Qualifying) (사회복지 석사 2년)": "Master of Social Work (Qualifying) (2 years)",
+    "Master of Social Work (사회복지 석사 2년)": "Master of Social Work (2 years)",
+    "Bachelor of Laboratory Medicine (임상병리학 학사 4년)": "Bachelor of Laboratory Medicine (4 years)",
+    "Master of Laboratory Medicine (임상병리 석사 2년)": "Master of Laboratory Medicine (2 years)",
+    "Bachelor of Podiatric Medicine (족부의학 학사 4년)": "Bachelor of Podiatric Medicine (4 years)",
+
+    /* --- 보건 세부 전공 카드 문구 --- */
+    "학비 최저 수준": "Lowest fees in this list",
+    "학·석사 통합 과정": "Combined bachelor's and master's",
+    "보건 계열 강세": "Strong in health",
+    "석사 중 학비 최저": "Lowest master's fee here",
+    "지방지역 가산점 대상": "Regional area, PR points",
+    "3년 만에 자격 취득": "Qualified in three years",
+    "학비 3만 2천 달러대": "Around 32,000 dollars a year",
+    "Go8 · 보건 석사 중 최저 학비": "Go8, and the cheapest health master's here",
+    "관련 학사 (선수과목 必)": "Related bachelor's, prerequisites required",
+    "관련 학사": "Related bachelor's",
+    "이공계 학사": "Science bachelor's",
+    "수능 또는 고교 성적": "CSAT or school grades",
+    "7.0 (읽기·쓰기 6.5)": "7.0 (6.5 reading and writing)",
+    "7.0 (전 영역 6.5)": "7.0 (6.5 in every band)",
+    "7.0 (전 영역 7.0)": "7.0 (7.0 in every band)",
+    "6.5 (전 영역 6.5)": "6.5 (6.5 in every band)",
 
     /* --- 전공 소개 (학부) --- */
     "호주 영주권 발급 1위 직업군. 수능 6등급이나 검정고시로도 디플로마를 통해 명문대 진학이 가능하며, 높은 임금과 쾌적한 근무환경을 자랑합니다.":
@@ -362,7 +441,9 @@ const DATA_EN = {
     "TOEFL iBT 점수대를 선택해 주세요.": "What is your TOEFL iBT score?",
     "최종 학력 및 성적(고교 내신 또는 수능)은 어느 정도이신가요?": "What are your most recent qualifications and grades?",
     "학부(학사) 성적은 어느 정도이신가요?": "What was your undergraduate GPA?",
-    "호주 유학 시 가장 희망하는 전공 분야를 선택해 주십시오.": "Which field would you like to study?",
+    "호주 유학 시 가장 희망하는 전공 계열을 선택해 주십시오.": "Which field are you most interested in?",
+    "세부 전공을 선택해 주십시오.": "Which area within that field?",
+    "호주 유학 시 가장 희망하는 전공 분야를 선택해 주십시오.":"Which field would you like to study?",
     "호주 유학의 가장 핵심적인 목표는 무엇입니까?": "What matters most to you about studying in Australia?",
 
     /* --- 선택지 --- */
