@@ -565,6 +565,24 @@ const DATA_EN = {
     "학사 학위 또는 TESOL 대학원 수료증": "Bachelor's degree, or a TESOL graduate certificate",
     "7.5 (듣기·말하기 8.0 / 읽기·쓰기 7.0)": "7.5 (8.0 listening and speaking, 7.0 reading and writing)",
 
+    /* --- 빅토리아 확인분 (2026-08-03) --- */
+    "학교마다 문이 다릅니다. UQ·플린더스는 공학 학사를 요구하지만, 멜버른대는 수학·과학 선수과목만 채웠으면 전공 무관 학사도 받습니다.":
+        "Each university opens a different door. UQ and Flinders require an engineering bachelor's, while Melbourne takes any degree as long as the maths and science prerequisites are covered.",
+    "학사 소지자가 들어가는 치대(시드니 DMD·멜버른 DDS)가 있지만, 지원 자격 원문을 아직 확인하지 못해 카드로 만들지 않았습니다. 확인된 학부 과정만 아래에 둡니다.":
+        "Graduate-entry dentistry exists at Sydney and Melbourne, but their entry requirements could not yet be confirmed at the source, so they are not listed. Only the verified undergraduate courses appear below.",
+    "Master of Biotechnology (Professional) (생명공학 석사 2년)": "Master of Biotechnology (Professional) (2 years)",
+    "Bachelor of Engineering (Biomedical Engineering) (Honours) (의료공학 우수학사 4년)": "Bachelor of Engineering (Biomedical Engineering) (Honours) (4 years)",
+    "Master of Biomedical Engineering (의공학 석사 3년, 관련 전공 2년)": "Master of Biomedical Engineering (3 years, or 2 with a related degree)",
+    "Bachelor of Engineering (Honours) - Software (소프트웨어공학 우수학사 4년)": "Bachelor of Engineering (Honours), Software major (4 years)",
+    "멜버른권 · 실무 경력 인정": "Melbourne area, work experience counted",
+    "멜버른권 · 공학 호주 상위권": "Melbourne area, top-tier for engineering",
+    "EA 인증 · 계열 학비 최저": "EA accredited, cheapest in this field",
+    "지방 캠퍼스 · IELTS만 인정": "Regional campus, IELTS only",
+    "관련 학사 또는 전공 무관 학사 + 실무 2년": "Related bachelor's, or any bachelor's plus two years' relevant work",
+    "전공 무관 학사 (WAM 65 + 수학·과학 선수과목)": "Any bachelor's at WAM 65, with maths and science prerequisites",
+    "수능 등가 성적 · 영어 과목 요건": "CSAT-equivalent grades plus an English subject requirement",
+    "6.0 (전 영역 6.0)": "6.0 (6.0 in every band)",
+
     /* --- 보건 세부 전공 카드 문구 --- */
     "학비 최저 수준": "Lowest fees in this list",
     "학·석사 통합 과정": "Combined bachelor's and master's",

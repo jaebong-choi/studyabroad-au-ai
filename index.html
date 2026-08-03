@@ -772,7 +772,12 @@
             // 여기 빠져 있으면 '학비·요건 상세' 버튼만 안 나간다.
             "Flinders University": "au-flinders",
             "University of Tasmania": "au-utas",
-            "University of Newcastle": "au-newcastle"
+            "University of Newcastle": "au-newcastle",
+            // 빅토리아 확인분 (2026-08-03) — 실제 크롬으로 영어 요건 원문을 읽고 추가한 학교들
+            "RMIT University": "au-rmit",
+            "Deakin University": "au-deakin",
+            "Swinburne University": "au-swinburne",
+            "La Trobe University": "au-latrobe"
         };
         function hubUniUrl(name) {
             const id = HUB_UNI[name];
@@ -1024,18 +1029,21 @@
                 masterSchools: [
                     { name: "University of Queensland", state: "QLD", degree: "Master of Biotechnology (생명공학 석사 2년)", rank: "Go8 · 상용화 중심", req: "과학 배경 학사 (경영·법 전공도 가능)", ielts: "6.5 (전 영역 6.0)", tuition: "AUD $44,500", url: "https://study.uq.edu.au/study-options/programs/master-biotechnology-5599" },
                     { name: "UTS", state: "NSW", degree: "Master of Medical Biotechnology (의생명공학 석사 1.5년)", rank: "1.5년 단축 과정", req: "생화학·미생물·유전학 등 관련 학사", ielts: "6.5 (쓰기 6.0)", tuition: "AUD $50,500", url: "https://www.uts.edu.au/study/find-a-course/master-medical-biotechnology" },
-                    { name: "Flinders University", state: "SA", degree: "Master of Biotechnology (생명공학 석사 2년)", rank: "학비·영어 모두 최저", req: "생물·농학·의과학 학사", ielts: "6.0 (쓰기·말하기 6.0)", tuition: "AUD $38,300", url: "https://www.flinders.edu.au/study/courses/postgraduate-biotechnology" }
+                    { name: "Flinders University", state: "SA", degree: "Master of Biotechnology (생명공학 석사 2년)", rank: "학비·영어 모두 최저", req: "생물·농학·의과학 학사", ielts: "6.0 (쓰기·말하기 6.0)", tuition: "AUD $38,300", url: "https://www.flinders.edu.au/study/courses/postgraduate-biotechnology" },
+                    { name: "Deakin University", state: "VIC", degree: "Master of Biotechnology (Professional) (생명공학 석사 2년)", rank: "멜버른권 · 실무 경력 인정", req: "관련 학사 또는 전공 무관 학사 + 실무 2년", ielts: "6.5 (전 영역 6.0)", tuition: "AUD $45,200", url: "https://www.deakin.edu.au/course/master-biotechnology-professional-international" }
                 ],
             },
             "의료공학 (Biomedical Engineering)": {
                 desc: "의료기기를 다루는 공학 학위입니다. 개설 대학이 적고, UNSW는 학사만 따로 뽑지 않고 석사까지 묶인 5년 과정입니다.",
-                masterDesc: "석사는 커리어 전환용이 아닙니다. 두 학교 모두 공학 계열 학사를 요구합니다. 비전공자라면 학부 4년이나 통합 과정을 봐야 합니다.",
+                masterDesc: "학교마다 문이 다릅니다. UQ·플린더스는 공학 학사를 요구하지만, 멜버른대는 수학·과학 선수과목만 채웠으면 전공 무관 학사도 받습니다.",
                 schools: [
                     { name: "UNSW", state: "NSW", degree: "Bachelor of Engineering (Honours) / Master of Biomedical Engineering (학·석사 통합 5년)", rank: "학·석사 통합 5년", req: "고교 성적 상위권 (ATAR 95 수준)", ielts: "6.5 (전 영역 6.0)", tuition: "AUD $63,700", url: "https://www.unsw.edu.au/study/undergraduate/bachelor-of-engineering-honours-master-of-biomedical-engineering" },
+                    { name: "RMIT University", state: "VIC", degree: "Bachelor of Engineering (Biomedical Engineering) (Honours) (의료공학 우수학사 4년)", rank: "멜버른권 · 공학 호주 상위권", req: "고교 성적 또는 파운데이션", ielts: "6.5 (전 영역 6.0)", tuition: "AUD $48,960", url: "https://www.rmit.edu.au/study-with-us/levels-of-study/undergraduate-study/honours-degrees/bachelor-of-engineering-biomedical-engineering-honours-bh069" },
                     { name: "Flinders University", state: "SA", degree: "Bachelor of Engineering (Biomedical) (Honours) (의료공학 우수학사 4년)", rank: "학비·영어 모두 최저", req: "수능 또는 고교 성적", ielts: "6.0 (쓰기·말하기 6.0)", tuition: "AUD $41,700", url: "https://www.flinders.edu.au/study/courses/bachelor-engineering-biomedical-honours" }
                 ],
                 masterSchools: [
                     { name: "University of Queensland", state: "QLD", degree: "Master of Bioengineering (Professional) (생체공학 석사 2년)", rank: "Engineers Australia 잠정 인증", req: "공학 4년제 학사 必", ielts: "6.5 (전 영역 6.0)", tuition: "AUD $50,100", url: "https://study.uq.edu.au/study-options/programs/master-bioengineering-professional-5761" },
+                    { name: "University of Melbourne", state: "VIC", degree: "Master of Biomedical Engineering (의공학 석사 3년, 관련 전공 2년)", rank: "QS 세계 20위권", req: "전공 무관 학사 (WAM 65 + 수학·과학 선수과목)", ielts: "6.5 (전 영역 6.0)", tuition: "AUD $62,976", url: "https://study.unimelb.edu.au/find/courses/graduate/master-of-biomedical-engineering/" },
                     { name: "Flinders University", state: "SA", degree: "Master of Engineering (Biomedical) (의료공학 석사 2년)", rank: "학비·영어 모두 최저", req: "전기·전자·의료공학 학사", ielts: "6.0 (쓰기·말하기 6.0)", tuition: "AUD $40,400", url: "https://www.flinders.edu.au/study/courses/postgraduate-engineering-biomedical" }
                 ],
             },
@@ -1089,7 +1097,8 @@
                 schools: [
                     { name: "UNSW", state: "NSW", degree: "Bachelor of Engineering (Honours) / Bachelor of Computer Science (공학·컴퓨터사이언스 복수학위 5년)", rank: "EA 정식 인증 · 복수학위 5년", req: "고교 성적 우수 또는 파운데이션", ielts: "6.5 (전 영역 6.0)", tuition: "AUD $63,900", url: "https://www.unsw.edu.au/study/undergraduate/bachelor-of-engineering-honours-computer-science" },
                     { name: "Griffith University", state: "QLD", degree: "Bachelor of Software Engineering (Honours) (소프트웨어공학 우수학사 4년)", rank: "학비 대비 실무 강세", req: "수능 또는 디플로마", ielts: "6.5 (전 영역 6.0)", tuition: "AUD $46,000", url: "https://www.griffith.edu.au/study/degrees/bachelor-of-software-engineering-honours-1656" },
-                    { name: "Flinders University", state: "SA", degree: "Bachelor of Engineering (Software) (Honours) (소프트웨어공학 우수학사 4년)", rank: "학비·영어 모두 최저", req: "수능 또는 고교 성적", ielts: "6.0 (쓰기·말하기 6.0)", tuition: "AUD $41,700", url: "https://www.flinders.edu.au/study/courses/bachelor-engineering-software-honours" }
+                    { name: "Flinders University", state: "SA", degree: "Bachelor of Engineering (Software) (Honours) (소프트웨어공학 우수학사 4년)", rank: "학비·영어 모두 최저", req: "수능 또는 고교 성적", ielts: "6.0 (쓰기·말하기 6.0)", tuition: "AUD $41,700", url: "https://www.flinders.edu.au/study/courses/bachelor-engineering-software-honours" },
+                    { name: "Swinburne University", state: "VIC", degree: "Bachelor of Engineering (Honours) - Software (소프트웨어공학 우수학사 4년)", rank: "EA 인증 · 계열 학비 최저", req: "고교 졸업 또는 디플로마", ielts: "6.0 (전 영역 6.0)", tuition: "AUD $37,100", url: "https://www.swinburne.edu.au/course/undergraduate/bachelor-of-engineering-honours/software/" }
                 ],
                 masterSchools: [
                     { name: "University of Queensland", state: "QLD", degree: "Master of Software Engineering (Professional) (소프트웨어공학 석사 2년)", rank: "Engineers Australia 잠정 인증", req: "소프트웨어공학·컴퓨터사이언스 학사", ielts: "6.5 (전 영역 6.0)", tuition: "AUD $50,100", url: "https://study.uq.edu.au/study-options/programs/master-software-engineering-professional-5747" }
@@ -1152,9 +1161,10 @@
                ⚠ 학교 일반 영어 기준이 통하지 않는 계열이다. UQ 일반은 6.5인데 여기는 7.0 전 영역 7.0. */
             "치대 (Dentistry)": {
                 desc: "영어보다 시험이 먼저 갈립니다. UCAT ANZ를 봐야 하고 IELTS는 전 영역 7.0입니다. 5년 학비만 4억 원을 넘습니다.",
-                masterDesc: "학사 소지자가 들어가는 치대(시드니 DMD·멜버른 DDS)가 있지만, 입학 가이드가 영어 기준을 대학 일반 페이지로 넘겨 원문 확인을 못 했습니다. 확인된 학부 과정만 아래에 둡니다.",
+                masterDesc: "학사 소지자가 들어가는 치대(시드니 DMD·멜버른 DDS)가 있지만, 지원 자격 원문을 아직 확인하지 못해 카드로 만들지 않았습니다. 확인된 학부 과정만 아래에 둡니다.",
                 schools: [
-                    { name: "University of Queensland", state: "QLD", degree: "Bachelor of Dental Science (Honours) (치의학 우수학사 5년)", rank: "UCAT ANZ 필수", req: "ATAR 99 수준 · UCAT ANZ · 화학 이수", ielts: "7.0 (전 영역 7.0)", tuition: "AUD $85,200", url: "https://study.uq.edu.au/study-options/programs/bachelor-dental-science-honours-2367" }
+                    { name: "University of Queensland", state: "QLD", degree: "Bachelor of Dental Science (Honours) (치의학 우수학사 5년)", rank: "UCAT ANZ 필수", req: "ATAR 99 수준 · UCAT ANZ · 화학 이수", ielts: "7.0 (전 영역 7.0)", tuition: "AUD $85,200", url: "https://study.uq.edu.au/study-options/programs/bachelor-dental-science-honours-2367" },
+                    { name: "La Trobe University", state: "VIC", degree: "Bachelor of Dental Science (Honours) (치의학 우수학사 5년)", rank: "지방 캠퍼스 · IELTS만 인정", req: "수능 등가 성적 · 영어 과목 요건", ielts: "7.0 (전 영역 7.0)", tuition: "AUD $86,000", url: "https://www.latrobe.edu.au/courses/bachelor-of-dental-science-honours" }
                 ],
             },
             "수의대 (Veterinary Science)": {
