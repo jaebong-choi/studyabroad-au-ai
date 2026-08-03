@@ -396,6 +396,62 @@ const DATA_EN = {
     "이공계·IT·수학·통계 학사": "Bachelor's in science, IT, mathematics or statistics",
     "소프트웨어공학·컴퓨터사이언스 학사": "Bachelor's in software engineering or computer science",
 
+    /* --- 공학 계열 세부 전공 --- */
+    "토목·건설 (Civil & Construction)": "Civil and Construction",
+    "건축 (Architecture)": "Architecture",
+    "기계·전기 (Mechanical & Electrical)": "Mechanical and Electrical",
+    "항공 (Aviation)": "Aviation",
+
+    "토목공학과 건설관리는 이름만 비슷하고 하는 일이 다릅니다. 구조를 설계하면 공학, 공정과 원가를 관리하면 건설관리 쪽입니다.":
+        "Civil engineering and construction management sound alike but the work differs. Designing the structure is engineering; running the schedule and the budget is construction management.",
+    "석사는 공학 계열 학사가 있어야 합니다. 플린더스는 학사가 다른 분야면 Master of Engineering Science로 안내하니 지원 전에 확인이 필요합니다.":
+        "The master's needs an engineering bachelor's. Flinders directs applicants from other fields to its Master of Engineering Science instead, so check before you apply.",
+    "학사 3년으로 끝나지 않습니다. 등록 건축사까지 가려면 석사 2년이 더 필요하니 예산은 5년으로 잡아야 합니다.":
+        "Three years of undergraduate study is not the end of it. Registration as an architect takes a further two-year master's, so budget for five years.",
+    "건축 학사가 있어야 지원할 수 있는 인증 과정입니다. UQ는 GPA 4.5, 또는 4.0에 실무 6개월을 요구합니다.":
+        "An accredited course open only to architecture graduates. UQ asks for a GPA of 4.5, or 4.0 with six months of practice.",
+    "기술이민에서 수요가 꾸준한 전통 공학입니다. 학비는 학교에 따라 연 4만 1천에서 6만 2천 달러까지 벌어집니다.":
+        "The traditional engineering fields, with steady demand in skilled migration. Fees range from about 41,700 to 62,400 dollars a year depending on the university.",
+    "공학 계열 학사가 전제입니다. 비전공자를 받는 과정이 아니라, 이미 공학을 한 사람이 자격을 강화하는 자리입니다.":
+        "An engineering bachelor's is assumed. This is not a course for changing fields; it is where engineers strengthen their standing.",
+    "조종 과정은 학비와 비행훈련비가 따로 붙습니다. 학비 3년치 위에 상업용 조종사 면허까지 훈련비 약 15만 4천 달러가 추가되고, 입학에는 적성검사와 CASA 1종 신체검사가 필요합니다.":
+        "For the flying degree, tuition and flight training are billed separately. On top of three years of fees, training to a commercial pilot licence adds around 154,500 dollars, and entry requires an aptitude test and a CASA class 1 medical.",
+    "항공경영 석사는 그리피스·ECU·RMIT에 있지만 지원 자격과 영어 요건을 공식 문서에서 확인하지 못해 카드로 만들지 않았습니다. 아래는 학부 과정입니다.":
+        "Aviation management master's degrees exist at Griffith, ECU and RMIT, but their entry and English requirements could not be confirmed from official documents, so they are not listed. The courses below are undergraduate.",
+
+    /* --- 공학 세부 전공 과정명 --- */
+    "Bachelor of Construction Management and Property (건설관리·부동산 학사 3년)": "Bachelor of Construction Management and Property (3 years)",
+    "Bachelor of Engineering (Civil) (Honours) (토목공학 우수학사 4년)": "Bachelor of Engineering (Civil) (Honours) (4 years)",
+    "Bachelor of Construction Management (Honours) (건설관리 우수학사 4년)": "Bachelor of Construction Management (Honours) (4 years)",
+    "Master of Civil Engineering (Professional) (토목공학 석사 2년)": "Master of Civil Engineering (Professional) (2 years)",
+    "Master of Engineering (Civil) (토목공학 석사 2년)": "Master of Engineering (Civil) (2 years)",
+    "Bachelor of Architectural Studies (건축학 학사 3년)": "Bachelor of Architectural Studies (3 years)",
+    "Bachelor of Architectural Design (건축디자인 학사 3년)": "Bachelor of Architectural Design (3 years)",
+    "Master of Architecture (건축학 석사 2년)": "Master of Architecture (2 years)",
+    "Bachelor of Engineering (Honours) (Electrical) (전기공학 우수학사 4년)": "Bachelor of Engineering (Honours) (Electrical) (4 years)",
+    "Bachelor of Engineering (Mechanical) (Honours) (기계공학 우수학사 4년)": "Bachelor of Engineering (Mechanical) (Honours) (4 years)",
+    "Bachelor of Engineering (Electrical and Electronic) (Honours) (전기·전자공학 우수학사 4년)": "Bachelor of Engineering (Electrical and Electronic) (Honours) (4 years)",
+    "Master of Mechanical Engineering (Professional) (기계공학 석사 2년)": "Master of Mechanical Engineering (Professional) (2 years)",
+    "Master of Engineering (Mechanical) (기계공학 석사 2년)": "Master of Engineering (Mechanical) (2 years)",
+    "Bachelor of Aviation (Flying) (조종 학사 3년)": "Bachelor of Aviation (Flying) (3 years)",
+    "Bachelor of Aviation (Management) (항공경영 학사 3년)": "Bachelor of Aviation (Management) (3 years)",
+
+    /* --- 공학 세부 전공 카드 문구 --- */
+    "3년 만에 학사 취득": "A three-year bachelor's",
+    "Engineers Australia 인증": "Accredited by Engineers Australia",
+    "석사 연계 전제": "Assumes you continue to the master's",
+    "등록 건축사 경로": "The route to registration",
+    "호주건축가협회 인증": "Accredited by the Australian Institute of Architects",
+    "QS 전기공학 호주 1위": "Ranked first in Australia for electrical engineering",
+    "학비 외 비행훈련비 별도": "Flight training billed on top of fees",
+    "비행훈련 없는 경로": "No flight training required",
+    "토목 계열 학사": "Bachelor's in civil engineering",
+    "건축 학사": "Bachelor's in architecture",
+    "건축 학사 (GPA 4.5/7)": "Bachelor's in architecture, GPA 4.5 of 7",
+    "기계·항공·메카트로닉스 학사": "Bachelor's in mechanical, aerospace or mechatronic engineering",
+    "ATAR 80 · 적성검사 · CASA 1종 신체검사": "ATAR 80, aptitude test and a CASA class 1 medical",
+    "고교 성적 또는 파운데이션": "School results or a foundation year",
+
     /* --- 보건 세부 전공 카드 문구 --- */
     "학비 최저 수준": "Lowest fees in this list",
     "학·석사 통합 과정": "Combined bachelor's and master's",
