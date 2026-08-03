@@ -478,6 +478,50 @@ const DATA_EN = {
     "ATAR 98 수준 · Casper 검사 · 화학·수학 이수": "Around ATAR 98, Casper test, chemistry and maths studied",
     "학사 + 평점 65% · 동물 실습 30일": "Bachelor's at 65 per cent average, plus 30 days animal handling",
 
+    /* --- 경영 계열 세부 전공 --- */
+    "비즈니스 (Business)": "Business",
+    "회계·금융 (Accounting & Finance)": "Accounting and Finance",
+    "스포츠경영 (Sport Management)": "Sport Management",
+
+    "가장 넓은 선택지를 주는 전공입니다. 마케팅·인사·국제경영까지 안에서 고를 수 있고, 학비는 학교에 따라 연 3만 5천에서 4만 9천 달러 사이입니다.":
+        "The broadest of the choices here. Marketing, human resources and international business all sit inside it, and fees run from about 35,200 to 48,800 dollars a year.",
+    "상경 석사와 MBA는 지원 자격이 다릅니다. UQ 상경은 전공을 보지 않고, UTS MBA는 성적이 낮으면 실무 4년이나 GMAT을 요구합니다.":
+        "A commerce master's and an MBA ask for different things. UQ's commerce degree does not check your field; UTS's MBA wants four years of work or a GMAT score if your grades fall short.",
+    "경영 계열에서 학비가 가장 낮은 축입니다. 세 곳 모두 연 3만 5천~3만 7천 달러대로, 같은 계열 다른 전공보다 1만 달러 넘게 쌉니다.":
+        "The cheapest corner of business study. All three sit between 35,200 and 37,000 dollars a year, more than 10,000 below the other majors in this field.",
+    "두 과정 모두 CPA Australia와 CA ANZ 인증이라 회계사 경로가 열립니다. 다만 지원 자격이 정반대이니 학사 전공을 먼저 확인해야 합니다.":
+        "Both are accredited by CPA Australia and CA ANZ, which opens the path to qualifying as an accountant. Their entry rules are opposites, though, so check your own degree first.",
+    "구단 운영과 시설·이벤트 관리로 이어지는 전공입니다. 운동생리학 쪽 학위와는 다르니 과정 이름에 Management가 들어가는지 확인해야 합니다.":
+        "This leads into club operations, venues and events. It is not the exercise science route, so check that the course title actually says Management.",
+    "전공 무관으로 열려 있는 1.5년 과정입니다. 경영 계열 석사 중에서는 짧고 학비도 낮은 편입니다.":
+        "A 1.5-year course open to any discipline. Short and comparatively cheap among the business master's degrees.",
+
+    /* --- 경영 세부 전공 과정명 --- */
+    "Bachelor of Business (경영학 학사 3년)": "Bachelor of Business (3 years)",
+    "Bachelor of Commerce (상경 학사 3년)": "Bachelor of Commerce (3 years)",
+    "Master of Commerce (상경 석사 2년)": "Master of Commerce (2 years)",
+    "Master of Business Administration (경영학 석사 2년)": "Master of Business Administration (2 years)",
+    "Bachelor of Accounting (회계학 학사 3년)": "Bachelor of Accounting (3 years)",
+    "Master of Professional Accounting (회계학 석사 1.5년)": "Master of Professional Accounting (1.5 years)",
+    "Bachelor of Sport and Exercise Management (스포츠경영 학사 3년)": "Bachelor of Sport and Exercise Management (3 years)",
+    "Bachelor of Sport Development (스포츠개발학 학사 3년)": "Bachelor of Sport Development (3 years)",
+    "Master of Sport Management (스포츠경영 석사 1.5년)": "Master of Sport Management (1.5 years)",
+
+    /* --- 경영 세부 전공 카드 문구 --- */
+    "시드니 도심 캠퍼스": "City campus in Sydney",
+    "전공 무관 지원 가능": "Open to any discipline",
+    "실무 경력 인정 경로": "Work experience accepted",
+    "회계·재무·경제 중심": "Built around accounting, finance and economics",
+    "CPA·CA ANZ 인증": "Accredited by CPA Australia and CA ANZ",
+    "CPA·CA ANZ·IPA 인증": "Accredited by CPA Australia, CA ANZ and the IPA",
+    "골드코스트 스포츠 인프라": "Gold Coast sporting facilities",
+    "전공 무관 · 1.5년": "Any discipline, 1.5 years",
+    "학사 학위 (전공 무관, GPA 4.5/7)": "Bachelor's in any discipline, GPA 4.5 of 7",
+    "학사 GPA 5.25/7 또는 학사 + 실무 4년": "Bachelor's at GPA 5.25 of 7, or a bachelor's plus four years' work",
+    "회계 이외 전공 학사 (75% 이상)": "Bachelor's in a field other than accounting, 75 per cent or above",
+    "경영 계열 학사 또는 대학원 수료증": "Business bachelor's, or a graduate certificate in any field",
+    "학사 학위 (전공 무관, 75% 이상)": "Bachelor's in any discipline, 75 per cent or above",
+
     /* --- 보건 세부 전공 카드 문구 --- */
     "학비 최저 수준": "Lowest fees in this list",
     "학·석사 통합 과정": "Combined bachelor's and master's",
