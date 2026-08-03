@@ -227,7 +227,7 @@ const DATA_EN = {
     /* --- 전공명 --- */
     "간호학과 (Nursing)": "Nursing",
     "약학/약대 (Pharmacy)": "Pharmacy",
-    "IT 및 사이버보안 (IT/Cyber Security)": "IT and Cyber Security",
+    "IT 일반 (Information Technology)": "Information Technology",
     "공학/엔지니어링 (Engineering)": "Engineering",
     "의대/의전원 (Medicine)": "Medicine",
     "호텔경영학 (Hospitality)": "Hospitality Management",
@@ -334,6 +334,67 @@ const DATA_EN = {
     "6.5 (쓰기 6.0)": "6.5 (6.0 writing)",
     "6.5 (전 영역 6.0)": "6.5 (6.0 in every band)",
     "6.0 (쓰기·말하기 6.0)": "6.0 (6.0 writing and speaking)",
+
+    /* --- IT 계열 세부 전공 --- */
+    "컴퓨터사이언스 (Computer Science)": "Computer Science",
+    "사이버보안 (Cyber Security)": "Cyber Security",
+    "AI·데이터사이언스 (AI & Data Science)": "AI and Data Science",
+    "소프트웨어공학 (Software Engineering)": "Software Engineering",
+
+    "IT 계열의 기본 학위입니다. 세부 전공을 정하지 못했다면 여기서 시작해도 3학년에 갈래를 고를 수 있습니다.":
+        "The base degree in this field. If you have not settled on a specialisation, you can start here and choose your direction in third year.",
+    "이 전공의 석사는 비전공자를 받지 않습니다. 두 학교 모두 컴퓨터·IT 계열 학사를 요구하니, 문과 출신이라면 사이버보안 석사 쪽을 보셔야 합니다.":
+        "This master's does not take graduates from other fields. Both universities require a computing or IT bachelor's, so a non-technical background points you to the cyber security master's instead.",
+    "같은 전공인데 학비가 두 배까지 벌어집니다. 연 3만 2천 달러대부터 6만 3천 달러대까지 있고, 졸업 후 가는 직군은 크게 다르지 않습니다.":
+        "The same degree can cost twice as much depending on where you study — roughly 32,500 to 63,200 dollars a year — and graduates end up in much the same roles.",
+    "IT 계열 석사 중 유일하게 전공 무관 진입이 열려 있습니다. UQ 2년 과정은 학사 전공을 보지 않고, 1.5년 단축은 관련 전공자만 받습니다.":
+        "This is the one master's in the field open to graduates of any discipline. UQ's two-year version does not check what your bachelor's was in; the shorter 1.5-year version does.",
+    "학부 과정이 시드니권에 몰려 있는 전공입니다. 다른 주를 원한다면 컴퓨터사이언스로 들어가 세부 과목을 고르는 편이 낫습니다.":
+        "The undergraduate courses cluster around Sydney. If you want another state, entering through computer science and choosing your subjects works better.",
+    "지원 자격이 학교마다 다릅니다. UQ는 비이공계라도 미적분과 통계·프로그래밍을 이수했으면 받고, UTS는 실무 경력 2년으로 학위 요건을 대신할 수 있습니다.":
+        "Entry rules differ by university. UQ accepts non-science graduates who have done calculus plus statistics or programming, and UTS lets two years of relevant work stand in for part of the degree requirement.",
+    "같은 개발 직군이라도 이쪽은 공학 학위입니다. 4년제 우등학사로 나오고 Engineers Australia 인증을 받는 과정이 있어 기술이민 평가에서 갈래가 달라집니다.":
+        "Same line of work, but this one is an engineering degree — a four-year honours award, and some courses carry Engineers Australia accreditation, which changes how skilled migration assesses you.",
+    "검증된 학교 중 이 이름의 석사를 여는 곳은 UQ 한 곳입니다. 소프트웨어공학·컴퓨터사이언스 학사가 있어야 하고, 없다면 컴퓨터사이언스 석사 쪽을 봅니다.":
+        "Among the universities we could verify, only UQ runs a master's under this name. It needs a software engineering or computer science bachelor's; without one, look at the computer science master's.",
+
+    /* --- IT 세부 전공 과정명 --- */
+    "Bachelor of Computer Science (컴퓨터사이언스 학사 3년)": "Bachelor of Computer Science (3 years)",
+    "Master of Computer Science (컴퓨터사이언스 석사 1.5년)": "Master of Computer Science (1.5 years)",
+    "Master of Computer Science (컴퓨터사이언스 석사 2년)": "Master of Computer Science (2 years)",
+    "Bachelor of Cyber Security (사이버보안 학사 3년)": "Bachelor of Cyber Security (3 years)",
+    "Bachelor of Cyber Security and Behaviour (사이버보안·행동학 학사 3년)": "Bachelor of Cyber Security and Behaviour (3 years)",
+    "Master of Cyber Security (사이버보안 석사 2년)": "Master of Cyber Security (2 years)",
+    "Master of Cybersecurity (사이버보안 석사 1.5년)": "Master of Cybersecurity (1.5 years)",
+    "Bachelor of Data Science and Decisions (데이터사이언스 학사 3년)": "Bachelor of Data Science and Decisions (3 years)",
+    "Bachelor of Artificial Intelligence (인공지능 학사 3년)": "Bachelor of Artificial Intelligence (3 years)",
+    "Bachelor of Data Science (데이터사이언스 학사 3년)": "Bachelor of Data Science (3 years)",
+    "Master of Data Science (데이터사이언스 석사 2년)": "Master of Data Science (2 years)",
+    "Master of Artificial Intelligence (인공지능 석사 2년)": "Master of Artificial Intelligence (2 years)",
+    "Bachelor of Engineering (Honours) / Bachelor of Computer Science (공학·컴퓨터사이언스 복수학위 5년)":
+        "Bachelor of Engineering (Honours) / Bachelor of Computer Science (5 years)",
+    "Bachelor of Software Engineering (Honours) (소프트웨어공학 우수학사 4년)": "Bachelor of Software Engineering (Honours) (4 years)",
+    "Bachelor of Engineering (Software) (Honours) (소프트웨어공학 우수학사 4년)": "Bachelor of Engineering (Software) (Honours) (4 years)",
+    "Master of Software Engineering (Professional) (소프트웨어공학 석사 2년)": "Master of Software Engineering (Professional) (2 years)",
+
+    /* --- IT 세부 전공 카드 문구 --- */
+    "시드니권 학비 최저": "Lowest fees around Sydney",
+    "호주 IT 최상위권": "Among Australia's strongest in IT",
+    "학비 대비 실무 강세": "Practical strength for the fee",
+    "이 계열 학비 최저": "Lowest fees in this field",
+    "IT 계열 유일 전공 무관": "The only one open to any discipline",
+    "AI 단일 학위": "A standalone AI degree",
+    "수학 이수 시 비이공계 가능": "Open to non-science graduates with maths",
+    "실무 경력 인정": "Work experience counted",
+    "EA 정식 인증 · 복수학위 5년": "Fully EA accredited, five-year double degree",
+    "고교 성적 우수 또는 파운데이션": "Strong school results or a foundation year",
+    "컴퓨터·IT 계열 학사": "Bachelor's in computing or IT",
+    "컴퓨터·IT·ICT공학 학사": "Bachelor's in computing, IT or ICT engineering",
+    "IT·전자공학 학사 또는 IT 학사 + 실무 2년": "IT or electronic engineering bachelor's, or an IT bachelor's plus two years' work",
+    "IT·전자공학·수학 학사 또는 관련 경력 2년": "IT, electronic engineering or mathematics bachelor's, or two years' relevant work",
+    "이공계 학사 또는 미적분·통계 이수": "Science bachelor's, or calculus and statistics already studied",
+    "이공계·IT·수학·통계 학사": "Bachelor's in science, IT, mathematics or statistics",
+    "소프트웨어공학·컴퓨터사이언스 학사": "Bachelor's in software engineering or computer science",
 
     /* --- 보건 세부 전공 카드 문구 --- */
     "학비 최저 수준": "Lowest fees in this list",

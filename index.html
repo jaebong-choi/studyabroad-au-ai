@@ -884,7 +884,9 @@
                     { name: "Griffith University", state: "QLD", degree: "Master of Pharmacy (약학 석사)", rank: "QS 151-200위", req: "관련 학사 + GPA 요건", ielts: "6.5", tuition: "AUD $42,000", url: "https://www.griffith.edu.au/study/degrees/master-of-pharmacy-5661" }
                 ],
             },
-            "IT 및 사이버보안 (IT/Cyber Security)": {
+            /* 예전 이름은 "IT 및 사이버보안 (IT/Cyber Security)"였다. 사이버보안이 세부 전공으로
+               따로 생기면서 보기 목록이 겹쳐 읽혀 이름만 바꿨다. 공유 링크 코드 "I"는 그대로다. */
+            "IT 일반 (Information Technology)": {
                 desc: "3년 만에 IT 학사 학위 취득이 가능합니다. 실무 중심 교육과 인턴십을 통해 글로벌 IT 기업 취업 및 호주 기술이민에 유리합니다.",
                 masterDesc: "비전공자도 지원 가능한 2년 Master of IT 과정이 다수 개설되어 있습니다. 문과 출신 직장인의 커리어 전환과 기술이민(ICT 직군)에 가장 인기 있는 경로입니다.",
                 schools: [
@@ -1036,6 +1038,62 @@
                     { name: "University of Queensland", state: "QLD", degree: "Master of Bioengineering (Professional) (생체공학 석사 2년)", rank: "Engineers Australia 잠정 인증", req: "공학 4년제 학사 必", ielts: "6.5 (전 영역 6.0)", tuition: "AUD $50,100", url: "https://study.uq.edu.au/study-options/programs/master-bioengineering-professional-5761" },
                     { name: "Flinders University", state: "SA", degree: "Master of Engineering (Biomedical) (의료공학 석사 2년)", rank: "학비·영어 모두 최저", req: "전기·전자·의료공학 학사", ielts: "6.0 (쓰기·말하기 6.0)", tuition: "AUD $40,400", url: "https://www.flinders.edu.au/study/courses/postgraduate-engineering-biomedical" }
                 ],
+            },
+
+            /* ─── IT 계열 세부 전공 (2026-08 추가) ─────────────────────────────
+               근거는 허브 저장소 data/au-it-verified.md.
+               석사는 지원 자격(전공 무관 여부)을 과정 페이지 원문에서 확인한 값이다. */
+            "컴퓨터사이언스 (Computer Science)": {
+                desc: "IT 계열의 기본 학위입니다. 세부 전공을 정하지 못했다면 여기서 시작해도 3학년에 갈래를 고를 수 있습니다.",
+                masterDesc: "이 전공의 석사는 비전공자를 받지 않습니다. 두 학교 모두 컴퓨터·IT 계열 학사를 요구하니, 문과 출신이라면 사이버보안 석사 쪽을 보셔야 합니다.",
+                schools: [
+                    { name: "University of Queensland", state: "QLD", degree: "Bachelor of Computer Science (컴퓨터사이언스 학사 3년)", rank: "Go8 명문대", req: "수능 또는 고교 성적", ielts: "6.5 (전 영역 6.0)", tuition: "AUD $48,900", url: "https://study.uq.edu.au/study-options/programs/bachelor-computer-science-2559" },
+                    { name: "WSU", state: "NSW", degree: "Bachelor of Computer Science (컴퓨터사이언스 학사 3년)", rank: "시드니권 학비 최저", req: "수능 또는 고교 성적", ielts: "6.5 (전 영역 6.0)", tuition: "AUD $38,200", url: "https://www.westernsydney.edu.au/future/study/courses/undergraduate/bachelor-of-computer-science" },
+                    { name: "Flinders University", state: "SA", degree: "Bachelor of Computer Science (컴퓨터사이언스 학사 3년)", rank: "학비·영어 모두 최저", req: "수능 또는 고교 성적", ielts: "6.0 (쓰기·말하기 6.0)", tuition: "AUD $37,600", url: "https://www.flinders.edu.au/study/courses/bachelor-computer-science" }
+                ],
+                masterSchools: [
+                    { name: "University of Queensland", state: "QLD", degree: "Master of Computer Science (컴퓨터사이언스 석사 1.5년)", rank: "1.5년 단축 과정", req: "컴퓨터·IT 계열 학사", ielts: "6.5 (전 영역 6.0)", tuition: "AUD $48,000", url: "https://study.uq.edu.au/study-options/programs/master-computer-science-5522" },
+                    { name: "Flinders University", state: "SA", degree: "Master of Computer Science (컴퓨터사이언스 석사 2년)", rank: "학비·영어 모두 최저", req: "컴퓨터·IT·ICT공학 학사", ielts: "6.0 (쓰기·말하기 6.0)", tuition: "AUD $36,200", url: "https://www.flinders.edu.au/study/courses/postgraduate-computer-science" }
+                ],
+            },
+            "사이버보안 (Cyber Security)": {
+                desc: "같은 전공인데 학비가 두 배까지 벌어집니다. 연 3만 2천 달러대부터 6만 3천 달러대까지 있고, 졸업 후 가는 직군은 크게 다르지 않습니다.",
+                masterDesc: "IT 계열 석사 중 유일하게 전공 무관 진입이 열려 있습니다. UQ 2년 과정은 학사 전공을 보지 않고, 1.5년 단축은 관련 전공자만 받습니다.",
+                schools: [
+                    { name: "UNSW", state: "NSW", degree: "Bachelor of Cyber Security (사이버보안 학사 3년)", rank: "호주 IT 최상위권", req: "고교 성적 우수 또는 파운데이션", ielts: "6.5 (전 영역 6.0)", tuition: "AUD $63,200", url: "https://www.unsw.edu.au/study/undergraduate/bachelor-of-cyber-security" },
+                    { name: "Griffith University", state: "QLD", degree: "Bachelor of Cyber Security (사이버보안 학사 3년)", rank: "학비 대비 실무 강세", req: "수능 또는 디플로마", ielts: "6.5 (전 영역 6.0)", tuition: "AUD $40,500", url: "https://www.griffith.edu.au/study/degrees/bachelor-of-cyber-security-1677" },
+                    { name: "WSU", state: "NSW", degree: "Bachelor of Cyber Security and Behaviour (사이버보안·행동학 학사 3년)", rank: "이 계열 학비 최저", req: "수능 또는 고교 성적", ielts: "6.5 (전 영역 6.0)", tuition: "AUD $32,500", url: "https://www.westernsydney.edu.au/future/study/courses/undergraduate/bachelor-of-cyber-security-and-behaviour" }
+                ],
+                masterSchools: [
+                    { name: "University of Queensland", state: "QLD", degree: "Master of Cyber Security (사이버보안 석사 2년)", rank: "IT 계열 유일 전공 무관", req: "학사 학위 (전공 무관)", ielts: "6.5 (전 영역 6.0)", tuition: "AUD $48,900", url: "https://study.uq.edu.au/study-options/programs/master-cyber-security-5257" },
+                    { name: "UTS", state: "NSW", degree: "Master of Cybersecurity (사이버보안 석사 1.5년)", rank: "1.5년 단축 과정", req: "IT·전자공학 학사 또는 IT 학사 + 실무 2년", ielts: "6.5 (쓰기 6.0)", tuition: "AUD $57,100", url: "https://www.uts.edu.au/study/find-a-course/master-cybersecurity" }
+                ],
+            },
+            "AI·데이터사이언스 (AI & Data Science)": {
+                desc: "학부 과정이 시드니권에 몰려 있는 전공입니다. 다른 주를 원한다면 컴퓨터사이언스로 들어가 세부 과목을 고르는 편이 낫습니다.",
+                masterDesc: "지원 자격이 학교마다 다릅니다. UQ는 비이공계라도 미적분과 통계·프로그래밍을 이수했으면 받고, UTS는 실무 경력 2년으로 학위 요건을 대신할 수 있습니다.",
+                schools: [
+                    { name: "UNSW", state: "NSW", degree: "Bachelor of Data Science and Decisions (데이터사이언스 학사 3년)", rank: "호주 IT 최상위권", req: "고교 성적 우수 또는 파운데이션", ielts: "6.5 (전 영역 6.0)", tuition: "AUD $58,700", url: "https://www.unsw.edu.au/study/undergraduate/bachelor-of-data-science-and-decisions" },
+                    { name: "UTS", state: "NSW", degree: "Bachelor of Artificial Intelligence (인공지능 학사 3년)", rank: "AI 단일 학위", req: "고교 졸업 또는 디플로마", ielts: "6.5 (쓰기 6.0)", tuition: "AUD $54,800", url: "https://www.uts.edu.au/study/find-a-course/bachelor-artificial-intelligence" },
+                    { name: "WSU", state: "NSW", degree: "Bachelor of Data Science (데이터사이언스 학사 3년)", rank: "시드니권 학비 최저", req: "수능 또는 고교 성적", ielts: "6.5 (전 영역 6.0)", tuition: "AUD $40,100", url: "https://www.westernsydney.edu.au/future/study/courses/undergraduate/bachelor-of-data-science" }
+                ],
+                masterSchools: [
+                    { name: "University of Queensland", state: "QLD", degree: "Master of Data Science (데이터사이언스 석사 2년)", rank: "수학 이수 시 비이공계 가능", req: "이공계 학사 또는 미적분·통계 이수", ielts: "6.5 (전 영역 6.0)", tuition: "AUD $48,900", url: "https://study.uq.edu.au/study-options/programs/master-data-science-5660" },
+                    { name: "UTS", state: "NSW", degree: "Master of Artificial Intelligence (인공지능 석사 2년)", rank: "실무 경력 인정", req: "IT·전자공학·수학 학사 또는 관련 경력 2년", ielts: "6.5 (쓰기 6.0)", tuition: "AUD $55,400", url: "https://www.uts.edu.au/study/find-a-course/master-artificial-intelligence" },
+                    { name: "Flinders University", state: "SA", degree: "Master of Data Science (데이터사이언스 석사 2년)", rank: "학비·영어 모두 최저", req: "이공계·IT·수학·통계 학사", ielts: "6.0 (쓰기·말하기 6.0)", tuition: "AUD $36,200", url: "https://www.flinders.edu.au/study/courses/postgraduate-data-science" }
+                ],
+            },
+            "소프트웨어공학 (Software Engineering)": {
+                desc: "같은 개발 직군이라도 이쪽은 공학 학위입니다. 4년제 우등학사로 나오고 Engineers Australia 인증을 받는 과정이 있어 기술이민 평가에서 갈래가 달라집니다.",
+                masterDesc: "검증된 학교 중 이 이름의 석사를 여는 곳은 UQ 한 곳입니다. 소프트웨어공학·컴퓨터사이언스 학사가 있어야 하고, 없다면 컴퓨터사이언스 석사 쪽을 봅니다.",
+                schools: [
+                    { name: "UNSW", state: "NSW", degree: "Bachelor of Engineering (Honours) / Bachelor of Computer Science (공학·컴퓨터사이언스 복수학위 5년)", rank: "EA 정식 인증 · 복수학위 5년", req: "고교 성적 우수 또는 파운데이션", ielts: "6.5 (전 영역 6.0)", tuition: "AUD $63,900", url: "https://www.unsw.edu.au/study/undergraduate/bachelor-of-engineering-honours-computer-science" },
+                    { name: "Griffith University", state: "QLD", degree: "Bachelor of Software Engineering (Honours) (소프트웨어공학 우수학사 4년)", rank: "학비 대비 실무 강세", req: "수능 또는 디플로마", ielts: "6.5 (전 영역 6.0)", tuition: "AUD $46,000", url: "https://www.griffith.edu.au/study/degrees/bachelor-of-software-engineering-honours-1656" },
+                    { name: "Flinders University", state: "SA", degree: "Bachelor of Engineering (Software) (Honours) (소프트웨어공학 우수학사 4년)", rank: "학비·영어 모두 최저", req: "수능 또는 고교 성적", ielts: "6.0 (쓰기·말하기 6.0)", tuition: "AUD $41,700", url: "https://www.flinders.edu.au/study/courses/bachelor-engineering-software-honours" }
+                ],
+                masterSchools: [
+                    { name: "University of Queensland", state: "QLD", degree: "Master of Software Engineering (Professional) (소프트웨어공학 석사 2년)", rank: "Engineers Australia 잠정 인증", req: "소프트웨어공학·컴퓨터사이언스 학사", ielts: "6.5 (전 영역 6.0)", tuition: "AUD $50,100", url: "https://study.uq.edu.au/study-options/programs/master-software-engineering-professional-5747" }
+                ],
             }
         };
 
@@ -1052,7 +1110,11 @@
             "약학·생명 (Pharmacy & Life Sciences)": [
                 "약학/약대 (Pharmacy)", "생명공학 (Biotechnology)", "의료공학 (Biomedical Engineering)"
             ],
-            "IT·사이버보안 (IT & Cyber Security)": ["IT 및 사이버보안 (IT/Cyber Security)"],
+            "IT·사이버보안 (IT & Cyber Security)": [
+                "IT 일반 (Information Technology)", "컴퓨터사이언스 (Computer Science)",
+                "사이버보안 (Cyber Security)", "AI·데이터사이언스 (AI & Data Science)",
+                "소프트웨어공학 (Software Engineering)"
+            ],
             "공학 (Engineering)": ["공학/엔지니어링 (Engineering)"],
             "의대 계열 (Medicine & Dentistry)": ["의대/의전원 (Medicine)"],
             "경영 (Business)": ["호텔경영학 (Hospitality)"]
@@ -1619,7 +1681,7 @@
         const MAJOR_CODES = {
             "간호학과 (Nursing)": "N",
             "약학/약대 (Pharmacy)": "P",
-            "IT 및 사이버보안 (IT/Cyber Security)": "I",
+            "IT 일반 (Information Technology)": "I",
             "공학/엔지니어링 (Engineering)": "E",
             "의대/의전원 (Medicine)": "M",
             "호텔경영학 (Hospitality)": "H",
@@ -1630,7 +1692,11 @@
             "임상병리학 (Laboratory Medicine)": "Lm",
             "족부의학 (Podiatry)": "Pd",
             "생명공학 (Biotechnology)": "Bt",
-            "의료공학 (Biomedical Engineering)": "Be"
+            "의료공학 (Biomedical Engineering)": "Be",
+            "컴퓨터사이언스 (Computer Science)": "Cs",
+            "사이버보안 (Cyber Security)": "Cy",
+            "AI·데이터사이언스 (AI & Data Science)": "Ai",
+            "소프트웨어공학 (Software Engineering)": "Se"
         };
         const REGION_CODES = { "NSW": "N", "VIC": "V", "QLD": "Q", "OTHER": "O", "ANY": "A" };
         const ENG_STEPS = { "I": "eng_score_ielts", "P": "eng_score_pte", "T": "eng_score_toefl" };
