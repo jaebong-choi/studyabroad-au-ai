@@ -583,6 +583,11 @@ const DATA_EN = {
     "수능 등가 성적 · 영어 과목 요건": "CSAT-equivalent grades plus an English subject requirement",
     "6.0 (전 영역 6.0)": "6.0 (6.0 in every band)",
 
+    /* --- 모나쉬 확인분 (2026-08-03) --- */
+    "Go8 · 산업 실습 또는 연구 트랙": "Go8, with an industry placement or research track",
+    "생명과학 계열 학사 (평균 60% 이상)": "Bachelor's in a life science field, 60 per cent average",
+    "6.5 (듣기·읽기 6.5 / 쓰기·말하기 6.0)": "6.5 (6.5 listening and reading, 6.0 writing and speaking)",
+
     /* --- 보건 세부 전공 카드 문구 --- */
     "학비 최저 수준": "Lowest fees in this list",
     "학·석사 통합 과정": "Combined bachelor's and master's",
