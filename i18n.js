@@ -239,6 +239,7 @@ const DATA_EN = {
     "공학 (Engineering)": "Engineering",
     "의대 계열 (Medicine & Dentistry)": "Medicine and Dentistry",
     "경영 (Business)": "Business",
+    "교육 (Education)": "Education",
 
     /* --- 보건 계열 세부 전공 --- */
     "물리치료학 (Physiotherapy)": "Physiotherapy",
@@ -521,6 +522,48 @@ const DATA_EN = {
     "회계 이외 전공 학사 (75% 이상)": "Bachelor's in a field other than accounting, 75 per cent or above",
     "경영 계열 학사 또는 대학원 수료증": "Business bachelor's, or a graduate certificate in any field",
     "학사 학위 (전공 무관, 75% 이상)": "Bachelor's in any discipline, 75 per cent or above",
+
+    /* --- 교육 계열 세부 전공 --- */
+    "유아교육 (Early Childhood Education)": "Early Childhood Education",
+    "초·중등 교직 (Primary & Secondary Teaching)": "Primary and Secondary Teaching",
+    "TESOL (영어교수법)": "TESOL",
+
+    "입학 영어와 교사 등록 영어가 다릅니다. 입학은 IELTS 7.0이지만, 호주에서 교사로 등록하려면 말하기·듣기 8.0을 따로 넘어야 합니다.":
+        "Getting in and getting registered are two different English bars. Entry sits at IELTS 7.0, but registering as a teacher in Australia means clearing 8.0 in speaking and listening as well.",
+    "학사만 있으면 2년에 유아교사 자격까지 갑니다. 다만 같은 분야 교원자격을 이미 가진 사람은 지원할 수 없습니다.":
+        "Any bachelor's degree gets you to an early childhood qualification in two years. Applicants who already hold a teaching qualification in the same area are not accepted.",
+    "입학부터 IELTS 7.5에 듣기·말하기 8.0을 요구합니다. 교사 등록 기준을 그대로 입학에 적용하는 구조라, 영어가 학비보다 먼저 문턱이 됩니다.":
+        "Entry itself asks for IELTS 7.5 with 8.0 in listening and speaking — the registration standard applied at admission. English, not fees, is the first barrier here.",
+    "초등은 교과 관련 1년 이수, 중등은 가르칠 교과의 전공이 필요합니다. 전공 없이 교직만 밟는 경로가 아닙니다.":
+        "Primary asks for a year of study relevant to the curriculum; secondary asks for a major in the subject you intend to teach. Neither is a route you can take on teaching coursework alone.",
+    "학부 과정이 없어 대학원부터 시작합니다. 교사 등록 직군이 아니라서 영어 문턱이 교직보다 한 단계 낮은 6.5입니다.":
+        "There is no undergraduate version, so this starts at postgraduate level. It does not lead to teacher registration, which is why the English bar sits a step lower at 6.5.",
+    "교사 등록이 필요 없는 대신 영어 기준도 6.5입니다. UTS는 전공이 달라도 실무 2년이면 받고, 플린더스는 학사 학위만 있으면 됩니다.":
+        "No registration to clear, and the English bar is 6.5 to match. UTS accepts a different field with two years of work behind it; Flinders asks only for a bachelor's degree.",
+
+    /* --- 교육 세부 전공 과정명 --- */
+    "Bachelor of Early Childhood Education - Birth to 5 (유아교육 학사 3년)": "Bachelor of Early Childhood Education, Birth to 5 (3 years)",
+    "Bachelor of Early Childhood Education - Birth to 8 (유아·초등 연계 학사 4년)": "Bachelor of Early Childhood Education, Birth to 8 (4 years)",
+    "Master of Teaching (Early Childhood) (유아교육 석사 2년)": "Master of Teaching (Early Childhood) (2 years)",
+    "Bachelor of Education Futures / Master of Teaching in Primary Education (학·석사 통합 4년)":
+        "Bachelor of Education Futures / Master of Teaching in Primary Education (4 years)",
+    "Master of Teaching in Primary Education (초등교육 석사 2년)": "Master of Teaching in Primary Education (2 years)",
+    "Master of Teaching in Secondary Education (중등교육 석사 2년)": "Master of Teaching in Secondary Education (2 years)",
+    "Master of TESOL and Applied Linguistics (TESOL·응용언어학 석사 1.5년)": "Master of TESOL and Applied Linguistics (1.5 years)",
+    "Master of TESOL (영어교수법 석사 2년)": "Master of TESOL (2 years)",
+
+    /* --- 교육 세부 전공 카드 문구 --- */
+    "초등까지 자격 확장": "Extends the qualification to primary",
+    "2년 만에 자격 취득": "Qualified in two years",
+    "학·석사 통합 4년": "Combined four-year degree",
+    "초등 교원자격 경로": "Route to primary registration",
+    "중등 교원자격 경로": "Route to secondary registration",
+    "학사 학위 (기존 교원자격자 제외)": "Any bachelor's, unless you already hold a teaching qualification",
+    "학사 + 초등 교과 관련 1년 이수": "Bachelor's plus a year of primary-curriculum study",
+    "학사 + 가르칠 교과의 전공": "Bachelor's with a major in the subject you will teach",
+    "교육·상경·인문 학사 또는 학사 + 실무 2년": "Bachelor's in education, business or humanities, or any bachelor's plus two years' work",
+    "학사 학위 또는 TESOL 대학원 수료증": "Bachelor's degree, or a TESOL graduate certificate",
+    "7.5 (듣기·말하기 8.0 / 읽기·쓰기 7.0)": "7.5 (8.0 listening and speaking, 7.0 reading and writing)",
 
     /* --- 보건 세부 전공 카드 문구 --- */
     "학비 최저 수준": "Lowest fees in this list",

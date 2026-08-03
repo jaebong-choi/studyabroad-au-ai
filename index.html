@@ -1208,6 +1208,42 @@
                 masterSchools: [
                     { name: "UTS", state: "NSW", degree: "Master of Sport Management (스포츠경영 석사 1.5년)", rank: "전공 무관 · 1.5년", req: "학사 학위 (전공 무관, 75% 이상)", ielts: "6.5 (쓰기 6.0)", tuition: "AUD $42,000", url: "https://www.uts.edu.au/study/find-a-course/master-sport-management" }
                 ],
+            },
+
+            /* ─── 교육 계열 (2026-08 신설) ─────────────────────────────────────
+               근거는 허브 저장소 data/au-education-verified.md.
+               ⚠ 교사 등록 영어(AITSL: 읽기·쓰기 7.0 / 말하기·듣기 8.0, IELTS만 인정)와
+               대학 입학 영어가 다르다. 카드 문구에서 이 차이가 지워지면 안 된다. */
+            "유아교육 (Early Childhood Education)": {
+                desc: "입학 영어와 교사 등록 영어가 다릅니다. 입학은 IELTS 7.0이지만, 호주에서 교사로 등록하려면 말하기·듣기 8.0을 따로 넘어야 합니다.",
+                masterDesc: "학사만 있으면 2년에 유아교사 자격까지 갑니다. 다만 같은 분야 교원자격을 이미 가진 사람은 지원할 수 없습니다.",
+                schools: [
+                    { name: "Flinders University", state: "SA", degree: "Bachelor of Early Childhood Education - Birth to 5 (유아교육 학사 3년)", rank: "3년 만에 자격 취득", req: "수능 또는 고교 성적", ielts: "7.0 (전 영역 7.0)", tuition: "AUD $35,600", url: "https://www.flinders.edu.au/study/courses/bachelor-early-childhood-education-birth-5" },
+                    { name: "Flinders University", state: "SA", degree: "Bachelor of Early Childhood Education - Birth to 8 (유아·초등 연계 학사 4년)", rank: "초등까지 자격 확장", req: "수능 또는 고교 성적", ielts: "7.0 (전 영역 7.0)", tuition: "AUD $33,200", url: "https://www.flinders.edu.au/study/courses/bachelor-early-childhood-education-birth-8" }
+                ],
+                masterSchools: [
+                    { name: "Flinders University", state: "SA", degree: "Master of Teaching (Early Childhood) (유아교육 석사 2년)", rank: "2년 만에 자격 취득", req: "학사 학위 (기존 교원자격자 제외)", ielts: "7.0 (전 영역 7.0)", tuition: "AUD $33,700", url: "https://www.flinders.edu.au/study/courses/postgraduate-teaching-early-childhood" }
+                ],
+            },
+            "초·중등 교직 (Primary & Secondary Teaching)": {
+                desc: "입학부터 IELTS 7.5에 듣기·말하기 8.0을 요구합니다. 교사 등록 기준을 그대로 입학에 적용하는 구조라, 영어가 학비보다 먼저 문턱이 됩니다.",
+                masterDesc: "초등은 교과 관련 1년 이수, 중등은 가르칠 교과의 전공이 필요합니다. 전공 없이 교직만 밟는 경로가 아닙니다.",
+                schools: [
+                    { name: "UTS", state: "NSW", degree: "Bachelor of Education Futures / Master of Teaching in Primary Education (학·석사 통합 4년)", rank: "학·석사 통합 4년", req: "고교 졸업 또는 디플로마", ielts: "7.5 (듣기·말하기 8.0 / 읽기·쓰기 7.0)", tuition: "AUD $33,700", url: "https://www.uts.edu.au/study/find-a-course/bachelor-education-futures" }
+                ],
+                masterSchools: [
+                    { name: "UTS", state: "NSW", degree: "Master of Teaching in Primary Education (초등교육 석사 2년)", rank: "초등 교원자격 경로", req: "학사 + 초등 교과 관련 1년 이수", ielts: "7.5 (듣기·말하기 8.0 / 읽기·쓰기 7.0)", tuition: "AUD $33,700", url: "https://www.uts.edu.au/study/find-a-course/master-teaching-primary-education" },
+                    { name: "UTS", state: "NSW", degree: "Master of Teaching in Secondary Education (중등교육 석사 2년)", rank: "중등 교원자격 경로", req: "학사 + 가르칠 교과의 전공", ielts: "7.5 (듣기·말하기 8.0 / 읽기·쓰기 7.0)", tuition: "AUD $33,700", url: "https://www.uts.edu.au/study/find-a-course/master-teaching-secondary-education" }
+                ],
+            },
+            "TESOL (영어교수법)": {
+                // 학부 과정이 없는 전공. masterSchools만 두면 학부를 골라도 석사 목록과 '석사' 라벨이 나온다.
+                desc: "학부 과정이 없어 대학원부터 시작합니다. 교사 등록 직군이 아니라서 영어 문턱이 교직보다 한 단계 낮은 6.5입니다.",
+                masterDesc: "교사 등록이 필요 없는 대신 영어 기준도 6.5입니다. UTS는 전공이 달라도 실무 2년이면 받고, 플린더스는 학사 학위만 있으면 됩니다.",
+                masterSchools: [
+                    { name: "UTS", state: "NSW", degree: "Master of TESOL and Applied Linguistics (TESOL·응용언어학 석사 1.5년)", rank: "1.5년 단축 과정", req: "교육·상경·인문 학사 또는 학사 + 실무 2년", ielts: "6.5 (쓰기 6.0)", tuition: "AUD $38,800", url: "https://www.uts.edu.au/study/find-a-course/master-tesol-and-applied-linguistics" },
+                    { name: "Flinders University", state: "SA", degree: "Master of TESOL (영어교수법 석사 2년)", rank: "전공 무관 지원 가능", req: "학사 학위 또는 TESOL 대학원 수료증", ielts: "6.5 (전 영역 6.0)", tuition: "AUD $35,000", url: "https://www.flinders.edu.au/study/courses/postgraduate-teaching-english-as-a-second-language" }
+                ],
             }
         };
 
@@ -1239,6 +1275,10 @@
             "경영 (Business)": [
                 "호텔경영학 (Hospitality)", "비즈니스 (Business)", "회계·금융 (Accounting & Finance)",
                 "스포츠경영 (Sport Management)"
+            ],
+            "교육 (Education)": [
+                "유아교육 (Early Childhood Education)", "초·중등 교직 (Primary & Secondary Teaching)",
+                "TESOL (영어교수법)"
             ]
         };
 
@@ -1633,7 +1673,8 @@
             document.getElementById('sum-major').innerText = shortEn(tr(userProfile.major), '(') || "-";
 
             // Populate Recommended Major
-            const showsMaster = isMaster && !!majorInfo.masterSchools;   // 학교 목록이 석사인지
+            // 학교 목록이 석사인지. 학부 과정이 아예 없는 전공(TESOL)은 학부를 골라도 석사를 보여준다.
+            const showsMaster = (isMaster || !majorInfo.schools) && !!majorInfo.masterSchools;
             document.getElementById('rec-major-title').innerText = tr(userProfile.major) + (showsMaster ? t('suffixMaster') : t('suffixBachelor'));
             document.getElementById('rec-major-desc').innerText = tr((isMaster && majorInfo.masterDesc) ? majorInfo.masterDesc : majorInfo.desc);
 
@@ -1644,7 +1685,7 @@
             const regionCode = userProfile.regionCode || "ANY";
             // 치위생·족부의학처럼 학사 소지자용 석사 자격 과정이 없는 전공은 학부 목록을 보여준다.
             // 이때 아래 제목도 '학부'로 맞춘다 — 학부 과정을 늘어놓고 '석사'라고 적으면 안 된다.
-            let schools = (isMaster && majorInfo.masterSchools) ? [...majorInfo.masterSchools] : [...majorInfo.schools];
+            let schools = showsMaster ? [...majorInfo.masterSchools] : [...majorInfo.schools];
             let matchedCount = 0;
             if (regionCode !== "ANY" && regionCode !== "OTHER") {
                 schools.sort((a, b) => (b.state === regionCode) - (a.state === regionCode));
@@ -1686,7 +1727,7 @@
                                 </div>
                                 <div class="flex justify-between sf-text-caption border-b border-gray-100 pb-2">
                                     <span class="text-gray-500">${t('reqEnglish')}</span>
-                                    <strong class="text-[#1d1d1f]">IELTS ${school.ielts}</strong>
+                                    <strong class="text-[#1d1d1f]">IELTS ${tr(school.ielts)}</strong>
                                 </div>
                                 <div class="flex justify-between sf-text-caption pt-1">
                                     <span class="text-gray-500">${t('reqTuition')} <span class="text-gray-400">${t('tuitionNote')}</span></span>
@@ -1827,7 +1868,10 @@
             "수의대 (Veterinary Science)": "Vt",
             "비즈니스 (Business)": "Bs",
             "회계·금융 (Accounting & Finance)": "Af",
-            "스포츠경영 (Sport Management)": "Sm"
+            "스포츠경영 (Sport Management)": "Sm",
+            "유아교육 (Early Childhood Education)": "Ec",
+            "초·중등 교직 (Primary & Secondary Teaching)": "Ps",
+            "TESOL (영어교수법)": "Ts"
         };
         const REGION_CODES = { "NSW": "N", "VIC": "V", "QLD": "Q", "OTHER": "O", "ANY": "A" };
         const ENG_STEPS = { "I": "eng_score_ielts", "P": "eng_score_pte", "T": "eng_score_toefl" };
