@@ -473,6 +473,86 @@
 
         html[data-theme="light"] .hero-glow { background: #9ec9f5 !important; opacity: 0.34; }
         html[data-theme="light"] .apple-link-pill { color: #0066cc; border-color: #0066cc; }
+
+        /* =========================================================
+         * 다크 모드에서의 결과 화면 — html[data-theme="dark"]
+         * 결과 본문(#result-details)이 .bg-apple-light로 짜여 있어서
+         * 기본값인 다크에서도 흰 배경 그대로 남아 있었다. 여기서 뒤집는다.
+         * 밝은 모드는 위쪽 규칙이 담당하므로 이 블록은 건드리지 않는다.
+         * ========================================================= */
+        html[data-theme="dark"] .bg-apple-light { background-color: #000000 !important; }
+        html[data-theme="dark"] .bg-apple-light.text-apple-dark-surface { color: #f5f5f7 !important; }
+        html[data-theme="dark"] .bg-apple-light .apple-card,
+        html[data-theme="dark"] .bg-apple-light .apple-card-flat {
+            background-color: #1d1d1f;
+            box-shadow: none;
+            border: 1px solid #2c2c2e;
+        }
+        /* 카드 안의 회색조 — 밝은 배경 기준으로 잡혀 있어 다크에서 안 읽힌다 */
+        html[data-theme="dark"] .bg-apple-light .text-\[\#1d1d1f\],
+        html[data-theme="dark"] .bg-apple-light .text-apple-dark-surface { color: #f5f5f7 !important; }
+        html[data-theme="dark"] .bg-apple-light .text-gray-600,
+        html[data-theme="dark"] .bg-apple-light .text-gray-500 { color: #a1a1a6 !important; }
+        html[data-theme="dark"] .bg-apple-light .text-gray-400 { color: #86868b !important; }
+        /* 카드 속 요약 박스와 구분선 */
+        html[data-theme="dark"] .bg-apple-light .bg-\[\#fafafc\] { background-color: #2c2c2e !important; }
+        html[data-theme="dark"] .bg-apple-light .bg-white { background-color: #1d1d1f !important; }
+        html[data-theme="dark"] .bg-apple-light .border-gray-100 { border-color: #3a3a3c !important; }
+        html[data-theme="dark"] .bg-apple-light .border-gray-200 { border-color: #3a3a3c !important; }
+        html[data-theme="dark"] .bg-apple-light .bg-gray-100 { background-color: #3a3a3c !important; }
+        /* 링크 알약은 밝은 배경용 파랑이라 다크에서 대비가 모자란다 */
+        html[data-theme="dark"] .bg-apple-light .apple-link-pill.light-bg { color: #2997ff; border-color: #2997ff; }
+        html[data-theme="dark"] .bg-apple-light .apple-link-pill.light-bg:hover { background-color: rgba(41, 151, 255, 0.12); }
+        html[data-theme="dark"] .bg-apple-light .apple-link-pill.is-primary.light-bg { color: #ffffff; }
+
+        /* 결과 하단 유학 정보 — 허브 게시판과 같은 목록형.
+           카드 두 장으로는 글이 늘어날수록 자리를 너무 먹는다. */
+        .rboard { border-top: 1px solid #d2d2d7; }
+        .rboard-head, .rboard-row {
+            display: grid; align-items: center; gap: 12px;
+            grid-template-columns: minmax(0, 1fr) 96px 128px;
+            padding: 13px 12px;
+        }
+        .rboard-head {
+            font-size: 12.5px; font-weight: 700; color: #6e6e73;
+            border-bottom: 1px solid #d2d2d7;
+        }
+        .rboard-head span:nth-child(3) { text-align: right; }
+        .rboard-row { border-bottom: 1px solid #d2d2d7; transition: background 0.15s ease; }
+        .rboard-row:hover { background: rgba(0, 0, 0, 0.03); }
+        .rb-title {
+            font-size: 16px; font-weight: 600; color: #1d1d1f;
+            overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+        }
+        .rboard-row:hover .rb-title { color: #0066cc; }
+        .rb-tag {
+            justify-self: start; font-size: 11.5px; font-weight: 700; white-space: nowrap;
+            border: 1px solid; border-radius: 999px; padding: 3px 9px;
+        }
+        .rb-meta { font-size: 12.5px; color: #6e6e73; text-align: right; white-space: nowrap; }
+        .rb-cat-major   { color: #0071e3; border-color: rgba(0, 113, 227, 0.4); }
+        .rb-cat-pathway { color: #1a7f37; border-color: rgba(26, 127, 55, 0.4); }
+        .rb-cat-cost    { color: #a4610a; border-color: rgba(164, 97, 10, 0.4); }
+        .rb-cat-english { color: #8b3fbf; border-color: rgba(139, 63, 191, 0.4); }
+        @media (max-width: 640px) {
+            .rboard-head { display: none; }
+            .rboard-row { display: flex; flex-wrap: wrap; gap: 6px 10px; padding: 13px 4px; }
+            .rb-title { flex: 1 1 100%; white-space: normal; font-size: 15px; }
+            .rb-meta { margin-left: auto; text-align: right; }
+        }
+        /* 다크에서는 결과 본문 전체가 뒤집히므로 게시판도 같이 뒤집는다 */
+        html[data-theme="dark"] .bg-apple-light .rboard,
+        html[data-theme="dark"] .bg-apple-light .rboard-head,
+        html[data-theme="dark"] .bg-apple-light .rboard-row { border-color: #3a3a3c; }
+        html[data-theme="dark"] .bg-apple-light .rboard-head,
+        html[data-theme="dark"] .bg-apple-light .rb-meta { color: #a1a1a6; }
+        html[data-theme="dark"] .bg-apple-light .rb-title { color: #f5f5f7; }
+        html[data-theme="dark"] .bg-apple-light .rboard-row:hover { background: rgba(255, 255, 255, 0.05); }
+        html[data-theme="dark"] .bg-apple-light .rboard-row:hover .rb-title { color: #2997ff; }
+        html[data-theme="dark"] .bg-apple-light .rb-cat-major   { color: #2997ff; border-color: rgba(41, 151, 255, 0.45); }
+        html[data-theme="dark"] .bg-apple-light .rb-cat-pathway { color: #34c759; border-color: rgba(52, 199, 89, 0.45); }
+        html[data-theme="dark"] .bg-apple-light .rb-cat-cost    { color: #ff9f0a; border-color: rgba(255, 159, 10, 0.45); }
+        html[data-theme="dark"] .bg-apple-light .rb-cat-english { color: #bf5af2; border-color: rgba(191, 90, 242, 0.45); }
     </style>
 </head>
 <body>
@@ -662,7 +742,7 @@
                 <p class="sf-text-body text-gray-500 text-center mb-12 max-w-2xl mx-auto" data-i18n="infoArticlesSub">
                     진단 결과와 관련된 주제를 공식 자료 기준으로 정리한 글입니다.
                 </p>
-                <div id="info-articles" class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto"></div>
+                <div id="info-articles" class="rboard max-w-3xl mx-auto"></div>
             </div>
 
             <!-- Official Course Links -->
@@ -795,7 +875,7 @@
                     en: "Nursing in Australia — the 3-year bachelor or the 2-year graduate entry master's?",
                     dko: "갈림길은 성적이 아니라 학위가 있느냐입니다. 두 경로의 실제 학비와, 입학 영어와 등록 영어가 다르다는 함정까지.",
                     den: "The fork is not your grades but whether you already hold a degree — both routes with real fees, and the admission-vs-registration English trap.",
-                    url: HUB_ARTICLE + "nursing.html", min: 4, ver: "2026-08", tracks: null
+                    cat: "major", url: HUB_ARTICLE + "nursing.html", min: 4, ver: "2026-08", tracks: null
                 }
             ],
             "약학/약대 (Pharmacy)": [
@@ -804,7 +884,7 @@
                     en: "Pharmacy in Australia — three schools, three different walls",
                     dko: "시드니는 수능 점수, 모나쉬는 선수과목, 그리피스는 영어에서 갈립니다. 그리고 학위는 시작일 뿐입니다.",
                     den: "Sydney gates on test scores, Monash on prerequisite subjects, Griffith on English. And the degree is only the start.",
-                    url: HUB_ARTICLE + "pharmacy.html", min: 4, ver: "2026-08", tracks: null
+                    cat: "major", url: HUB_ARTICLE + "pharmacy.html", min: 4, ver: "2026-08", tracks: null
                 }
             ],
             "의대/의전원 (Medicine)": [
@@ -813,7 +893,7 @@
                     en: "Medicine in Australia — the entrance exam depends on which route you take",
                     dko: "통합 과정이냐 대학원 MD냐가 정해져야 볼 시험이 정해집니다. 그리고 진짜 문턱은 총비용입니다.",
                     den: "The integrated route or the graduate MD decides which admissions test you sit. The real barrier is the total cost.",
-                    url: HUB_ARTICLE + "medicine.html", min: 5, ver: "2026-08", tracks: null
+                    cat: "major", url: HUB_ARTICLE + "medicine.html", min: 5, ver: "2026-08", tracks: null
                 }
             ],
             "호텔경영학 (Hospitality)": [
@@ -822,7 +902,7 @@
                     en: "Hospitality in Australia — university degree or hotel school?",
                     dko: "둘 다 학사를 줍니다. 실질적인 차이는 유급 인턴십이 학위 안에 들어 있느냐입니다.",
                     den: "Both hand you a bachelor's degree. The real difference is whether a paid internship sits inside it.",
-                    url: HUB_ARTICLE + "hospitality.html", min: 4, ver: "2026-08", tracks: null
+                    cat: "major", url: HUB_ARTICLE + "hospitality.html", min: 4, ver: "2026-08", tracks: null
                 }
             ],
             "공학/엔지니어링 (Engineering)": [
@@ -831,7 +911,7 @@
                     en: "Engineering in Australia — check the Engineers Australia accreditation first",
                     dko: "학위가 곧 자격으로 이어지는 전공입니다. 학교 선택에서 통제할 수 있는 변수는 사실상 인증 하나입니다.",
                     den: "The degree itself carries professional recognition, which makes accreditation the one variable worth controlling.",
-                    url: HUB_ARTICLE + "engineering.html", min: 4, ver: "2026-08", tracks: null
+                    cat: "major", url: HUB_ARTICLE + "engineering.html", min: 4, ver: "2026-08", tracks: null
                 }
             ]
         };
@@ -841,7 +921,7 @@
             en: "Health degrees do not share one English bar",
             dko: "같은 대학 안에서도 임상병리는 6.0, 물리치료는 7.0, 사회복지는 전 영역 7.0입니다. 총점만 보면 걸리는 이유까지.",
             den: "Inside one university, laboratory medicine sits at 6.0, physiotherapy at 7.0 and social work at 7.0 in every band — and why the overall score alone catches people out.",
-            url: HUB_ARTICLE + "health-english.html", min: 5, ver: "2026-08", tracks: null
+            cat: "english", url: HUB_ARTICLE + "health-english.html", min: 5, ver: "2026-08", tracks: null
         };
         ["물리치료학 (Physiotherapy)", "작업치료학 (Occupational Therapy)", "치위생학 (Oral Health)",
          "사회복지학 (Social Work)", "임상병리학 (Laboratory Medicine)", "족부의학 (Podiatry)"]
@@ -857,7 +937,7 @@
                en: "The same IT degree can cost twice as much",
                dko: "사이버보안 학사가 어디는 3만 2천 달러, 어디는 6만 3천 달러입니다. 그리고 IT 석사 중 전공을 안 보는 곳은 딱 한 군데입니다.",
                den: "A cyber security bachelor's runs 32,500 dollars at one university and 63,200 at another — and only one IT master's ignores what your first degree was in.",
-               url: HUB_ARTICLE + "it-cost.html", min: 5, ver: "2026-08", tracks: null },
+               cat: "cost", url: HUB_ARTICLE + "it-cost.html", min: 5, ver: "2026-08", tracks: null },
              ["IT 일반 (Information Technology)", "컴퓨터사이언스 (Computer Science)", "사이버보안 (Cyber Security)",
               "AI·데이터사이언스 (AI & Data Science)", "소프트웨어공학 (Software Engineering)"]],
 
@@ -865,35 +945,35 @@
                en: "Biotech and biomedical master's degrees each open a different door",
                dko: "관련 학사를 요구하는 곳, 실무 2년으로 대신하는 곳, 수학·과학 선수과목만 채우면 받는 곳. 들어가는 방법이 셋입니다.",
                den: "One asks for a related degree, one takes two years of work instead, and one only wants the maths and science prerequisites.",
-               url: HUB_ARTICLE + "life-entry.html", min: 5, ver: "2026-08", tracks: null },
+               cat: "pathway", url: HUB_ARTICLE + "life-entry.html", min: 5, ver: "2026-08", tracks: null },
              ["생명공학 (Biotechnology)", "의료공학 (Biomedical Engineering)"]],
 
             [{ ko: "조종사 학비는 학비가 전부가 아닙니다",
                en: "For a flying degree, tuition is not the bill",
                dko: "3년 학비 34만 8천 달러. 상업용 조종사 면허까지 가는 비행훈련비 15만 4천 5백 달러는 여기 안 들어 있습니다.",
                den: "348,000 dollars of tuition over three years — and the 154,500 dollars of flight training is not part of it.",
-               url: HUB_ARTICLE + "aviation-cost.html", min: 4, ver: "2026-08", tracks: null },
+               cat: "cost", url: HUB_ARTICLE + "aviation-cost.html", min: 4, ver: "2026-08", tracks: null },
              ["항공 (Aviation)"]],
 
             [{ ko: "의대·치대·수의대는 영어보다 시험이 먼저 갈립니다",
                en: "For medicine, dentistry and veterinary, the admissions test comes first",
                dko: "치대는 UCAT, 수의대는 Casper, 대학원 진입은 GAMSAT입니다. IELTS는 전 영역 7.0이라 총점으로 넘을 수 없습니다.",
                den: "Dentistry sits behind UCAT, veterinary behind Casper, graduate entry behind GAMSAT — and IELTS is 7.0 in every band.",
-               url: HUB_ARTICLE + "med-tests.html", min: 5, ver: "2026-08", tracks: null },
+               cat: "pathway", url: HUB_ARTICLE + "med-tests.html", min: 5, ver: "2026-08", tracks: null },
              ["의대/의전원 (Medicine)", "치대 (Dentistry)", "수의대 (Veterinary Science)"]],
 
             [{ ko: "경영 석사는 학교보다 내 학사 전공이 먼저입니다",
                en: "For a business master's, your first degree decides more than the university",
                dko: "회계 석사 두 곳이 정반대 조건을 답니다. 한 곳은 회계 전공자를 안 받고, 한 곳은 경영 학사를 요구합니다.",
                den: "Two accounting master's degrees, opposite entry rules — one bars accounting graduates, the other requires a business degree.",
-               url: HUB_ARTICLE + "business-entry.html", min: 5, ver: "2026-08", tracks: null },
+               cat: "pathway", url: HUB_ARTICLE + "business-entry.html", min: 5, ver: "2026-08", tracks: null },
              ["비즈니스 (Business)", "회계·금융 (Accounting & Finance)", "스포츠경영 (Sport Management)"]],
 
             [{ ko: "교사 자격, 입학 영어를 넘어도 등록 영어가 남습니다",
                en: "Getting into a teaching degree is not the English bar that ends it",
                dko: "교사 등록 기준은 말하기·듣기 각 8.0이고 IELTS만 인정합니다. 그런데 대학은 7.0에도 받아 줍니다.",
                den: "Registration asks for 8.0 in speaking and listening on IELTS alone, while some universities admit you at 7.0.",
-               url: HUB_ARTICLE + "teaching-english.html", min: 5, ver: "2026-08", tracks: null },
+               cat: "english", url: HUB_ARTICLE + "teaching-english.html", min: 5, ver: "2026-08", tracks: null },
              ["유아교육 (Early Childhood Education)", "초·중등 교직 (Primary & Secondary Teaching)", "TESOL (영어교수법)"]]
         ].forEach(([article, majors]) => {
             majors.forEach(m => { (INFO_ARTICLES[m] = INFO_ARTICLES[m] || []).push(article); });
@@ -909,7 +989,7 @@
                 en: "A foundation year and a diploma are not the same year",
                 dko: "이름만 들으면 둘 다 1년을 더 쓰는 것 같은데, 끝나는 지점이 다릅니다. 디플로마는 2학년으로 들어갑니다.",
                 den: "They sound like the same extra year, but they finish in different places. A diploma puts you into second year.",
-                url: HUB_ARTICLE + "pathway.html", min: 4, ver: "2026-08", tracks: ["bachelor"]
+                cat: "pathway", url: HUB_ARTICLE + "pathway.html", min: 4, ver: "2026-08", tracks: ["bachelor"]
             }
         ];
 
@@ -1838,15 +1918,20 @@
             const infoArts = (INFO_ARTICLES[userProfile.major] || []).concat(INFO_COMMON).filter(a =>
                 !a.tracks || a.tracks.indexOf(isMaster ? 'master' : 'bachelor') > -1);
             infoSec.classList.toggle('hidden', infoArts.length === 0);
-            infoWrap.innerHTML = infoArts.map(a => `
-                <a href="${a.url}" target="_blank" rel="noopener" class="apple-card block h-full group">
-                    <p class="sf-text-caption text-apple-blue font-semibold uppercase tracking-wider mb-3">Article</p>
-                    <h4 class="sf-display-card-bold text-[#1d1d1f] mb-3 group-hover:text-apple-blue transition">${LANG === 'en' ? a.en : a.ko}</h4>
-                    <p class="sf-text-body text-gray-600 leading-relaxed mb-4">${LANG === 'en' ? a.den : a.dko}</p>
-                    <p class="sf-text-caption text-gray-400">${t('infoArticleRead').replace('{0}', a.min).replace('{1}', a.ver)}
-                        <i class="fa-solid fa-arrow-up-right-from-square text-apple-blue ml-2"></i></p>
-                </a>
-            `).join('');
+            // 허브 게시판과 같은 목록형. 여기는 결과에 맞는 글만 나오므로 필터·페이지는 두지 않는다.
+            infoWrap.innerHTML =
+                `<div class="rboard-head" aria-hidden="true">
+                    <span>${t('boardColTitle')}</span><span>${t('boardColCat')}</span><span>${t('boardColMeta')}</span>
+                </div>` +
+                infoArts.map(a => {
+                    const c = a.cat || 'major';
+                    return `
+                <a href="${a.url}" target="_blank" rel="noopener" class="rboard-row">
+                    <span class="rb-title">${LANG === 'en' ? a.en : a.ko}</span>
+                    <span class="rb-tag rb-cat-${c}">${t('cat_' + c)}</span>
+                    <span class="rb-meta">${t('infoArticleRead').replace('{0}', a.min).replace('{1}', a.ver)}</span>
+                </a>`;
+                }).join('');
 
             // 결과 공유용 해시 갱신 (주소창 URL 자체가 공유 링크가 된다)
             history.replaceState(null, '', '#r=' + encodeProfile(userProfile));
