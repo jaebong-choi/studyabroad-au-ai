@@ -849,6 +849,59 @@
         // 간호는 자체 글 뒤에 보건 공통 글을 덧붙인다
         INFO_ARTICLES["간호학과 (Nursing)"].push(HEALTH_ENGLISH_ARTICLE);
 
+        /* ─── 계열별 공통 글 (2026-08 추가) ─────────────────────────────────
+           세부 전공마다 글을 따로 쓰는 대신, 계열 안에서 공통으로 걸리는 판단 축을
+           한 편으로 묶었다. 같은 글이 여러 전공 결과에 붙는다. */
+        [
+            [{ ko: "같은 IT 전공인데 학비가 두 배 벌어집니다",
+               en: "The same IT degree can cost twice as much",
+               dko: "사이버보안 학사가 어디는 3만 2천 달러, 어디는 6만 3천 달러입니다. 그리고 IT 석사 중 전공을 안 보는 곳은 딱 한 군데입니다.",
+               den: "A cyber security bachelor's runs 32,500 dollars at one university and 63,200 at another — and only one IT master's ignores what your first degree was in.",
+               url: HUB_ARTICLE + "it-cost.html", min: 5, ver: "2026-08", tracks: null },
+             ["IT 일반 (Information Technology)", "컴퓨터사이언스 (Computer Science)", "사이버보안 (Cyber Security)",
+              "AI·데이터사이언스 (AI & Data Science)", "소프트웨어공학 (Software Engineering)"]],
+
+            [{ ko: "생명·의공학 석사는 학교마다 문이 다릅니다",
+               en: "Biotech and biomedical master's degrees each open a different door",
+               dko: "관련 학사를 요구하는 곳, 실무 2년으로 대신하는 곳, 수학·과학 선수과목만 채우면 받는 곳. 들어가는 방법이 셋입니다.",
+               den: "One asks for a related degree, one takes two years of work instead, and one only wants the maths and science prerequisites.",
+               url: HUB_ARTICLE + "life-entry.html", min: 5, ver: "2026-08", tracks: null },
+             ["생명공학 (Biotechnology)", "의료공학 (Biomedical Engineering)"]],
+
+            [{ ko: "조종사 학비는 학비가 전부가 아닙니다",
+               en: "For a flying degree, tuition is not the bill",
+               dko: "3년 학비 34만 8천 달러. 상업용 조종사 면허까지 가는 비행훈련비 15만 4천 5백 달러는 여기 안 들어 있습니다.",
+               den: "348,000 dollars of tuition over three years — and the 154,500 dollars of flight training is not part of it.",
+               url: HUB_ARTICLE + "aviation-cost.html", min: 4, ver: "2026-08", tracks: null },
+             ["항공 (Aviation)"]],
+
+            [{ ko: "의대·치대·수의대는 영어보다 시험이 먼저 갈립니다",
+               en: "For medicine, dentistry and veterinary, the admissions test comes first",
+               dko: "치대는 UCAT, 수의대는 Casper, 대학원 진입은 GAMSAT입니다. IELTS는 전 영역 7.0이라 총점으로 넘을 수 없습니다.",
+               den: "Dentistry sits behind UCAT, veterinary behind Casper, graduate entry behind GAMSAT — and IELTS is 7.0 in every band.",
+               url: HUB_ARTICLE + "med-tests.html", min: 5, ver: "2026-08", tracks: null },
+             ["의대/의전원 (Medicine)", "치대 (Dentistry)", "수의대 (Veterinary Science)"]],
+
+            [{ ko: "경영 석사는 학교보다 내 학사 전공이 먼저입니다",
+               en: "For a business master's, your first degree decides more than the university",
+               dko: "회계 석사 두 곳이 정반대 조건을 답니다. 한 곳은 회계 전공자를 안 받고, 한 곳은 경영 학사를 요구합니다.",
+               den: "Two accounting master's degrees, opposite entry rules — one bars accounting graduates, the other requires a business degree.",
+               url: HUB_ARTICLE + "business-entry.html", min: 5, ver: "2026-08", tracks: null },
+             ["비즈니스 (Business)", "회계·금융 (Accounting & Finance)", "스포츠경영 (Sport Management)"]],
+
+            [{ ko: "교사 자격, 입학 영어를 넘어도 등록 영어가 남습니다",
+               en: "Getting into a teaching degree is not the English bar that ends it",
+               dko: "교사 등록 기준은 말하기·듣기 각 8.0이고 IELTS만 인정합니다. 그런데 대학은 7.0에도 받아 줍니다.",
+               den: "Registration asks for 8.0 in speaking and listening on IELTS alone, while some universities admit you at 7.0.",
+               url: HUB_ARTICLE + "teaching-english.html", min: 5, ver: "2026-08", tracks: null },
+             ["유아교육 (Early Childhood Education)", "초·중등 교직 (Primary & Secondary Teaching)", "TESOL (영어교수법)"]]
+        ].forEach(([article, majors]) => {
+            majors.forEach(m => { (INFO_ARTICLES[m] = INFO_ARTICLES[m] || []).push(article); });
+        });
+        // EA 인증 글은 토목·기계·전기에도 그대로 맞는다(같은 인증 체계). 건축은 AACA라 붙이지 않는다.
+        ["토목·건설 (Civil & Construction)", "기계·전기 (Mechanical & Electrical)"]
+            .forEach(m => { (INFO_ARTICLES[m] = INFO_ARTICLES[m] || []).push(INFO_ARTICLES["공학/엔지니어링 (Engineering)"][0]); });
+
         // 전공과 무관하게 학부 결과에 항상 붙는 글
         const INFO_COMMON = [
             {
