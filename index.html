@@ -825,6 +825,20 @@
                 }
             ]
         };
+        // 보건 계열 세부 전공에 공통으로 붙는 글 (간호는 자체 글이 이미 있어 제외)
+        const HEALTH_ENGLISH_ARTICLE = {
+            ko: "보건 계열이라고 영어 기준이 다 같지 않습니다",
+            en: "Health degrees do not share one English bar",
+            dko: "같은 대학 안에서도 임상병리는 6.0, 물리치료는 7.0, 사회복지는 전 영역 7.0입니다. 총점만 보면 걸리는 이유까지.",
+            den: "Inside one university, laboratory medicine sits at 6.0, physiotherapy at 7.0 and social work at 7.0 in every band — and why the overall score alone catches people out.",
+            url: HUB_ARTICLE + "health-english.html", min: 5, ver: "2026-08", tracks: null
+        };
+        ["물리치료학 (Physiotherapy)", "작업치료학 (Occupational Therapy)", "치위생학 (Oral Health)",
+         "사회복지학 (Social Work)", "임상병리학 (Laboratory Medicine)", "족부의학 (Podiatry)"]
+            .forEach(m => { INFO_ARTICLES[m] = [HEALTH_ENGLISH_ARTICLE]; });
+        // 간호는 자체 글 뒤에 보건 공통 글을 덧붙인다
+        INFO_ARTICLES["간호학과 (Nursing)"].push(HEALTH_ENGLISH_ARTICLE);
+
         // 전공과 무관하게 학부 결과에 항상 붙는 글
         const INFO_COMMON = [
             {
