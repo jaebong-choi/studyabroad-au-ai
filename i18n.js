@@ -497,6 +497,19 @@ const DATA_EN = {
     "비즈니스 (Business)": "Business",
     "회계·금융 (Accounting & Finance)": "Accounting and Finance",
     "스포츠경영 (Sport Management)": "Sport Management",
+    "요리예술 (Culinary Arts)": "Culinary Arts",
+    "학위보다 자격이 기본인 계열입니다. IELTS 5.5부터 시작할 수 있어 진단 전공 중 영어 문턱이 가장 낮고, 디플로마 안에 유급 실습이 들어 있는 과정이 많습니다.":
+        "In this field the qualification, not the degree, is the default. Entry starts from IELTS 5.5 — the lowest bar in this quiz — and many diplomas build paid placements in.",
+    "요리는 석사 자격 과정이 없는 계열입니다. 디플로마(1년~15개월)나 요리경영 학사(3년)가 경로이고, 경영 쪽으로 넓히려면 호텔경영 석사를 봅니다.":
+        "There is no qualifying master's in cookery. The routes are a diploma (12–15 months) or the culinary management bachelor's; to move toward management, look at hospitality master's degrees.",
+    "Diplôme de Cuisine (요리 디플로마 15개월)": "Diplôme de Cuisine (15 months)",
+    "세계적 브랜드 · 표기 학비는 과정 총액(실습 6개월 포함)": "Global brand · fee shown is the course total (6-month placement included)",
+    "Bachelor of Culinary Management (요리경영 학사 3년)": "Bachelor of Culinary Management (3 years)",
+    "식음료 특화 공립 · 이 계열 학사 학비 최저": "Public food-focused institute · cheapest bachelor's in this field",
+    "Certificate III in Commercial Cookery (조리 자격 1년)": "Certificate III in Commercial Cookery (1 year)",
+    "표기 학비는 1년 과정 총액": "Fee shown is the one-year course total",
+    "5.5 (General, 전 영역 5.0)": "5.5 (General, no band below 5.0)",
+    "고교 졸업": "Finished high school",
 
     "가장 넓은 선택지를 주는 전공입니다. 마케팅·인사·국제경영까지 안에서 고를 수 있고, 학비는 학교에 따라 연 3만 5천에서 4만 9천 달러 사이입니다.":
         "The broadest of the choices here. Marketing, human resources and international business all sit inside it, and fees run from about 35,200 to 48,800 dollars a year.",
@@ -857,6 +870,41 @@ const DATA_EN = {
         "Two years is enough to gain a degree and professional qualification in a new field, with no prior background, and it leads into a residency application.",
     "일부 과정은 해부생리 등 선수과목이나 실습 요건이 있어 사전 확인이 필요합니다.":
         "Some programmes require prerequisites such as anatomy and physiology, or set placement conditions — check before you apply.",
+
+    /* --- 진학 경로 카드: 그래프(flow)·스펙 --- */
+    "대상": "For", "기간": "Length", "영어": "English", "연계": "Leads to", "조건": "Condition", "분야": "Fields",
+    "고교 2학년~졸업": "High school Yr 2+", "내신 4~6등급도 OK": "grades 4–6 accepted",
+    "8개월~1년": "8–12 months", "학사 1학년": "Bachelor Year 1", "3년 과정": "3-year degree",
+    "내신·영어가 직접 입학 기준에 못 미치는 학생": "School grades or English below direct entry",
+    "8개월~1년 수료 후 1학년": "8–12 months, then Year 1", "IELTS 5.5부터": "From around IELTS 5.5",
+    "과정 성적으로 Go8 포함 상위권에 재도전할 수 있습니다. 다만 모든 과정이 '보장 입학'은 아닙니다.":
+        "Your foundation results decide entry, including at Go8 universities — but not every programme guarantees progression.",
+    "고교 졸업": "Finish high school", "또는 동등 학력": "or equivalent", "디플로마": "Diploma",
+    "학사 2학년": "Bachelor Year 2", "1년 단축": "one year saved",
+    "1년을 단축하고 싶은 학생": "Students who want to finish a year sooner",
+    "8개월~1년 수료 후 2학년": "8–12 months, then Year 2", "IELTS 5.5~6.0부터": "From IELTS 5.5–6.0",
+    "본교 1학년과 같은 커리큘럼을 이수합니다. 기준 학점(보통 60~70%) 미달 시 2학년 진학이 안 됩니다.":
+        "You study the university's own first-year curriculum; falling below the threshold (usually 60–70%) blocks Year 2.",
+    "수능·내신": "CSAT or grades", "기준 충족": "meets the bar", "입학 허가": "Offer", "조건부/무조건부": "conditional or full",
+    "성적·영어가 입학 기준을 충족하는 학생": "Grades and English that meet entry requirements",
+    "준비 과정 없이 바로 1학년": "Straight into Year 1", "보통 IELTS 6.5, 보건 7.0": "Usually IELTS 6.5, health 7.0",
+    "수능·내신·검정고시 모두 활용됩니다. 영어만 부족하면 조건부 오퍼로 진행됩니다.":
+        "CSAT, school grades and a GED all count; if only English is short, you proceed on a conditional offer.",
+    "관련 전공 학사": "Related bachelor's", "GPA·영어 충족": "GPA and English met",
+    "서류 지원": "Application", "성적표·SOP": "transcript and SOP", "석사 입학": "Master's entry", "1~2년 과정": "1–2 year degree",
+    "학점·영어 요건을 충족하는 관련 전공자": "Related majors meeting GPA and English",
+    "1~2년": "1–2 years", "졸업생 비자(485) → 영주권 점수": "Post-study visa (485), residency points",
+    "GPA·선수과목 요건이 대학·전공마다 다르고, 일부 과정은 연구계획서를 요구합니다.":
+        "GPA and prerequisites vary by university and course; some ask for a research proposal.",
+    "GC 입학": "Enter the GC", "문턱이 낮음": "lower bar", "GC 6개월": "GC, 6 months", "우수 성적 이수": "strong grades",
+    "석사 본과정": "Master's proper", "학점 그대로 인정": "credits carry over",
+    "GPA가 직행 기준에 다소 부족한 지원자": "Applicants just below direct-entry GPA",
+    "6개월 + 석사 (총 기간 손해 거의 없음)": "6 months + master's, little time lost",
+    "GC 성적이 본과정 진입 기준": "GC grades gate the master's",
+    "전공 무관 학사": "Any bachelor's", "직장인 포함": "career changers too", "GE 석사 2년": "GE master's, 2 yrs",
+    "실습 포함": "placements included", "자격·면허": "Qualification", "취업·영주권 연계": "work and residency",
+    "커리어 전환을 원하는 비전공 학사": "Non-majors switching careers", "2년": "2 years",
+    "간호·IT·사회복지에서 활발": "Well established in nursing, IT and social work",
 
     /* --- 진단 결과: 경로명 --- */
     "Graduate Entry (GE) 커리어 전환": "Graduate Entry (GE) — career change",
