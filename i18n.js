@@ -982,8 +982,8 @@ const DATA_EN = {
         "Your results are strong enough to enter year 1 of an Australian medical programme directly. Prepare thoroughly for the ISAT or UCAT and the interview.",
     "의대 다이렉트 입학 요건이 부족할 경우, Biomedical(의생명과학) 학사 이수 후 의전원(Doctor of Medicine)으로 진학하는 우회 경로가 가장 안전합니다.":
         "Where direct medical entry is out of reach, a biomedical science bachelor's degree followed by a Doctor of Medicine is the most reliable alternative.",
-    "고교 성적이 부족해도 호주 명문대 산하 디플로마(1년) 과정을 이수하면 본교 2학년으로 편입이 보장됩니다. 시간과 비용을 절약하는 최적의 방법입니다.":
-        "Even with lower school grades, completing a one-year diploma at a leading university's college secures entry to year 2. It is the most efficient route in both time and cost.",
+    "고교 성적이 부족해도 호주 명문대 산하 디플로마(1년) 과정을 마치고 성적 요건을 충족하면 본교 2학년으로 편입합니다. 시간과 비용을 절약하는 최적의 방법입니다.":
+        "Even with lower school grades, completing a one-year diploma at a leading university's college and meeting the progression grades takes you into year 2. It is the most efficient route in both time and cost.",
     "해당 전공 및 명문대 진학을 위해 학력 조건과 영어 기초를 탄탄히 다지는 파운데이션(대학예비과정) 이수 후 1학년으로 진학하는 경로를 권장합니다.":
         "A foundation year builds both the academic requirements and the English base you need, then takes you into year 1 of your chosen field.",
     "비전공 학사 소지자도 간호학 학사를 2년 만에 취득할 수 있는 GE 과정을 통해 빠른 면허 취득 및 영주권 신청이 가능합니다.":

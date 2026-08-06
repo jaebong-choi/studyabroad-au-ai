@@ -64,7 +64,7 @@
         });
     </script>
 
-    <script src="i18n.js?v=20260803c"></script>
+    <script src="i18n.js?v=20260806"></script>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -1905,9 +1905,10 @@
                     reason = "의대 다이렉트 입학 요건이 부족할 경우, Biomedical(의생명과학) 학사 이수 후 의전원(Doctor of Medicine)으로 진학하는 우회 경로가 가장 안전합니다.";
                 }
             } else if (grades.includes("6등급") || grades.includes("4~5등급")) {
-                if (major.includes("간호") || major.includes("IT") || major.includes("호텔") || major.includes("공학")) {
+                // 간호는 여기서 뺀다 — 임상 실습이 들어가는 전공은 디플로마 편입이 거의 없다(허브 pathway 글).
+                if (major.includes("IT") || major.includes("호텔") || major.includes("공학")) {
                     pathwayName = "Diploma Transfer (디플로마 편입)";
-                    reason = "고교 성적이 부족해도 호주 명문대 산하 디플로마(1년) 과정을 이수하면 본교 2학년으로 편입이 보장됩니다. 시간과 비용을 절약하는 최적의 방법입니다.";
+                    reason = "고교 성적이 부족해도 호주 명문대 산하 디플로마(1년) 과정을 마치고 성적 요건을 충족하면 본교 2학년으로 편입합니다. 시간과 비용을 절약하는 최적의 방법입니다.";
                 } else {
                     pathwayName = "Foundation Pathway (파운데이션)";
                     reason = "해당 전공 및 명문대 진학을 위해 학력 조건과 영어 기초를 탄탄히 다지는 파운데이션(대학예비과정) 이수 후 1학년으로 진학하는 경로를 권장합니다.";
