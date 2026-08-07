@@ -75,7 +75,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- Tally 팝업 위젯 (무료 상담 신청 폼) -->
-    <script async src="https://tally.so/widgets/embed.js"></script>
 
     <script>
         tailwind.config = {
@@ -2274,18 +2273,124 @@
             document.body.removeChild(ta);
         }
 
-        // ── 무료 상담 신청 (Tally 팝업) — 진단 결과를 히든 필드로 자동 전달 ──
-        const TALLY_FORM_ID = '0Qz7E6';
+        // ── 무료 상담 신청 — 자체 접수 모달 (Tally 대체, 2026-08) ──
+        const CONTACT_API = 'https://sgh-contact.studyguidehub.workers.dev';
         function openConsultForm() {
             const result = (document.getElementById('result-pathway-title')?.textContent || '').trim();
             const fields = { source: 'au', country: '호주', result: result, link: buildResultLink() };
-            if (window.Tally) {
-                window.Tally.openPopup(TALLY_FORM_ID, { layout: 'modal', width: Math.min(640, window.innerWidth - 32), hiddenFields: fields });
-            } else {
-                const q = Object.entries(fields).map(([k, v]) => k + '=' + encodeURIComponent(v)).join('&');
-                window.open('https://tally.so/r/' + TALLY_FORM_ID + '?' + q, '_blank', 'noopener');
-            }
+            openSghConsult(fields);
         }
+
+        /* 자체 접수 모달 — fields(source·result·link)는 각 사이트가 만들어 넘긴다.
+         * 스타일은 첫 호출 때 한 번 주입하고, 라이트·다크는 data-theme을 따른다. */
+        function openSghConsult(fields) {
+            const en = (typeof LANG !== 'undefined' && LANG === 'en');
+            const M = en ? {
+                title: 'Request free advice', sub: 'We will get back to you at the contact you leave. Free guidance, independent of any agency.',
+                name: 'Name', contact: 'Contact', ph: 'Phone number or KakaoTalk ID',
+                msg: 'Your question (optional)', agree: 'I agree to the collection and use of my personal information.', agreeLink: 'Privacy policy',
+                submit: 'Send request', sending: 'Sending...', error: 'Could not send. Please try again shortly.',
+                doneT: 'Request received', doneS: 'We will contact you shortly. Thank you.', close: 'Close',
+                attach: 'Your assessment result will be shared with the advisor automatically.'
+            } : {
+                title: '무료 상담 신청', sub: '남겨주신 연락처로 안내드립니다. 특정 유학원과 무관한 무료 안내입니다.',
+                name: '이름', contact: '연락처', ph: '전화번호 또는 카카오톡 ID',
+                msg: '문의 내용 (선택)', agree: '개인정보 수집·이용에 동의합니다.', agreeLink: '처리방침 보기',
+                submit: '신청하기', sending: '전송 중...', error: '전송에 실패했습니다. 잠시 후 다시 시도해 주세요.',
+                doneT: '접수되었습니다', doneS: '남겨주신 연락처로 곧 안내드리겠습니다. 감사합니다.', close: '닫기',
+                attach: '진단 결과가 상담에 함께 전달됩니다.'
+            };
+            if (!document.getElementById('sghc-css')) {
+                const st = document.createElement('style');
+                st.id = 'sghc-css';
+                st.textContent = [
+                    '.sghc{position:fixed;inset:0;z-index:9999}',
+                    '.sghc-bg{position:absolute;inset:0;background:rgba(0,0,0,.55)}',
+                    '.sghc-card{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(460px,calc(100vw - 32px));max-height:calc(100vh - 48px);overflow-y:auto;background:#fff;color:#1d1d1f;border:1px solid rgba(0,0,0,.1);border-radius:18px;padding:26px 24px 24px;box-shadow:0 24px 70px rgba(0,0,0,.4);text-align:left}',
+                    'html[data-theme="dark"] .sghc-card{background:#1d1d1f;color:#f5f5f7;border-color:rgba(255,255,255,.14)}',
+                    '.sghc-x{position:absolute;top:12px;right:14px;border:0;background:none;color:#86868b;font-size:25px;line-height:1;padding:4px;cursor:pointer}',
+                    '.sghc-card h3{font-size:20px;font-weight:700;margin:0 0 6px}',
+                    '.sghc-sub{font-size:13px;color:#86868b;margin:0 0 8px}',
+                    '.sghc-attach{font-size:12.5px;color:#2997ff;margin:0 0 14px}',
+                    '.sghc-card label{display:block;font-size:12.5px;font-weight:600;margin-bottom:12px;color:inherit;opacity:.9}',
+                    '.sghc-card input[type=text],.sghc-card textarea{display:block;width:100%;margin-top:5px;padding:10px 13px;border:1px solid rgba(0,0,0,.16);border-radius:10px;background:#fff;color:#1d1d1f;font-size:15px;font-family:inherit;box-sizing:border-box}',
+                    'html[data-theme="dark"] .sghc-card input[type=text],html[data-theme="dark"] .sghc-card textarea{background:#0b0b0f;color:#f5f5f7;border-color:rgba(255,255,255,.18)}',
+                    '.sghc-card textarea{resize:vertical}',
+                    '.sghc-hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;opacity:0}',
+                    '.sghc-agree{display:flex!important;gap:8px;align-items:flex-start;font-weight:500!important}',
+                    '.sghc-agree input{margin-top:3px;accent-color:#2997ff}',
+                    '.sghc-agree a{color:#2997ff;text-decoration:underline}',
+                    '.sghc-btn{width:100%;margin-top:4px;padding:12px;border:0;border-radius:11px;background:#2997ff;color:#fff;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit}',
+                    '.sghc-btn:hover{background:#1d7fe0}',
+                    '.sghc-btn:disabled{opacity:.6;cursor:default}',
+                    '.sghc-err{color:#ff6b6b;font-size:12.5px;margin:9px 0 0;min-height:15px}',
+                    '.sghc-done{text-align:center;padding:20px 0 4px}',
+                    '.sghc-done b{display:block;font-size:18px;margin-bottom:7px}',
+                    '.sghc-done p{font-size:13.5px;color:#86868b;margin:0 0 18px}'
+                ].join('');
+                document.head.appendChild(st);
+            }
+            const old = document.getElementById('sghc');
+            if (old) old.remove();
+            const modal = document.createElement('div');
+            modal.id = 'sghc';
+            modal.className = 'sghc';
+            modal.innerHTML = '<div class="sghc-bg" data-close></div>'
+                + '<div class="sghc-card" role="dialog" aria-modal="true">'
+                + '<button type="button" class="sghc-x" data-close aria-label="close">&times;</button>'
+                + '<h3>' + M.title + '</h3><p class="sghc-sub">' + M.sub + '</p>'
+                + (fields.result ? '<p class="sghc-attach">&#10003; ' + M.attach + '</p>' : '')
+                + '<form>'
+                + '<label>' + M.name + '<input type="text" name="name" required maxlength="60" autocomplete="name"></label>'
+                + '<label>' + M.contact + '<input type="text" name="contact" required maxlength="120" autocomplete="tel" placeholder="' + M.ph + '"></label>'
+                + '<label>' + M.msg + '<textarea name="message" rows="4" maxlength="2000"></textarea></label>'
+                + '<input type="text" name="website" class="sghc-hp" tabindex="-1" autocomplete="off" aria-hidden="true">'
+                + '<label class="sghc-agree"><input type="checkbox" name="agree" required><span>' + M.agree
+                + ' <a href="https://jaebong-choi.github.io/study-guide-hub/privacy.html" target="_blank" rel="noopener">' + M.agreeLink + '</a></span></label>'
+                + '<button type="submit" class="sghc-btn">' + M.submit + '</button>'
+                + '<p class="sghc-err"></p></form>'
+                + '<div class="sghc-done" hidden><b>' + M.doneT + '</b><p>' + M.doneS + '</p>'
+                + '<button type="button" class="sghc-btn" data-close>' + M.close + '</button></div></div>';
+            document.body.appendChild(modal);
+            document.body.style.overflow = 'hidden';
+            modal.addEventListener('click', (e) => {
+                if (e.target.closest('[data-close]')) { modal.remove(); document.body.style.overflow = ''; }
+            });
+            const form = modal.querySelector('form');
+            form.onsubmit = async (e) => {
+                e.preventDefault();
+                const btn = form.querySelector('.sghc-btn');
+                const err = form.querySelector('.sghc-err');
+                err.textContent = '';
+                btn.disabled = true;
+                btn.textContent = M.sending;
+                try {
+                    const r = await fetch(CONTACT_API + '/api/inquiries', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            name: form.name.value,
+                            contact: form.contact.value,
+                            message: form.message.value,
+                            website: form.website.value,
+                            country: fields.source,
+                            source: fields.source,
+                            result: fields.result || '',
+                            link: fields.link || ''
+                        })
+                    });
+                    if (!r.ok) throw new Error();
+                    form.hidden = true;
+                    modal.querySelector('.sghc-done').hidden = false;
+                } catch (_) {
+                    err.textContent = M.error;
+                    btn.disabled = false;
+                    btn.textContent = M.submit;
+                }
+            };
+            setTimeout(() => form.name.focus(), 50);
+        }
+
 
         /* 언어를 바꿨을 때, JS로 그려진 화면(질문·결과)을 현재 언어로 다시 그린다.
            i18n.js의 applyLang()이 마지막에 호출한다. 정적 HTML은 data-i18n이 이미 처리한다. */
